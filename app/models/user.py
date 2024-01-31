@@ -13,6 +13,10 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    artist_account = db.Column(db.BOOLEAN, nullable=False)
+    artist_name = db.Column(db.String(255), unique=True)
+    bio = db.Column(db.String(255))
+    profile_picture = db.Column(db.String)
 
     @property
     def password(self):
@@ -29,5 +33,6 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'bio': self.bio,
         }
