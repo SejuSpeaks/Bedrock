@@ -19,6 +19,7 @@ class User(db.Model, UserMixin):
     profile_picture = db.Column(db.String)
 
     albums = db.relationship('Album', back_populates='artist')
+    community = db.relationship('Community', back_populates='owner')
 
     @property
     def password(self):
