@@ -20,6 +20,8 @@ class User(db.Model, UserMixin):
 
     albums = db.relationship('Album', back_populates='artist')
     community = db.relationship('Community', back_populates='owner')
+    comments = db.relationship('Comment', back_populates='user')
+    likes = db.relationship('Like', back_populates='user')
 
     @property
     def password(self):

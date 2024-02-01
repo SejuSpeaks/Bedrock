@@ -12,6 +12,9 @@ class Post(db.Model):
     community_id = db.Column(db.Integer, add_prefix_for_prod(db.ForeignKey('communities.id')))
     text = db.Column(db.String, nullable=False)
 
+    comments = db.relationship('Comment', back_populates='post')
+    likes = db.relationship('Like', back_populates='post')
+
     def to_dict(self):
         return {
             'id': self.id,
