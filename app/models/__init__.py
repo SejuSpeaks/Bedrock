@@ -3,4 +3,6 @@ from .user import User
 from .album import Album
 from .community import Community
 from .posts import Post
+from .comment import Comment
+from .like import Like
 from .db import environment, SCHEMA
