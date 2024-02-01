@@ -1,4 +1,4 @@
-"""empty message
+"""add_colums_to_users_table
 
 Revision ID: 7c6a07bd2846
 Revises: ffdc0a98111c

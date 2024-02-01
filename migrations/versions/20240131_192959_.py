@@ -1,4 +1,4 @@
-"""empty message
+"""create_albums_table
 
 Revision ID: 2588e468943b
 Revises: 7c6a07bd2846
