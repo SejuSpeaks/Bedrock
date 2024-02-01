@@ -18,6 +18,8 @@ class User(db.Model, UserMixin):
     bio = db.Column(db.String(255))
     profile_picture = db.Column(db.String)
 
+    albums = db.relationship('Album', back_populates='artist')
+
     @property
     def password(self):
         return self.hashed_password
