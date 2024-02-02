@@ -5,4 +5,6 @@ from .community import Community
 from .posts import Post
 from .comment import Comment
 from .like import Like
+from .follower import Follower
+from .following import Following
 from .db import environment, SCHEMA
