@@ -22,6 +22,8 @@ class User(db.Model, UserMixin):
     community = db.relationship('Community', back_populates='owner')
     comments = db.relationship('Comment', back_populates='user')
     likes = db.relationship('Like', back_populates='user')
+    followers = db.relationship('Follower', back_populates='follower',  foreign_keys='Follower.follower_id')
+    following = db.relationship('Following',back_populates='followed_user', foreign_keys='Following.followed_user_id')
 
     @property
     def password(self):
