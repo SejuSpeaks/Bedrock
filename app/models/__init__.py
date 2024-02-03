@@ -7,4 +7,5 @@ from .comment import Comment
 from .like import Like
 from .follower import Follower
 from .following import Following
+from .song import Song
 from .db import environment, SCHEMA

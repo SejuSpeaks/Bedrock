@@ -1,4 +1,4 @@
-"""empty message
+"""Followers and following table
 
 Revision ID: 1c5248f1baf3
 Revises: d3de1fd6ad66

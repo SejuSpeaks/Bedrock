@@ -7,6 +7,7 @@ from .likes import seed_likes, undo_likes
 from .comments import seed_comments, undo_comments
 from . followers import seed_followers, undo_followers
 from .following import seed_following, undo_following
+from .songs import seed_songs, undo_songs
 
 from app.models.db import db, environment, SCHEMA
 
@@ -31,6 +32,7 @@ def seed():
         undo_comments()
         undo_followers()
         undo_following()
+        undo_songs()
 
     seed_users()
     seed_albums()
@@ -40,6 +42,7 @@ def seed():
     seed_comments()
     seed_followers()
     seed_following()
+    seed_songs()
     # Add other seed functions here
 
 
@@ -54,4 +57,5 @@ def undo():
     undo_comments()
     undo_followers()
     undo_following()
+    undo_songs()
     # Add other undo functions here
