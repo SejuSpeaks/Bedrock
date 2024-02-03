@@ -16,6 +16,7 @@ class Album(db.Model):
     artist_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
 
     artist = db.relationship('User', back_populates='albums')
+    songs = db.relationship('Song', back_populates='album')
 
     def to_dict(self):
         return {
