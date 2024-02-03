@@ -26,5 +26,5 @@ class Album(db.Model):
             'cover': self.cover,
             'genre': self.genre,
             'release_date': self.release_date,
-            'description': self.descrption,
+            'description': self.description,
         }
