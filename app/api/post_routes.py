@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import Post, Community, db
+from app.models import Post, Community,Like ,community_users, db
 from flask_login import current_user, login_required
 from ..forms.create_post import Post_Form
 from .auth_routes import validation_errors_to_error_messages
@@ -19,25 +19,36 @@ def get_post(community_id, post_id):
 
 
 #Like a Post
-@posts_routes.route('/<int:id>/likes', methods=['POST'])
+@posts_routes.route('/<int:id>/likes', methods=['POST','DELETE'])
 def like_post(id):
+
+    #Current User and Current Post
     user = current_user
-    user_id = current_user.id
     post = Post.query.get(id)
 
-    community_owner = post.community.owner
 
-    user_community = user.community[0]
+    like_query = Like.query.filter(Like.user_id == user.id, Like.post_id == post.id).one_or_none()
 
-    user_following = user.following
+    #Delete like if like is present
+    if like_query:
+        db.session.delete(like_query)
+        db.session.commit()
+        return {'Success':"Like Removed"}
 
-    for follower in user_following:
-        if follower.id == community_owner.id : return 'yes they are followed'
+    #is User in Commuinty
+    user_in_group = db.session.query(community_users).where(community_users.c.user_id == user.id, community_users.c.community_id == post.community_id).one_or_none()
 
-    if user_community.id == post.community_id: return 'yup'
+    #is user is owner
+    user_owned_community = user.community
 
-    return {'Hey':'hi'}
-    #find out if user is subscribed to artist or the user is the owner of the community
+    #verify
+    if user_in_group or user_owned_community and user_owned_community[0].id == post.community_id:
+        like = Like(post_id = id, user_id = user.id)
+        db.session.add(like)
+        db.session.commit()
+        return {'like': like.to_dict()}
+    else:
+        return {"Error": "User has no acess to community"}
 
 
 #GET ALL POSTS FROM COMMUINTY
