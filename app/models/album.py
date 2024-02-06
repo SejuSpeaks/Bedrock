@@ -15,6 +15,7 @@ class Album(db.Model):
     description = db.Column(db.String(255))
     artist_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
 
+    album_images = db.relationship('AlbumImage', back_populates='album')
     artist = db.relationship('User', back_populates='albums')
     songs = db.relationship('Song', back_populates='album')
     tags = db.relationship('Tag', secondary='album_tags', back_populates='albums')

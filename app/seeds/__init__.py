@@ -9,6 +9,8 @@ from . followers import seed_followers, undo_followers
 from .following import seed_following, undo_following
 from .songs import seed_songs, undo_songs
 from .tags import seed_tags, undo_tags
+from.album_images import seed_album_images, undo_album_images
+from.post_images import seed_post_images, undo_post_images
 
 from app.models.db import db, environment, SCHEMA
 
@@ -35,6 +37,8 @@ def seed():
         undo_following()
         undo_songs()
         undo_tags()
+        undo_post_images()
+        undo_album_images()
 
     seed_users()
     seed_albums()
@@ -46,6 +50,8 @@ def seed():
     seed_following()
     seed_songs()
     seed_tags()
+    seed_post_images()
+    seed_album_images()
     # Add other seed functions here
 
 
@@ -62,4 +68,6 @@ def undo():
     undo_following()
     undo_songs()
     undo_tags()
+    undo_post_images()
+    undo_album_images()
     # Add other undo functions here
