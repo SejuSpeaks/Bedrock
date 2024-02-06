@@ -17,6 +17,29 @@ def get_post(community_id, post_id):
     return {'post': post.to_dict()}
 
 
+
+#Like a Post
+@posts_routes.route('/<int:id>/likes', methods=['POST'])
+def like_post(id):
+    user = current_user
+    user_id = current_user.id
+    post = Post.query.get(id)
+
+    community_owner = post.community.owner
+
+    user_community = user.community[0]
+
+    user_following = user.following
+
+    for follower in user_following:
+        if follower.id == community_owner.id : return 'yes they are followed'
+
+    if user_community.id == post.community_id: return 'yup'
+
+    return {'Hey':'hi'}
+    #find out if user is subscribed to artist or the user is the owner of the community
+
+
 #GET ALL POSTS FROM COMMUINTY
 @posts_routes.route('/<int:id>')
 def get_community_posts(id):
