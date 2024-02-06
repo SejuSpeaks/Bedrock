@@ -20,6 +20,7 @@ class User(db.Model, UserMixin):
 
     albums = db.relationship('Album', back_populates='artist')
     community = db.relationship('Community', back_populates='owner')
+    communities_joined = db.relationship('Community', secondary='community_users' , back_populates='users')
     comments = db.relationship('Comment', back_populates='user')
     likes = db.relationship('Like', back_populates='user')
     followers = db.relationship('Follower', back_populates='follower',  foreign_keys='Follower.follower_id')
