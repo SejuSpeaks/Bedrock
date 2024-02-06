@@ -1,4 +1,4 @@
-from app.models import db, Community, environment, SCHEMA
+from app.models import db, Community, community_users, environment, SCHEMA
 from sqlalchemy.sql import text
 
 
@@ -8,8 +8,21 @@ def seed_communities():
         artist_id = 1
     )
 
+
     db.session.add(demo1_community)
     db.session.commit()
+
+
+    member1 = community_users.insert().values(user_id=2, community_id=1)
+    member2 = community_users.insert().values(user_id=3, community_id=1)
+
+
+
+    db.session.execute(member1)
+    db.session.execute(member2)
+    db.session.commit()
+
+
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't

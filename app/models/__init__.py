@@ -1,7 +1,7 @@
 from .db import db
 from .user import User
 from .album import Album
-from .community import Community
+from .community import Community, community_users
 from .posts import Post
 from .comment import Comment
 from .like import Like
