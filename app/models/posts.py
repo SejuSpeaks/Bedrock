@@ -12,6 +12,7 @@ class Post(db.Model):
     community_id = db.Column(db.Integer, add_prefix_for_prod(db.ForeignKey('communities.id')))
     text = db.Column(db.String, nullable=False)
 
+    post_images = db.relationship('PostImage', back_populates='post')
     comments = db.relationship('Comment', back_populates='post')
     likes = db.relationship('Like', back_populates='post')
 

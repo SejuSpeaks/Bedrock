@@ -9,4 +9,6 @@ from .follower import Follower
 from .following import Following
 from .song import Song
 from .tag import Tag, album_tags
+from .post_image import PostImage
+from .album_image import AlbumImage
 from .db import environment, SCHEMA
