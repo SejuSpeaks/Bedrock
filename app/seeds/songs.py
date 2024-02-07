@@ -5,19 +5,19 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_songs():
     song1 = Song(
-        album_id=1, name='The Intro'
+        album_id=1, name='The Intro', url='exampleurl.com'
     )
 
     song2 = Song(
-        album_id=2 , name = 'The come up'
+        album_id=2 , name = 'The come up', url='exampleurl.com'
     )
 
     song3 = Song(
-        album_id=3, name='No letting go'
+        album_id=3, name='No letting go', url='exampleurl.com'
     )
 
     song4 = Song(
-        album_id=1, name='Looking back'
+        album_id=1, name='Looking back', url='exampleurl.com'
     )
 
     db.session.add(song1)

@@ -166,6 +166,8 @@ def post_post(community_id):
     return{'Errors': validation_errors_to_error_messages(form.errors)}
 
 
+
+
 #UPDATE POST
 @posts_routes.route('/<int:community_id>/<int:post_id>', methods=['PUT'])
 def update_post(community_id, post_id):
