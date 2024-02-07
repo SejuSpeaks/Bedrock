@@ -10,6 +10,7 @@ class Song(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255))
     album_id = db.Column(db.Integer, add_prefix_for_prod(db.ForeignKey('albums.id')))
+    url = db.Column(db.String)
 
     album = db.relationship('Album', back_populates='songs')
 

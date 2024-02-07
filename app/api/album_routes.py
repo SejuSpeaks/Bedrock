@@ -1,7 +1,9 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import Album, Tag, db
+from app.models import Album, Tag, Song, AlbumImage, db
 from flask_login import current_user, login_required
 from ..forms.create_album import AlbumForm
+from ..forms.song_form import SongForm
+from ..forms.album_image_form import AlbumImageForm
 from .auth_routes import validation_errors_to_error_messages
 
 album_routes = Blueprint('albums', __name__)
@@ -55,6 +57,58 @@ def post_album():
         db.session.commit()
         return {'album': album.to_dict()}
     return{'Errors': validation_errors_to_error_messages(form.errors)}
+
+
+#ADD SONG TO ALBUM
+@album_routes.route('/<int:id>/songs', methods=['POST'])
+def post_song_to_album(id):
+    album = Album.query.get(id)
+    user = current_user
+
+    if not album: return {"Error": "album not found"}
+
+    if user.artist_account and album.artist.id == user.id:
+        form = SongForm()
+
+        form['csrf_token'].data = request.cookies['csrf_token']
+
+        if form.validate_on_submit():
+            song = Song(
+            name = form.name.data,
+            album_id = album.id,
+            url = form.url.data
+            )
+            db.session.add(song)
+            db.session.commit()
+            return {"Song added to Album": song.to_dict()}
+        else: return {"Errors": validation_errors_to_error_messages(form.errors)}
+
+    else: return {"Error": "User does not have an artist account or dosent own album"}
+
+
+#ADD ALBUM IMAGE
+@album_routes.route('/<int:album_id>/images', methods=['POST'])
+def add_image_to_album(album_id):
+    album = Album.query.get(album_id)
+    user = current_user
+    if album.artist.id == user.id:
+        form = AlbumImageForm()
+
+        form['csrf_token'].data = request.cookies['csrf_token']
+
+        if form.validate_on_submit():
+            image = AlbumImage(
+                url = form.url.data,
+                album_id = album_id
+            )
+            db.session.add(image)
+            db.session.commit()
+            return {"image added": image.to_dict()}
+        else: return {"Errors": validation_errors_to_error_messages(form.errors)}
+
+    else: return {"Error": "User does not own album"}
+
+
 
 #UPDATE ALBUM
 @album_routes.route('/<int:id>', methods=['PUT'])
