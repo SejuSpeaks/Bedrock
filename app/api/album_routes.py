@@ -4,6 +4,7 @@ from flask_login import current_user, login_required
 from ..forms.create_album import AlbumForm
 from ..forms.song_form import SongForm
 from ..forms.album_image_form import AlbumImageForm
+from .aws_s3 import get_unique_filename, upload_file_to_s3
 from .auth_routes import validation_errors_to_error_messages
 
 album_routes = Blueprint('albums', __name__)
@@ -73,14 +74,22 @@ def post_song_to_album(id):
         form['csrf_token'].data = request.cookies['csrf_token']
 
         if form.validate_on_submit():
-            song = Song(
-            name = form.name.data,
-            album_id = album.id,
-            url = form.url.data
+
+            song_file = form.song_file.data
+            song_file.filename = get_unique_filename(song_file.filename)
+            upload = upload_file_to_s3(song_file)
+            print(upload)
+
+            url = upload["url"]
+
+            new_song = Song(
+                name = form.name.data,
+                album_id = id,
+                url = url
             )
-            db.session.add(song)
+            db.session.add(new_song)
             db.session.commit()
-            return {"Song added to Album": song.to_dict()}
+            return {"Song added": new_song.to_dict()}
         else: return {"Errors": validation_errors_to_error_messages(form.errors)}
 
     else: return {"Error": "User does not have an artist account or dosent own album"}
