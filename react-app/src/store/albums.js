@@ -5,6 +5,33 @@ const GET_ALBUM = '/ALBUMS/GETALBUM'
 const DELETE_ALBUM = 'ALBUM/DELETEALBUM'
 
 
+/* --Get Album-- --------------------------------------------------------------------------- */
+
+//action
+const getAlbum = (album) => {
+    return {
+        type: GET_ALBUM,
+        album
+    }
+}
+
+
+//thunk
+export const fetchGetAlbum = (id) => async dispatch => {
+    const response = await fetch(`/api/albums/${id}`)
+
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(getAlbum(data.album))
+        return data
+    }
+    else {
+        const data = await response.json()
+        return data.Errors
+    }
+}
+
+
 
 /* --Create ALbum -- -----------------------------------------------------------------------*/
 
@@ -40,15 +67,20 @@ export const fetchCreateAlbum = (payload) => async dispatch => {
     }
 }
 
-
+/* --Reducer-- ---------------------------------------------------------------- */
 
 
 const albums = (state = {}, action) => {
+    let newState = {}
     switch (action.type) {
         case POST_ALBUM:
-            const newState = { ...state }
             newState[action.album.id] = action.album
             return newState
+
+        case GET_ALBUM:
+            newState[action.album.details.id] = action.album
+            return newState
+
 
         default:
             return state;
