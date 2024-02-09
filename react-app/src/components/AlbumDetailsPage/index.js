@@ -13,13 +13,14 @@ import { fetchGetAlbum } from "../../store/albums";
 import { useParams } from "react-router-dom";
 
 import './index.css'
+import ProfileHeader from "../ProfileHeader";
 
 const AlbumDetails = () => {
     const [isLoaded, setIsLoaded] = useState(false)
     const [songPlaying, setSongPlaying] = useState('')
     const { albumid } = useParams()
     const dispatch = useDispatch()
-    const user = useSelector(state => state.session.user)
+    const user = useSelector(state => state.session.user.info)
     const album = useSelector(state => state.albums[albumid])
 
     useEffect(() => {
@@ -58,6 +59,10 @@ const AlbumDetails = () => {
                         <div>
                             <p>{allSongs}</p>
                         </div>
+                    </div>
+
+                    <div>
+                        <ProfileHeader />
                     </div>
                 </>
             }

@@ -5,6 +5,10 @@ const GET_ALBUM = '/ALBUMS/GETALBUM'
 const DELETE_ALBUM = 'ALBUM/DELETEALBUM'
 
 
+
+/* --Get Artist Albums-- -------------------------------------------------------------------- */
+
+
 /* --Get Album-- --------------------------------------------------------------------------- */
 
 //action
