@@ -20,13 +20,13 @@ const ProfileHeader = () => {
 
     useEffect(() => {
 
-    }, [dispatch])
+    }, [dispatch, user])
 
     return (
         <div>
 
             <div>
-                <img src={user.profile_picture} alt="profilepicture" />
+                <img className="profile-header-image" src={user.profile_picture} alt="profilepicture" />
                 <p>{user.artist_name}</p>
                 <button>Follow</button>
             </div>

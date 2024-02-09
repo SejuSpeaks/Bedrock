@@ -51,7 +51,7 @@ const AlbumDetails = () => {
                         <div>
                             <p>{album.details.title}</p>
                             <p>by {user.artist_name}</p>
-                            <img className='album-form-image' src={album.details.cover} />
+                            <img className='album-details-image' src={album.details.cover} />
                             <p>Wishlist</p>
                         </div>
 

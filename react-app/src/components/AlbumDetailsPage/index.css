@@ -7,3 +7,8 @@
     display: flex;
     flex-direction: column;
 }
+
+.album-details-image {
+    height: 500px;
+    width: 500px;
+}
