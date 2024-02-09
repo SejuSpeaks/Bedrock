@@ -6,13 +6,13 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_albums():
     album1 = Album(
-        title='Man On The Moon', cover='example.com', genre='Rap', artist_id = 1, release_date = datetime.datetime(2023,1,29), description='We all live to die'
+        title='Man On The Moon', cover='https://upload.wikimedia.org/wikipedia/en/2/26/ManonTheMoonTheEndofDay.jpg', genre='Rap', artist_id = 1, release_date = datetime.datetime(2023,1,29), description='We all live to die'
     )
     album2 = Album(
-        title='Disco', cover='example.com', genre='Rap', artist_id = 1, release_date = datetime.datetime(2023,6,19), description='Big Mike'
+        title='Disco', cover='https://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Mike_Disco_2021.jpg/220px-Mike_Disco_2021.jpg', genre='Rap', artist_id = 1, release_date = datetime.datetime(2023,6,19), description='Big Mike'
     )
     album3 = Album(
-        title='TitleRun', cover='example.com', genre='Rap', artist_id = 1, release_date = datetime.datetime(2023,12,12), description='Going for the win'
+        title='TitleRun', cover='https://media.pitchfork.com/photos/599b2faad7cfca73eb7c517f/1:1/w_450%2Cc_limit/no%2520mountains%2520in%2520manhattan_wiki.jpg', genre='Rap', artist_id = 1, release_date = datetime.datetime(2023,12,12), description='Going for the win'
     )
 
     db.session.add(album1)
