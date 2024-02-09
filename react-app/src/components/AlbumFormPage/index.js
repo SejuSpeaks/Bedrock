@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchCreateAlbum } from '../../store/albums'
 import { fetchCreateSong } from '../../store/songs'
 import './index.css'
+import { useHistory } from 'react-router-dom'
 
 const AlbumForm = () => {
     const [songNames, setSongNames] = useState([])
@@ -15,6 +16,7 @@ const AlbumForm = () => {
     const [description, setDescription] = useState('')
     const user = useSelector(state => state.session.user)
     const dispatch = useDispatch()
+    const history = useHistory()
 
     //WHEN ADD SONG BUTTON IS CLICKED
     const fileUpload = (e) => {
@@ -65,19 +67,24 @@ const AlbumForm = () => {
         const createdAlbum = await dispatch(fetchCreateAlbum(album))
         console.log('CREATED album', createdAlbum)
 
-        //for every file in file Arr await disptach create song thunk
-        for (let i = 0; i <= fileArr.length - 1; i++) {
-            //create song object
-            const formData = new FormData()
-            formData.append('name', songNames[i])
-            formData.append('song_file', fileArr[i])
+        if (fileArr.length) {
+
+            //for every file in file Arr await disptach create song thunk
+            for (let i = 0; i <= fileArr.length - 1; i++) {
+                //create song object
+                const formData = new FormData()
+                formData.append('name', songNames[i])
+                formData.append('song_file', fileArr[i])
 
 
 
-            //dispatch song to the id of the album plus name of song
-            const createdSong = await dispatch(fetchCreateSong(createdAlbum.album.id, formData))
-            console.log(createdSong)
+                //dispatch song to the id of the album plus name of song
+                const createdSong = await dispatch(fetchCreateSong(createdAlbum.album.id, formData))
+                console.log(createdSong)
+            }
         }
+
+        history.push(`/${user.artist_name}/albums/${createdAlbum.album.id}`)
     }
 
     useEffect(() => {
