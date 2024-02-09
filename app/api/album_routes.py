@@ -20,6 +20,8 @@ def allAlbums():
 def album_by_id(id):
     album = Album.query.get(id)
 
+    print(album.songs[0].url)
+
     if(not album): return 'Album not Found', 401
 
     return {'album': album.to_dict()}
@@ -33,7 +35,7 @@ def albums_by_tag(tag):
     print(albums)
     return {'albums': [album.to_dict() for album in albums]}
 
-#POST ALBUM
+#CREATE ALBUM
 @album_routes.route('/', methods=['POST'])
 @login_required
 def post_album():
@@ -78,7 +80,7 @@ def post_song_to_album(id):
             song_file = form.song_file.data
             song_file.filename = get_unique_filename(song_file.filename)
             upload = upload_file_to_s3(song_file)
-            print(upload)
+            print('UPLOADDD',upload)
 
             url = upload["url"]
 
@@ -89,7 +91,7 @@ def post_song_to_album(id):
             )
             db.session.add(new_song)
             db.session.commit()
-            return {"Song added": new_song.to_dict()}
+            return {"song": new_song.to_dict()}
         else: return {"Errors": validation_errors_to_error_messages(form.errors)}
 
     else: return {"Error": "User does not have an artist account or dosent own album"}

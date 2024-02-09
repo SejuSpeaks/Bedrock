@@ -1,3 +1,53 @@
+.create-album-form-header {
+    display: flex;
+}
+
+.create-album-form-header-left {
+    display: flex;
+    /* border: solid black 1px; */
+}
+
+.create-album-title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.create-album-form-header-right {
+    display: flex;
+    align-items: center;
+}
+
+.create-album-right-header-container {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+
+.create-album-image-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.album-form-image {
+    height: 120px;
+    width: 120px;
+}
+
+
+
+
+.create-album-form-bottomn-container {
+    display: flex;
+}
+
+.create-album-form-bottomn-right-container {
+    display: flex;
+    flex-direction: column;
+}
+
+
 input[type="file"] {
     display: none;
 }
