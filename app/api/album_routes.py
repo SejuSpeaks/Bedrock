@@ -24,7 +24,12 @@ def album_by_id(id):
 
     if(not album): return 'Album not Found', 401
 
-    return {'album': album.to_dict()}
+    album_obj = {
+        'details': album.to_dict(),
+        'songs': [song.to_dict() for song in album.songs]
+    }
+
+    return {'album': album_obj}
 
 #QUERY ALBUM BY TAGS
 @album_routes.route('/<string:tag>')

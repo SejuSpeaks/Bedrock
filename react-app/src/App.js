@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import AlbumForm from "./components/AlbumFormPage";
+import AlbumDetails from "./components/AlbumDetailsPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,11 @@ function App() {
           <Route path='/albums/new'>
             <AlbumForm />
           </Route>
+
+          <Route path='/:artistName/albums/:albumid'>
+            <AlbumDetails />
+          </Route>
+
 
         </Switch>
       )}
