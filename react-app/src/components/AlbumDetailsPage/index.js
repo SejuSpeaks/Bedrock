@@ -9,24 +9,33 @@
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { fetchGetAlbum } from "../../store/albums";
 import { useParams } from "react-router-dom";
 
 import './index.css'
 import ProfileHeader from "../ProfileHeader";
+import { fetchGetArtist } from "../../store/artist";
 
 const AlbumDetails = () => {
     const [isLoaded, setIsLoaded] = useState(false)
     const [songPlaying, setSongPlaying] = useState('')
     const { albumid } = useParams()
     const dispatch = useDispatch()
-    const user = useSelector(state => state.session.user.info)
-    const album = useSelector(state => state.albums[albumid])
+    const history = useHistory()
+    const album = useSelector(state => state.albums)
+    const artist = useSelector(state => state.albums.artist)
+
 
     useEffect(() => {
-        dispatch(fetchGetAlbum(albumid))
+
+        dispatch(fetchGetAlbum(albumid)).then(res => { if (res.Errors) return history.push('/404') })
+
             .then(() => setIsLoaded(true))
+
+
     }, [dispatch])
+
 
 
     const allSongs = isLoaded && album?.songs.map(song => {
@@ -50,7 +59,7 @@ const AlbumDetails = () => {
                     <div className="album-details-container">
                         <div>
                             <p>{album.details.title}</p>
-                            <p>by {user.artist_name}</p>
+                            <p>by {artist.artist_name}</p>
                             <img className='album-details-image' src={album.details.cover} />
                             <p>Wishlist</p>
                         </div>
@@ -62,12 +71,13 @@ const AlbumDetails = () => {
                     </div>
 
                     <div>
-                        <ProfileHeader />
+                        <ProfileHeader artist={artist} />
                     </div>
                 </>
             }
         </div>
     );
+
 }
 
 export default AlbumDetails;

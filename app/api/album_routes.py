@@ -21,12 +21,13 @@ def album_by_id(id):
     album = Album.query.get(id)
 
 
-    if(not album): return 'Album not Found', 401
+    if(not album): return {'Errors':'Album not Found'}, 404
 
     album_obj = {
         'details': album.to_dict(),
         'songs': [song.to_dict() for song in album.songs],
-        'images': [image.to_dict() for image in album.album_images]
+        'images': [image.to_dict() for image in album.album_images],
+        'artist': album.artist.to_dict()
     }
 
     return {'album': album_obj}

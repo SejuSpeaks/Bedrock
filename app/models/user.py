@@ -40,9 +40,11 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
+            'artist_account': self.artist_account,
             'username': self.username,
             'email': self.email,
             'artist_name': self.artist_name,
             'bio': self.bio,
-            'profile_picture':self.profile_picture
+            'profile_picture':self.profile_picture,
+            'albums': [album.to_dict() for album in self.albums]
         }

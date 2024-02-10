@@ -7,16 +7,33 @@ from .auth_routes import validation_errors_to_error_messages
 following_routes = Blueprint('followings', __name__)
 
 
+#Check Following status
+@following_routes.route('/<int:id>')
+def check_following_status(id):
+    user_followed = Following.query.filter(Following.user_id == current_user.id, Following.followed_user_id == id).one_or_none()
+
+    if not user_followed: return  {'Errors': "user dosent follow artist"}, 404
+
+    return user_followed.to_dict()
+
+
+
+
 #Follow user
 @following_routes.route('/<int:id>', methods=['POST'])
 def follow_user(id):
     user_followed_query = Following.query.filter(Following.user_id == current_user.id , Following.followed_user_id == id ).one_or_none()
 
-    if user_followed_query : return {'Error': "user is already followed"}
+    if user_followed_query :
+        remove_follow = Follower.query.filter(Follower.followed_user_id == id, Follower.follower_id == current_user.id).one_or_none()
+        db.session.delete(user_followed_query)
+        db.session.delete(remove_follow)
+        db.session.commit()
+        return {'Success': "user unfollowed"}
 
     check_user_exist = User.query.get(id)
 
-    if not check_user_exist: return {"Error": "user does not exist"}
+    if not check_user_exist: return {"Errors": "user does not exist"}
 
     follow = Following(
         user_id=current_user.id,
@@ -39,11 +56,11 @@ def unfollow_user(id):
     user_followed = Following.query.filter(Following.user_id == current_user.id , Following.followed_user_id == id ).one_or_none()
     remove_follower = Follower.query.filter(Follower.followed_user_id == id, Follower.follower_id == current_user.id).one_or_none()
 
-    if not user_followed : return {'Error': "user already not followed"}
+    if not user_followed : return {'Errors': "user already not followed"}
 
     check_user_exist = User.query.get(id)
 
-    if not check_user_exist: return {"Error": "user does not exist"}
+    if not check_user_exist: return {"Errors": "user does not exist"}
 
     db.session.delete(user_followed)
     db.session.delete(remove_follower)

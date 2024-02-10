@@ -21,6 +21,10 @@ function App() {
       {isLoaded && (
         <Switch>
 
+          <Route exact path='/'>
+
+          </Route>
+
           <Route path="/login" >
             <LoginFormPage />
           </Route>
@@ -33,11 +37,11 @@ function App() {
             <AlbumForm />
           </Route>
 
-          <Route path='/:artistName/albums/:albumid'>
+          <Route path='/albums/:albumid'>
             <AlbumDetails />
           </Route>
 
-
+          <Route><div>Not Found</div></Route>
         </Switch>
       )}
     </>
