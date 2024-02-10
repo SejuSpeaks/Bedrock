@@ -5,3 +5,18 @@
 .hidden {
   display: none;
 }
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}

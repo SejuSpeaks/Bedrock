@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import AlbumForm from "./components/AlbumFormPage";
 import AlbumDetails from "./components/AlbumDetailsPage";
+import LandingPage from "./components/LandingPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ function App() {
         <Switch>
 
           <Route exact path='/'>
-
+            <LandingPage />
           </Route>
 
           <Route path="/login" >
