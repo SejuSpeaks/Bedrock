@@ -36,7 +36,7 @@ export const fetchCreateSong = (id, payload) => async dispatch => {
 
 
 
-const songs = (state = {}, action) => {
+const songs_posted = (state = {}, action) => {
     switch (action.type) {
         case POST_ALBUM_SONG:
             const newState = { ...state }
@@ -49,4 +49,4 @@ const songs = (state = {}, action) => {
     }
 }
 
-export default songs
+export default songs_posted

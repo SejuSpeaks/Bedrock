@@ -31,7 +31,7 @@ export const fetchGetAlbum = (id) => async dispatch => {
     }
     else {
         const data = await response.json()
-        return data.Errors
+        return data
     }
 }
 
@@ -82,7 +82,7 @@ const albums = (state = {}, action) => {
             return newState
 
         case GET_ALBUM:
-            newState[action.album.details.id] = action.album
+            newState = action.album
             return newState
 
 

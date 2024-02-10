@@ -1,14 +1,55 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 import './index.css'
 
-const ProfileHeader = () => {
-    const user = useSelector(state => state.session.user.info)
-    const albums = useSelector(state => state.session.user.albums)
+const ProfileHeader = ({ artist }) => {
+    const albums = artist.albums
+    const [followsArtist, setFollowsArtist] = useState(false)
     const dispatch = useDispatch()
 
-    const allAlbums = albums.map(album => {
+
+    const checkUserFollowingStatus = async id => {
+        const response = await fetch(`/api/current/following/${id}`)
+
+        if (response.ok) {
+            const data = await response.json()
+            setFollowsArtist(true)
+            return data
+        }
+        else {
+            const data = await response.json()
+            console.log('UhOh', data)
+        }
+    }
+
+    const followArtist = async (id) => {
+        const response = await fetch(`/api/current/following/${id}`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+
+        if (response.ok) {
+            const data = await response.json()
+            setFollowsArtist(!followsArtist)
+            console.log(followsArtist, 'after change')
+            return data
+        }
+        else {
+            const data = await response.json()
+            console.log('UhOh', data)
+        }
+    }
+
+
+    useEffect(() => {
+        checkUserFollowingStatus(artist.id)
+    }, [artist.id])
+
+    const allAlbums = albums ? albums.map(album => {
         return (
             <div>
                 <img className="profile-header-album-cover" src={album.cover} alt="cover" />
@@ -16,19 +57,18 @@ const ProfileHeader = () => {
                 <p>{album.release_date}</p>
             </div>
         );
-    })
+    }) : "no albums"
 
-    useEffect(() => {
+    const followButtonClass = followsArtist ? 'profile-header-follow-button-active' : 'profile-header-follow-button'
 
-    }, [dispatch, user])
 
     return (
         <div>
 
             <div>
-                <img className="profile-header-image" src={user.profile_picture} alt="profilepicture" />
-                <p>{user.artist_name}</p>
-                <button>Follow</button>
+                <img className="profile-header-image" src={artist.profile_picture} alt="profilepicture" />
+                <p>{artist.artist_name}</p>
+                <button onClick={() => followArtist(artist.id)} className={followButtonClass}>{followsArtist ? 'Followed' : 'Follow'}</button>
             </div>
 
             <div>
