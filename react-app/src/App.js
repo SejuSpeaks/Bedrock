@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import AlbumForm from "./components/AlbumFormPage";
 import AlbumDetails from "./components/AlbumDetailsPage";
 import LandingPage from "./components/LandingPage";
+import CommunityTab from "./components/CommunityTab";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +41,10 @@ function App() {
 
           <Route path='/albums/:albumid'>
             <AlbumDetails />
+          </Route>
+
+          <Route path='/artist/:artistid/community'>
+            <CommunityTab />
           </Route>
 
           <Route><div>Not Found</div></Route>
