@@ -4,10 +4,11 @@ import session from './session'
 import songs_posted from './songs';
 import followings from './followers';
 import artist from './artist';
+import tags from './tags';
 import albums from './albums';
 
 const rootReducer = combineReducers({
-  session, albums, songs_posted, artist, followings
+  session, albums, songs_posted, artist, followings, tags
 });
 
 

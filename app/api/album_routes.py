@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import Album, Tag, Song, AlbumImage, db
+from app.models import Album, Tag, album_tags, Song, AlbumImage, db
 from flask_login import current_user, login_required
 from ..forms.create_album import AlbumForm
 from ..forms.song_form import SongForm
@@ -20,7 +20,6 @@ def allAlbums():
 def album_by_id(id):
     album = Album.query.get(id)
 
-
     if(not album): return {'Errors':'Album not Found'}, 404
 
     album_obj = {
@@ -35,11 +34,12 @@ def album_by_id(id):
 #QUERY ALBUM BY TAGS
 @album_routes.route('/<string:tag>')
 def albums_by_tag(tag):
-    tag_query = Tag.query.filter(Tag.name == tag).one()
+    tag_query = Tag.query.filter(Tag.name == tag).one_or_none()
 
-    albums = tag_query.albums
-    print(albums)
-    return {'albums': [album.to_dict() for album in albums]}
+    print(tag_query.to_dict())
+
+    albums_with_tag = tag_query.albums
+    return {'albums': [album.to_dict() for album in albums_with_tag]}
 
 #CREATE ALBUM
 @album_routes.route('/', methods=['POST'])

@@ -18,7 +18,7 @@ class Album(db.Model):
     album_images = db.relationship('AlbumImage', back_populates='album')
     artist = db.relationship('User', back_populates='albums')
     songs = db.relationship('Song', back_populates='album')
-    tags = db.relationship('Tag', secondary='album_tags', back_populates='albums',  cascade="delete")
+    tags = db.relationship("Tag", secondary="album_tags", back_populates="albums", cascade='delete')
 
     def to_dict(self):
         return {
