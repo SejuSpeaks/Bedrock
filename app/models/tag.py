@@ -20,7 +20,7 @@ class Tag(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False, unique=True)
 
-    albums = db.relationship('Album', secondary=album_tags, back_populates='tags')
+    albums = db.relationship('Album', secondary=album_tags, back_populates='tags', lazy='joined')
 
     def to_dict(self):
         return {

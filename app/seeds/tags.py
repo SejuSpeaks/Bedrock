@@ -16,16 +16,21 @@ def seed_tags():
         name='10k'
     )
 
+    tag4 = Tag(
+        name='all genres'
+    )
 
+
+    db.session.add(tag4)
     db.session.add(tag1)
     db.session.add(tag2)
     db.session.add(tag3)
     db.session.commit()
 
-    album_tag1 = album_tags.insert().values(album_id=1, tag_id=1)
-    album_tag1_half = album_tags.insert().values(album_id=1, tag_id=2)
-    album_tag2 = album_tags.insert().values(album_id=2, tag_id=1)
-    album_tag3 = album_tags.insert().values(album_id=3, tag_id=1)
+    album_tag1 = album_tags.insert().values(album_id=1, tag_id=2)
+    album_tag1_half = album_tags.insert().values(album_id=1, tag_id=3)
+    album_tag2 = album_tags.insert().values(album_id=2, tag_id=2)
+    album_tag3 = album_tags.insert().values(album_id=3, tag_id=2)
 
 
     db.session.execute(album_tag1)
