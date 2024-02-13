@@ -39,11 +39,7 @@ function App() {
             <AlbumForm />
           </Route>
 
-          <Route path='/albums/:albumid'>
-            <AlbumDetails />
-          </Route>
-
-          <Route path='/artist/:artistid/community'>
+          <Route path='/artists/:artistid'>
             <CommunityTab />
           </Route>
 

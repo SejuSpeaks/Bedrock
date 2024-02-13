@@ -14,7 +14,7 @@ const AlbumForm = () => {
     const [genre, setGenre] = useState('')
     // const [tags, setTags] = useState([])
     const [description, setDescription] = useState('')
-    const user = useSelector(state => state.session.user)
+    const user = useSelector(state => state.session.user.info)
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -84,7 +84,7 @@ const AlbumForm = () => {
             }
         }
 
-        history.push(`/${user.artist_name}/albums/${createdAlbum.album.id}`)
+        history.push(`/artists/${user.id}/albums/${createdAlbum.album.id}`)
     }
 
     useEffect(() => {

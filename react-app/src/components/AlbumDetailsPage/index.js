@@ -15,7 +15,7 @@ import { useParams } from "react-router-dom";
 
 import './index.css'
 import ProfileHeader from "../ProfileHeader";
-import { fetchGetArtist } from "../../store/artist";
+import ArtistPageNav from "../ArtistPageNav";
 
 const AlbumDetails = () => {
     const [isLoaded, setIsLoaded] = useState(false)
@@ -70,9 +70,9 @@ const AlbumDetails = () => {
                         </div>
                     </div>
 
-                    <div>
+                    {/* <div>
                         <ProfileHeader artist={artist} />
-                    </div>
+                    </div> */}
                 </>
             }
         </div>
