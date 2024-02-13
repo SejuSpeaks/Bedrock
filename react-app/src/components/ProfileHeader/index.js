@@ -8,7 +8,7 @@ const ProfileHeader = ({ artist, followArtist, followsArtist }) => {
 
     const allAlbums = albums ? albums.map(album => {
         return (
-            <div>
+            <div key={album.id}>
                 <img className="profile-header-album-cover" src={album.cover} alt="cover" />
                 <p>{album.title}</p>
                 <p>{album.release_date}</p>

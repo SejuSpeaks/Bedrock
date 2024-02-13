@@ -40,7 +40,7 @@ const AlbumDetails = () => {
 
     const allSongs = isLoaded && album?.songs.map(song => {
         return (
-            <div className="album-details-song-container">
+            <div key={song.id} className="album-details-song-container">
                 <button onClick={() => setSongPlaying(song.url)}>Play</button>
                 <p>{song.name}</p>
             </div>
@@ -66,7 +66,7 @@ const AlbumDetails = () => {
 
 
                         <div>
-                            <p>{allSongs}</p>
+                            {allSongs}
                         </div>
                     </div>
 

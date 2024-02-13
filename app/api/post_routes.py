@@ -50,7 +50,17 @@ def like_post(community_id, post_id):
         db.session.commit()
         return {'like': like.to_dict()}
     else:
-        return {"Error": "User has no acess to community"}
+        return {"Error": "User has no acess to community"}, 403
+
+
+#Find out if user liked
+@posts_routes.route('/<int:community_id>/<int:post_id>/likes/current')
+def find_user_like(community_id, post_id):
+    like = Like.query.filter(Like.user_id==current_user.id, Like.post_id==post_id).one_or_none()
+
+    if not like: return {'Errors': "Like not found"}, 404
+
+    return {"like": like.to_dict()}
 
 #--------------------------------COMMENTS-----------------------------------------------------------------
 
@@ -134,7 +144,7 @@ def get_community_posts(community_id):
 def get_post(community_id, post_id):
     post = Post.query.filter(Post.community_id == community_id, Post.id == post_id).one_or_none()
 
-    if not post: return {"Errors": "Post not Found"}, 401
+    if not post: return {"Errors": "Post not Found"}, 404
 
     return {'post': post.to_dict()}
 

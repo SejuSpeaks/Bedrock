@@ -19,6 +19,7 @@ class User(db.Model, UserMixin):
     profile_picture = db.Column(db.String)
 
     albums = db.relationship('Album', back_populates='artist')
+    posts = db.relationship('Post', back_populates='owner')
     community = db.relationship('Community', back_populates='owner')
     communities_joined = db.relationship('Community', secondary='community_users' , back_populates='users')
     comments = db.relationship('Comment', back_populates='user')
@@ -43,6 +44,7 @@ class User(db.Model, UserMixin):
             'artist_account': self.artist_account,
             'username': self.username,
             'email': self.email,
+            'community_id':self.community[0].id,
             'artist_name': self.artist_name,
             'bio': self.bio,
             'profile_picture':self.profile_picture,

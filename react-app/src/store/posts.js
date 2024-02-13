@@ -1,7 +1,38 @@
 const GET_ALL_POSTS = '/POSTS/GETALL'
+const GET_POST = '/POSTS/GETONE'
 const POST_A_POST = '/POSTS/POST'
 const DELETE_A_POST = '/POST/DELETEPOST'
 const UPDATE_POST = '/POST/POST'
+
+
+
+/* --GET POST BY ID-- ---------------------------------------------------- */
+
+//action
+const getPost = (post) => {
+    return {
+        type: GET_POST,
+        post
+    }
+}
+
+//thunk
+export const fetchGetAPost = (community_id, post_id) => async dispatch => {
+    const response = await fetch(`/api/posts/${community_id}/${post_id}`)
+
+    if (response.ok) {
+        const data = await response.json()
+        console.log('DATA THIS IS DATA', data)
+        dispatch(getPost(data.post))
+        return data.post
+    }
+    else {
+        const data = await response.json()
+        return data.Errors
+    }
+}
+
+
 
 
 /* --POST POST-- ------------------------------------------- */
@@ -70,6 +101,11 @@ export const fetchAllPosts = (community_id) => async dispatch => {
 const posts = (state = {}, action) => {
     let newState = {};
     switch (action.type) {
+
+        case GET_POST:
+            const postById = action.post
+            newState = { ...postById }
+            return newState
 
         case GET_ALL_POSTS:
             const posts = action.posts.map(post => {

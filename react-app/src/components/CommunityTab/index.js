@@ -16,7 +16,7 @@ import PostDetails from "../PostDetails";
 
 
 import './index.css'
-
+//ARTIST PAGE --rename
 const CommunityTab = () => {
     const { artistid } = useParams();
     const [isLoaded, setIsLoaded] = useState(false)
@@ -86,10 +86,24 @@ const CommunityTab = () => {
             <ArtistPageNav artist={artist} />
             <Switch>
 
+
+
+                //post details
                 <Route path='/artists/:artistid/community/:postid'>
                     <ProfileHeader artist={artist} followArtist={followArtist} followsArtist={followsArtist} />
                     <PostDetails />
                 </Route>
+
+                //album details
+                <Route path='/artists/:artistid/albums/:albumid'>
+
+                    <div className="album-details-page">
+                        <AlbumDetails />
+                        <ProfileHeader artist={artist} followArtist={followArtist} followsArtist={followsArtist} />
+                    </div>
+
+                </Route>
+
 
                 <Route path='/artists/:artistid/community'>
 
@@ -103,14 +117,7 @@ const CommunityTab = () => {
 
                 </Route>
 
-                <Route path='/artists/:artistid/albums/:albumid'>
 
-                    <div className="album-details-page">
-                        <AlbumDetails />
-                        <ProfileHeader artist={artist} followArtist={followArtist} followsArtist={followsArtist} />
-                    </div>
-
-                </Route>
 
                 <Route path='/artists/:artistid/albums'>
                     <div>

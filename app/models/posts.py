@@ -12,6 +12,7 @@ class Post(db.Model):
     community_id = db.Column(db.Integer, add_prefix_for_prod(db.ForeignKey('communities.id')))
     text = db.Column(db.String, nullable=False)
 
+    owner = db.relationship('User', back_populates='posts')
     post_images = db.relationship('PostImage', back_populates='post')
     comments = db.relationship('Comment', back_populates='post')
     likes = db.relationship('Like', back_populates='post')
@@ -19,6 +20,8 @@ class Post(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
+            'owner_username': self.owner.username,
+            'owner_profile_picture': self.owner.profile_picture,
             'post_owner': self.user_id,
             'text': self.text,
         }
