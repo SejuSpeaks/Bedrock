@@ -1,12 +1,13 @@
-import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import { NavLink, useParams } from "react-router-dom";
 
 
 
-const ArtistPageNav = ({ artist }) => {
+const ArtistPageNav = () => {
+    const { artistid } = useParams()
     return (
         <div>
-            <NavLink to={`/artists/${artist.id}/albums`} >music</NavLink>
-            <NavLink to={`/artists/${artist.id}/community`} >community</NavLink>
+            <NavLink to={`/artists/${artistid}/albums`} >music</NavLink>
+            <NavLink to={`/artists/${artistid}/community`} >community</NavLink>
         </div>
     );
 }

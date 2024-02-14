@@ -5,17 +5,19 @@ import { useHistory } from "react-router-dom"
 
 import './index.css'
 
-const Post = ({ post, artist }) => {
+const Post = ({ post }) => {
     const [liked, setLiked] = useState(false)
     const [isLoaded, setIsLoaded] = useState(false)
+
+    const artist = useSelector(state => state.artist)
+
     const history = useHistory()
 
     const findLike = async () => {
         const response = await fetch(`/api/posts/${artist.community_id}/${post.id}/likes/current`)
 
         const data = await response.json()
-
-        if (response.ok) {
+        if (!data.Errors) {
             await setLiked(true)
         }
 

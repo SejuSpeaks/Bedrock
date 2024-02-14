@@ -9,6 +9,8 @@ import AlbumForm from "./components/AlbumFormPage";
 import AlbumDetails from "./components/AlbumDetailsPage";
 import LandingPage from "./components/LandingPage";
 import CommunityTab from "./components/CommunityTab";
+import AllPosts from "./components/AllPosts";
+import PostDetails from "./components/PostDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +29,27 @@ function App() {
             <LandingPage />
           </Route>
 
+          <Route path='/artists/:artistid/community/:postid'>
+            <PostDetails />
+          </Route>
+
+          <Route path='/artists/:artistid/community'>
+            <AllPosts />
+          </Route>
+
+          <Route path='/artists/:artistid/albums/:albumid'>
+            <AlbumDetails />
+          </Route>
+
+          <Route path='/artists/:artistid'>
+            <CommunityTab />
+          </Route>
+
+          <Route path='/albums/new'>
+            <AlbumForm />
+          </Route>
+
+
           <Route path="/login" >
             <LoginFormPage />
           </Route>
@@ -35,13 +58,7 @@ function App() {
             <SignupFormPage />
           </Route>
 
-          <Route path='/albums/new'>
-            <AlbumForm />
-          </Route>
 
-          <Route path='/artists/:artistid'>
-            <CommunityTab />
-          </Route>
 
           <Route><div>Not Found</div></Route>
         </Switch>

@@ -1,8 +1,27 @@
 
 
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchGetArtist } from '../../store/artist'
 import './index.css'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
-const ProfileHeader = ({ artist, followArtist, followsArtist }) => {
+const ProfileHeader = ({ followArtist, followsArtist }) => {
+    const { artistid } = useParams()
+    const dispatch = useDispatch()
+
+    const [isLoaded, setIsLoaded] = useState(false)
+
+    const artist = useSelector(state => state.artist)
+
+
+
+    useEffect(() => {
+        dispatch(fetchGetArtist(artistid)).then(() => setIsLoaded(true))
+    }, [])
+
+
+
     const albums = artist.albums
 
 
@@ -21,17 +40,20 @@ const ProfileHeader = ({ artist, followArtist, followsArtist }) => {
 
     return (
         <div>
+            {isLoaded && (
+                <>
+                    <div>
+                        <img className="profile-header-image" src={artist.profile_picture} alt="profilepicture" />
+                        <p>{artist.artist_name}</p>
+                        <button onClick={() => followArtist(artist.id)} className={followButtonClass}>{followsArtist ? 'Followed' : 'Follow'}</button>
+                    </div>
 
-            <div>
-                <img className="profile-header-image" src={artist.profile_picture} alt="profilepicture" />
-                <p>{artist.artist_name}</p>
-                <button onClick={() => followArtist(artist.id)} className={followButtonClass}>{followsArtist ? 'Followed' : 'Follow'}</button>
-            </div>
-
-            <div>
-                <p>disography</p>
-                {allAlbums}
-            </div>
+                    <div>
+                        <p>disography</p>
+                        {allAlbums}
+                    </div>
+                </>
+            )}
 
 
         </div>

@@ -2,9 +2,11 @@
 
 import { useState } from 'react';
 import './index.css'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPostPost } from '../../store/posts';
 
 const PostBox = ({ submitPost }) => {
+    const dispatch = useDispatch()
     const [text, setText] = useState('')
     const user = useSelector(state => state.session.user.info)
     const artist = useSelector(state => state.artist)
@@ -18,7 +20,7 @@ const PostBox = ({ submitPost }) => {
             'text': text
         }
 
-        submitPost(post)
+        dispatch(fetchPostPost(artist.community_id, post))
         setText('')
     }
 

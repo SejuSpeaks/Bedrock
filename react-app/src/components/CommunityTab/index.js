@@ -82,53 +82,33 @@ const CommunityTab = () => {
 
 
     return (
-        <div>
-            <ArtistPageNav artist={artist} />
-            <Switch>
+        // <div>
+        //     <ArtistPageNav artist={artist} />
+        //     <Switch>
 
 
 
-                //post details
-                <Route path='/artists/:artistid/community/:postid'>
-                    <ProfileHeader artist={artist} followArtist={followArtist} followsArtist={followsArtist} />
-                    <PostDetails />
-                </Route>
+        //         //post details
+        //         <Route path='/artists/:artistid/community/:postid'>
+        //             <ProfileHeader artist={artist} followArtist={followArtist} followsArtist={followsArtist} />
+        //             <PostDetails />
+        //         </Route>
 
-                //album details
-                <Route path='/artists/:artistid/albums/:albumid'>
-
-                    <div className="album-details-page">
-                        <AlbumDetails />
-                        <ProfileHeader artist={artist} followArtist={followArtist} followsArtist={followsArtist} />
-                    </div>
-
-                </Route>
+        //         //album details
+        //
 
 
-                <Route path='/artists/:artistid/community'>
+        //         <Route path='/artists/:artistid/albums'>
+        //             <div>
+        //                 albums
+        //             </div>
+        //         </Route>
 
-                    <div className="artist-community-page">
-                        <div className="artist-community-page-posts">
-                            <PostBox submitPost={submitPost} />
-                            <Feed artist={artist} followsArtist={followsArtist} posts={posts} />
-                        </div>
-                        <ProfileHeader artist={artist} followArtist={followArtist} followsArtist={followsArtist} />
-                    </div>
-
-                </Route>
+        //     </Switch>
 
 
-
-                <Route path='/artists/:artistid/albums'>
-                    <div>
-                        albums
-                    </div>
-                </Route>
-
-            </Switch>
-
-
-        </div>
+        // </div>
+        <p>p</p>
     )
 }
 
