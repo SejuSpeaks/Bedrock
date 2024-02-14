@@ -1,0 +1,9 @@
+.music-tab-page-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.music-tab-album-display {
+    height: 168px;
+    width: 168px;
+}
