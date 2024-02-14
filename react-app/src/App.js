@@ -11,6 +11,7 @@ import LandingPage from "./components/LandingPage";
 import CommunityTab from "./components/CommunityTab";
 import AllPosts from "./components/AllPosts";
 import PostDetails from "./components/PostDetails";
+import MusicTab from "./components/MusicTab";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +40,10 @@ function App() {
 
           <Route path='/artists/:artistid/albums/:albumid'>
             <AlbumDetails />
+          </Route>
+
+          <Route path='/artists/:artistid/albums'>
+            <MusicTab />
           </Route>
 
           <Route path='/artists/:artistid'>
