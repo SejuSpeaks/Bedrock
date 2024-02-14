@@ -15,9 +15,27 @@ import { useParams } from "react-router-dom";
 
 import './index.css'
 import ProfileHeader from "../ProfileHeader";
-import { fetchGetArtist } from "../../store/artist";
+import ArtistPageNav from "../ArtistPageNav";
 
 const AlbumDetails = () => {
+    //HEADER SUBSCRIBER FUNCTIONS
+    const [followsArtist, setFollowsArtist] = useState(false)
+
+    const checkUserFollowingStatus = async id => {
+        const response = await fetch(`/api/current/following/${id}`)
+
+        if (response.ok) {
+            const data = await response.json()
+            setFollowsArtist(true)
+            return data
+        }
+        else {
+            const data = await response.json()
+            console.log('UhOh', data)
+        }
+    }
+
+
     const [isLoaded, setIsLoaded] = useState(false)
     const [songPlaying, setSongPlaying] = useState('')
     const { albumid } = useParams()
@@ -25,11 +43,17 @@ const AlbumDetails = () => {
     const history = useHistory()
     const album = useSelector(state => state.albums)
     const artist = useSelector(state => state.albums.artist)
-
+    let artistId;
 
     useEffect(() => {
 
-        dispatch(fetchGetAlbum(albumid)).then(res => { if (res.Errors) return history.push('/404') })
+        dispatch(fetchGetAlbum(albumid))
+            .then(res => {
+                if (res.Errors) return history.push('/404')
+                artistId = (res.album.artist.id)
+            })
+
+            .then(() => checkUserFollowingStatus(artistId))
 
             .then(() => setIsLoaded(true))
 
@@ -40,7 +64,7 @@ const AlbumDetails = () => {
 
     const allSongs = isLoaded && album?.songs.map(song => {
         return (
-            <div className="album-details-song-container">
+            <div key={song.id} className="album-details-song-container">
                 <button onClick={() => setSongPlaying(song.url)}>Play</button>
                 <p>{song.name}</p>
             </div>
@@ -49,6 +73,7 @@ const AlbumDetails = () => {
 
     return (
         <div className="album-details-page-container">
+            <ArtistPageNav />
             {isLoaded &&
                 <>
                     <div className="album-images-container">
@@ -66,15 +91,16 @@ const AlbumDetails = () => {
 
 
                         <div>
-                            <p>{allSongs}</p>
+                            {allSongs}
                         </div>
                     </div>
 
-                    <div>
+                    {/* <div>
                         <ProfileHeader artist={artist} />
-                    </div>
+                    </div> */}
                 </>
             }
+            <ProfileHeader followsArtist={followsArtist} />
         </div>
     );
 

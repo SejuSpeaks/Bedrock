@@ -50,9 +50,34 @@ def like_post(community_id, post_id):
         db.session.commit()
         return {'like': like.to_dict()}
     else:
-        return {"Error": "User has no acess to community"}
+        return {"Error": "User has no acess to community"}, 403
+
+
+#Find out if user liked
+@posts_routes.route('/<int:community_id>/<int:post_id>/likes/current')
+def find_user_like(community_id, post_id):
+    like = Like.query.filter(Like.user_id==current_user.id, Like.post_id==post_id).one_or_none()
+
+    if not like: return {'Errors': "Like not found"}
+
+    return {"like": like.to_dict()}
 
 #--------------------------------COMMENTS-----------------------------------------------------------------
+
+
+#GET COMMENTS
+@posts_routes.route('/<int:community_id>/<int:post_id>/comments')
+def get_comments(community_id, post_id):
+     #Current User and Current Post
+    user = current_user
+    post = Post.query.get(post_id)
+
+
+    if validate_user(post_id):
+        return {"comments": [comment.to_dict() for comment in post.comments]}
+    else: return {'Error': "User has no acess to community"}
+
+
 
 #Post comment
 @posts_routes.route('/<int:community_id>/<int:post_id>/comments', methods=['POST'])
@@ -76,7 +101,7 @@ def post_comment(community_id, post_id):
 
             db.session.add(comment)
             db.session.commit()
-            return {'Comment Posted': comment.to_dict()}
+            return {'comment': comment.to_dict()}
         else: return {'Error': "User has no acess to community"}
 
 
@@ -97,7 +122,7 @@ def update_comment(community_id, post_id, comment_id):
             user_comment.text = form.text.data
 
             db.session.commit()
-            return {'Comment updated': user_comment.to_dict()}
+            return {'comment': user_comment.to_dict()}
         else: return {"Errors": form.errors}
 
     else: return {"Error": "User has no acess to community"}
@@ -113,7 +138,7 @@ def delete_comment(community_id, post_id, comment_id):
     if validate_user(post_id) and user_comment:
         db.session.delete(user_comment)
         db.session.commit()
-        return {"Success":"Comment deleted"}
+        return {"id for comment deleted": comment_id}
     else: return {"Error": "User has no acess to community or Comment"}
 
 #----------------------------------POSTS--------------------------------------------------------------------
@@ -134,7 +159,7 @@ def get_community_posts(community_id):
 def get_post(community_id, post_id):
     post = Post.query.filter(Post.community_id == community_id, Post.id == post_id).one_or_none()
 
-    if not post: return {"Errors": "Post not Found"}, 401
+    if not post: return {"Errors": "Post not Found"}, 404
 
     return {'post': post.to_dict()}
 

@@ -1,57 +1,33 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 
+
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchGetArtist } from '../../store/artist'
 import './index.css'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
-const ProfileHeader = ({ artist }) => {
-    const albums = artist.albums
-    const [followsArtist, setFollowsArtist] = useState(false)
+const ProfileHeader = ({ followArtist, followsArtist }) => {
+    const { artistid } = useParams()
     const dispatch = useDispatch()
 
+    const [isLoaded, setIsLoaded] = useState(false)
 
-    const checkUserFollowingStatus = async id => {
-        const response = await fetch(`/api/current/following/${id}`)
+    const artist = useSelector(state => state.artist)
 
-        if (response.ok) {
-            const data = await response.json()
-            setFollowsArtist(true)
-            return data
-        }
-        else {
-            const data = await response.json()
-            console.log('UhOh', data)
-        }
-    }
-
-    const followArtist = async (id) => {
-        const response = await fetch(`/api/current/following/${id}`, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-
-        if (response.ok) {
-            const data = await response.json()
-            setFollowsArtist(!followsArtist)
-            console.log(followsArtist, 'after change')
-            return data
-        }
-        else {
-            const data = await response.json()
-            console.log('UhOh', data)
-        }
-    }
 
 
     useEffect(() => {
-        checkUserFollowingStatus(artist.id)
-    }, [artist.id])
+        dispatch(fetchGetArtist(artistid)).then(() => setIsLoaded(true))
+    }, [])
+
+
+
+    const albums = artist.albums
+
 
     const allAlbums = albums ? albums.map(album => {
         return (
-            <div>
+            <div key={album.id}>
                 <img className="profile-header-album-cover" src={album.cover} alt="cover" />
                 <p>{album.title}</p>
                 <p>{album.release_date}</p>
@@ -64,17 +40,20 @@ const ProfileHeader = ({ artist }) => {
 
     return (
         <div>
+            {isLoaded && (
+                <>
+                    <div>
+                        <img className="profile-header-image" src={artist.profile_picture} alt="profilepicture" />
+                        <p>{artist.artist_name}</p>
+                        <button onClick={() => followArtist(artist.id)} className={followButtonClass}>{followsArtist ? 'Followed' : 'Follow'}</button>
+                    </div>
 
-            <div>
-                <img className="profile-header-image" src={artist.profile_picture} alt="profilepicture" />
-                <p>{artist.artist_name}</p>
-                <button onClick={() => followArtist(artist.id)} className={followButtonClass}>{followsArtist ? 'Followed' : 'Follow'}</button>
-            </div>
-
-            <div>
-                <p>disography</p>
-                {allAlbums}
-            </div>
+                    <div>
+                        <p>disography</p>
+                        {allAlbums}
+                    </div>
+                </>
+            )}
 
 
         </div>
