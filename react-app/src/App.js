@@ -12,6 +12,7 @@ import CommunityTab from "./components/CommunityTab";
 import AllPosts from "./components/AllPosts";
 import PostDetails from "./components/PostDetails";
 import MusicTab from "./components/MusicTab";
+import UserPage from "./components/UserPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,6 +55,9 @@ function App() {
             <AlbumForm />
           </Route>
 
+          <Route path='/current'>
+            <UserPage />
+          </Route>
 
           <Route path="/login" >
             <LoginFormPage />

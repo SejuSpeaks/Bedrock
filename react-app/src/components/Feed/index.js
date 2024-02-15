@@ -23,8 +23,9 @@ const Feed = ({ followsArtist }) => {
 
     const allPosts = Object.values(posts).map(post => {
         return (
-
-            <Post post={post} />
+            <div key={post.id}>
+                <Post post={post} />
+            </div>
 
         );
     })

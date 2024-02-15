@@ -8,9 +8,10 @@ import tags from './tags';
 import albums from './albums';
 import posts from './posts';
 import comments from './comments';
+import albumLikes from './albumLikes';
 
 const rootReducer = combineReducers({
-  session, albums, songs_posted, artist, posts, comments, tags
+  session, albums, albumLikes, songs_posted, artist, posts, comments, tags, followings
 });
 
 
