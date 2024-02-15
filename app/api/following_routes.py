@@ -7,9 +7,20 @@ from .auth_routes import validation_errors_to_error_messages
 following_routes = Blueprint('followings', __name__)
 
 
+#Get Followers
+@following_routes.route('/')
+def get_followers():
+    user = current_user
+
+    return {
+        'followers': [follower.to_dict() for follower in user.followers]}
+
+
 #Check Following status
 @following_routes.route('/<int:id>')
+@login_required
 def check_following_status(id):
+
     user_followed = Following.query.filter(Following.user_id == current_user.id, Following.followed_user_id == id).one_or_none()
 
     if not user_followed: return  {'Errors': "user dosent follow artist"}, 404
@@ -25,7 +36,7 @@ def follow_user(id):
     user_followed_query = Following.query.filter(Following.user_id == current_user.id , Following.followed_user_id == id ).one_or_none()
 
     if user_followed_query :
-        remove_follow = Follower.query.filter(Follower.followed_user_id == id, Follower.follower_id == current_user.id).one_or_none()
+        remove_follow = Follower.query.filter(Follower.user_id == current_user.id, Follower.follower_id == id).one_or_none()
         db.session.delete(user_followed_query)
         db.session.delete(remove_follow)
         db.session.commit()
@@ -41,8 +52,8 @@ def follow_user(id):
     )
 
     follower = Follower(
-        followed_user_id = id,
-        follower_id = current_user.id
+        user_id = current_user.id,
+        follower_id = id
     )
 
     db.session.add(follow)

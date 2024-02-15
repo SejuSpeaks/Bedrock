@@ -12,11 +12,13 @@ class Following(db.Model):
     followed_user_id = db.Column(db.Integer, add_prefix_for_prod(db.ForeignKey('users.id')))
 
     user = db.relationship('User', foreign_keys=[user_id])
-    followed_user = db.relationship('User', back_populates='following', foreign_keys=[followed_user_id])
+    followed_user = db.relationship('User', back_populates='followers', foreign_keys=[followed_user_id])
 
     def to_dict(self):
         return {
             'id': self.id,
             'user_id': self.user_id,
-            'followed_user_id': self.followed_user_id
+            'followed_user_id': self.followed_user_id,
+            'profile_picture':self.user.profile_picture,
+            'username': self.user.username
         }

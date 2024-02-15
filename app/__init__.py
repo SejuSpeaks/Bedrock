@@ -11,6 +11,7 @@ from .api.album_routes import album_routes
 from .api.post_routes import posts_routes
 from .api.following_routes import following_routes
 from .api.tag_routes import tag_routes
+from .api.like_routes import like_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -36,6 +37,7 @@ app.register_blueprint(album_routes, url_prefix='/api/albums')
 app.register_blueprint(posts_routes, url_prefix='/api/posts')
 app.register_blueprint(following_routes, url_prefix='/api/current/following')
 app.register_blueprint(tag_routes, url_prefix='/api/tags')
+app.register_blueprint(like_routes, url_prefix='/api/likes')
 db.init_app(app)
 Migrate(app, db)
 

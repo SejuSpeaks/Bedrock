@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchCreateAlbum } from '../../store/albums'
 import { fetchCreateSong } from '../../store/songs'
 import './index.css'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Redirect } from 'react-router-dom'
 
 const AlbumForm = () => {
     const [songNames, setSongNames] = useState([])
@@ -14,9 +14,13 @@ const AlbumForm = () => {
     const [genre, setGenre] = useState('')
     // const [tags, setTags] = useState([])
     const [description, setDescription] = useState('')
-    const user = useSelector(state => state.session.user.info)
+    const user = useSelector(state => state.session.user)
     const dispatch = useDispatch()
     const history = useHistory()
+
+    if (!user) {
+        return <Redirect path='/' />
+    }
 
     //WHEN ADD SONG BUTTON IS CLICKED
     const fileUpload = (e) => {
@@ -84,13 +88,8 @@ const AlbumForm = () => {
             }
         }
 
-        history.push(`/artists/${user.id}/albums/${createdAlbum.album.id}`)
+        history.push(`/artists/${user.info.id}/albums/${createdAlbum.album.id}`)
     }
-
-    useEffect(() => {
-
-
-    }, [dispatch])
 
 
     return (
@@ -107,7 +106,7 @@ const AlbumForm = () => {
 
                         <div className='create-album-title-container'>
                             <p>{title ? title : "Untitled Album"}</p>
-                            <p>by: {user.artist_name ? user.artist_name : "noNamer"}</p>
+                            <p>by: {user.info.artist_name ? user.info.artist_name : "noNamer"}</p>
                         </div>
 
                     </div>
