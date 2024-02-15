@@ -4,6 +4,7 @@ from flask_login import current_user, login_required
 from ..forms.create_album import AlbumForm
 from ..forms.song_form import SongForm
 from ..forms.album_image_form import AlbumImageForm
+from ..models.album_likes import AlbumLikes
 from .aws_s3 import get_unique_filename, upload_file_to_s3
 from .auth_routes import validation_errors_to_error_messages
 
@@ -101,6 +102,40 @@ def post_song_to_album(id):
         else: return {"Errors": validation_errors_to_error_messages(form.errors)}
 
     else: return {"Error": "User does not have an artist account or dosent own album"}
+
+
+#ADD ALBUM TO LIKES
+@album_routes.route('/<int:album_id>/likes', methods=['POST'])
+def add_album_to_likes(album_id):
+    album = Album.query.get(album_id)
+
+    if not album: return {"Error","Album not found"}, 404
+
+    like_query = AlbumLikes.query.filter(AlbumLikes.user_id == current_user.id, AlbumLikes.album_id == album_id).one_or_none()
+
+    #Delete like if like is present
+    if like_query:
+        db.session.delete(like_query)
+        db.session.commit()
+        return {'Success':"Like Removed"}
+
+
+    like = AlbumLikes(album_id = album_id, user_id = current_user.id)
+    db.session.add(like)
+    db.session.commit()
+    return {'like': like.to_dict()}
+
+
+#find Like
+@album_routes.route('/<int:album_id>/likes')
+def find_album_like(album_id):
+    album_like = AlbumLikes.query.filter(AlbumLikes.user_id == current_user.id, AlbumLikes.album_id == album_id).one_or_none()
+
+    if not album_like : return {"Errors": "Like not found"}
+
+    return {'like': album_like.to_dict()}
+
+
 
 
 #ADD ALBUM IMAGE
