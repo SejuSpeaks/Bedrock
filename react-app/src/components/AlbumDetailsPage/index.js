@@ -18,6 +18,7 @@ import ProfileHeader from "../ProfileHeader";
 import ArtistPageNav from "../ArtistPageNav";
 
 const AlbumDetails = () => {
+    const user = useSelector(state => state.session.user)
     //HEADER SUBSCRIBER FUNCTIONS
     const [followsArtist, setFollowsArtist] = useState(false)
 
@@ -27,6 +28,29 @@ const AlbumDetails = () => {
         if (response.ok) {
             const data = await response.json()
             setFollowsArtist(true)
+            return data
+        }
+        else {
+            const data = await response.json()
+            console.log('UhOh', data)
+        }
+    }
+
+    //FOLLOW AN ARTIST FUNCTION
+    const followArtist = async (id) => {
+        if (!user) return
+
+        const response = await fetch(`/api/current/following/${id}`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+
+        if (response.ok) {
+            const data = await response.json()
+            setFollowsArtist(!followsArtist)
+            console.log(followsArtist, 'after change')
             return data
         }
         else {
@@ -100,7 +124,7 @@ const AlbumDetails = () => {
                     </div> */}
                 </>
             }
-            <ProfileHeader followsArtist={followsArtist} />
+            <ProfileHeader followsArtist={followsArtist} followArtist={followArtist} />
         </div>
     );
 

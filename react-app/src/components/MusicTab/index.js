@@ -27,10 +27,12 @@ const MusicTab = () => {
     }
 
     const dispatch = useDispatch()
-    const user = useSelector(state => state.session.user.info)
+    const user = useSelector(state => state.session.user)
 
     useEffect(() => {
-        checkUserFollowingStatus(user.id)
+        if (user) {
+            checkUserFollowingStatus(user.info.id)
+        }
     }, [followsArtist])
 
     return (

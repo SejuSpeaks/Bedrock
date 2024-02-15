@@ -5,6 +5,8 @@ import { fetchGetArtist } from '../../store/artist'
 import './index.css'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import OpenModalButton from '../OpenModalButton'
+import ArtistPageNav from '../ArtistPageNav'
 
 const ProfileHeader = ({ followArtist, followsArtist }) => {
     const { artistid } = useParams()
@@ -13,6 +15,7 @@ const ProfileHeader = ({ followArtist, followsArtist }) => {
     const [isLoaded, setIsLoaded] = useState(false)
 
     const artist = useSelector(state => state.artist)
+    const user = useSelector(state => state.session.user)
 
 
 
@@ -38,6 +41,7 @@ const ProfileHeader = ({ followArtist, followsArtist }) => {
     const followButtonClass = followsArtist ? 'profile-header-follow-button-active' : 'profile-header-follow-button'
 
 
+
     return (
         <div>
             {isLoaded && (
@@ -45,7 +49,7 @@ const ProfileHeader = ({ followArtist, followsArtist }) => {
                     <div>
                         <img className="profile-header-image" src={artist.profile_picture} alt="profilepicture" />
                         <p>{artist.artist_name}</p>
-                        <button onClick={() => followArtist(artist.id)} className={followButtonClass}>{followsArtist ? 'Followed' : 'Follow'}</button>
+                        <button onClick={() => followArtist(artist.id)} className={followButtonClass}>{followsArtist ? "Following" : "Follow"}</button>
                     </div>
 
                     <div>

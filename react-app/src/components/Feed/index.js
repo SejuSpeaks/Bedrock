@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { fetchGetArtist } from "../../store/artist"
 import Post from "./post"
 
 import './index.css'
@@ -16,15 +17,17 @@ const Feed = ({ followsArtist }) => {
 
 
     useEffect(() => {
-        dispatch(fetchAllPosts(artistid))
+        dispatch(fetchGetArtist(artistid))
+            .then((res) => dispatch(fetchAllPosts(res.community_id)))
             .then(() => setIsLoaded(true))
     }, [])
 
 
     const allPosts = Object.values(posts).map(post => {
         return (
-
-            <Post post={post} />
+            <div key={post.id}>
+                <Post post={post} />
+            </div>
 
         );
     })

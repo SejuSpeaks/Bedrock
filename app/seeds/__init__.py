@@ -11,6 +11,7 @@ from .songs import seed_songs, undo_songs
 from .tags import seed_tags, undo_tags
 from.album_images import seed_album_images, undo_album_images
 from.post_images import seed_post_images, undo_post_images
+from .album_likes import seed_album_likes, undo_album_likes
 
 from app.models.db import db, environment, SCHEMA
 
@@ -39,6 +40,7 @@ def seed():
         undo_tags()
         undo_post_images()
         undo_album_images()
+        undo_album_likes()
 
     seed_users()
     seed_albums()
@@ -52,6 +54,7 @@ def seed():
     seed_tags()
     seed_post_images()
     seed_album_images()
+    seed_album_likes()
     # Add other seed functions here
 
 
@@ -69,5 +72,6 @@ def undo():
     undo_songs()
     undo_tags()
     undo_post_images()
+    undo_album_images()
     undo_album_images()
     # Add other undo functions here

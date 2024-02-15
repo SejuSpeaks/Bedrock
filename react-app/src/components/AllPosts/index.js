@@ -66,7 +66,7 @@ const AllPosts = () => {
 
             <div className="all-posts-page-container">
                 <div className="all-posts-feed-post-box-container">
-                    <PostBox />
+                    <PostBox followsArtist={followsArtist} />
                     <Feed followsArtist={followsArtist} />
                 </div>
 
