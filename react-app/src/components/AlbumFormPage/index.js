@@ -18,7 +18,7 @@ const AlbumForm = () => {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    if (!user) {
+    if (!user || !user.artist_account) {
         return <Redirect path='/' />
     }
 
@@ -88,7 +88,7 @@ const AlbumForm = () => {
             }
         }
 
-        history.push(`/artists/${user.info.id}/albums/${createdAlbum.album.id}`)
+        history.push(`/artists/${user.id}/albums/${createdAlbum.album.id}`)
     }
 
 
@@ -106,7 +106,7 @@ const AlbumForm = () => {
 
                         <div className='create-album-title-container'>
                             <p>{title ? title : "Untitled Album"}</p>
-                            <p>by: {user.info.artist_name ? user.info.artist_name : "noNamer"}</p>
+                            <p>by: {user.artist_name ? user.artist_name : "noNamer"}</p>
                         </div>
 
                     </div>

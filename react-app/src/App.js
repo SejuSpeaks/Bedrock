@@ -23,54 +23,56 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
       {isLoaded && (
-        <Switch>
+        <>
+          <Navigation isLoaded={isLoaded} />
+          <Switch>
 
-          <Route exact path='/'>
-            <LandingPage />
-          </Route>
+            <Route exact path='/'>
+              <LandingPage />
+            </Route>
 
-          <Route path='/artists/:artistid/community/:postid'>
-            <PostDetails />
-          </Route>
+            <Route path='/artists/:artistid/community/:postid'>
+              <PostDetails />
+            </Route>
 
-          <Route path='/artists/:artistid/community'>
-            <AllPosts />
-          </Route>
+            <Route path='/artists/:artistid/community'>
+              <AllPosts />
+            </Route>
 
-          <Route path='/artists/:artistid/albums/:albumid'>
-            <AlbumDetails />
-          </Route>
+            <Route path='/artists/:artistid/albums/:albumid'>
+              <AlbumDetails />
+            </Route>
 
-          <Route path='/artists/:artistid/albums'>
-            <MusicTab />
-          </Route>
+            <Route path='/artists/:artistid/albums'>
+              <MusicTab />
+            </Route>
 
-          <Route path='/artists/:artistid'>
-            <CommunityTab />
-          </Route>
+            <Route path='/artists/:artistid'>
+              <CommunityTab />
+            </Route>
 
-          <Route path='/albums/new'>
-            <AlbumForm />
-          </Route>
+            <Route path='/albums/new'>
+              <AlbumForm />
+            </Route>
 
-          <Route path='/current'>
-            <UserPage />
-          </Route>
+            <Route path='/current'>
+              <UserPage isLoaded={isLoaded} />
+            </Route>
 
-          <Route path="/login" >
-            <LoginFormPage />
-          </Route>
+            <Route path="/login" >
+              <LoginFormPage />
+            </Route>
 
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
+            <Route path="/signup">
+              <SignupFormPage />
+            </Route>
 
 
 
-          <Route><div>Not Found</div></Route>
-        </Switch>
+            <Route><div>Not Found</div></Route>
+          </Switch>
+        </>
       )}
     </>
   );
