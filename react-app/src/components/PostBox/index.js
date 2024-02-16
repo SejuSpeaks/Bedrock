@@ -15,9 +15,9 @@ const PostBox = ({ submitPost, followsArtist }) => {
     const finishedPost = (e) => {
         e.preventDefault()
 
-        console.log('USER', user, 'USER ID', user.info.id)
+
         const post = {
-            'user_id': user.info.id,
+            'user_id': user.id,
             'community_id': artist.community_id,
             'text': text
         }

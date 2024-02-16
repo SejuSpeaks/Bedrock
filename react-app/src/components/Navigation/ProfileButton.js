@@ -6,7 +6,7 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { useHistory } from "react-router-dom";
 
-function ProfileButton({ user }) {
+function ProfileButton({ isLoaded, user }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
@@ -21,7 +21,7 @@ function ProfileButton({ user }) {
     if (!showMenu) return;
 
     const closeMenu = (e) => {
-      if (!ulRef.current.contains(e.target)) {
+      if (ulRef.current && !ulRef.current.contains(e.target)) {
         setShowMenu(false);
       }
     };
@@ -41,36 +41,31 @@ function ProfileButton({ user }) {
   const closeMenu = () => setShowMenu(false);
 
   return (
-    <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
-      </button>
-      <ul className={ulClassName} ref={ulRef}>
-        {user ? (
-          <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>
-              <button onClick={handleLogout}>Log Out</button>
-            </li>
-          </>
-        ) : (
-          <>
-            <OpenModalButton
-              buttonText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<LoginFormModal />}
-            />
+    <div>
+      {isLoaded && (<>
+        {console.log('THIS IS WHAT USER CONTAINS', user)}
+        <button onClick={openMenu}>
+          <i className="fas fa-user-circle" />
+        </button>
+        <div className={ulClassName} ref={ulRef}>
+          {user && (
+            <>
+              <div>
+                <li>Hello {user.username}</li>
+                <li>{user.email}</li>
 
-            <OpenModalButton
-              buttonText="Sign Up"
-              onItemClick={closeMenu}
-              modalComponent={<SignupFormModal />}
-            />
-          </>
-        )}
-      </ul>
-    </>
+                <div className="profile-buttons-profile-dropdown">
+                  <button onClick={() => history.push('/current')}>Profile</button>
+                  {user.artist_account && (<button onClick={() => history.push(`/artists/${user.id}/community`)}>Community</button>)}
+                  <button onClick={handleLogout}>Log Out</button>
+                </div>
+
+              </div>
+            </>
+          )}
+        </div>
+      </>)}
+    </div>
   );
 }
 

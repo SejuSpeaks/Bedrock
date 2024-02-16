@@ -31,7 +31,7 @@ const MusicTab = () => {
 
     useEffect(() => {
         if (user) {
-            checkUserFollowingStatus(user.info.id)
+            checkUserFollowingStatus(user.id)
         }
     }, [followsArtist])
 

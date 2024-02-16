@@ -8,8 +8,7 @@ import Followers from "./followers";
 
 import './index.css'
 
-const UserPage = () => {
-    const [isLoaded, setIsLoaded] = useState(false)
+const UserPage = ({ isLoaded }) => {
     const [tab, setTab] = useState('likes')
     const user = useSelector(state => state.session.user)
 
@@ -27,15 +26,15 @@ const UserPage = () => {
 
     return (
         <div>
-            {(
+            {isLoaded && (
                 <>
 
                     <div className="profile-header">
 
                     </div>
                     <div>
-                        <img className="user-profile-profile-picture" src={user.info.profile_picture} alt='user profile' />
-                        <p>{user.info.username}</p>
+                        <img className="user-profile-profile-picture" src={user.profile_picture} alt='user profile' />
+                        <p>{user.username}</p>
                     </div>
                     <div>
                         <p onClick={() => setTab('likes')}>Likes</p>
