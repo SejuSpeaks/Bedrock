@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom"
 const Feed = ({ followsArtist }) => {
     const { artistid } = useParams()
     const [isLoaded, setIsLoaded] = useState(false)
+    const [postDeleted, setPostDeleted] = useState(false)
 
     const posts = useSelector(state => state.posts)
 
@@ -20,13 +21,13 @@ const Feed = ({ followsArtist }) => {
         dispatch(fetchGetArtist(artistid))
             .then((res) => dispatch(fetchAllPosts(res.community_id)))
             .then(() => setIsLoaded(true))
-    }, [])
+    }, [postDeleted])
 
 
     const allPosts = Object.values(posts).map(post => {
         return (
             <div key={post.id}>
-                <Post post={post} />
+                <Post post={post} setPostDeleted={setPostDeleted} />
             </div>
 
         );

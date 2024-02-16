@@ -224,4 +224,4 @@ def delete_post(community_id, post_id):
 
     db.session.delete(post)
     db.session.commit()
-    return {"Success": "post deleted"}
+    return {"Id of post deleted": post_id}
