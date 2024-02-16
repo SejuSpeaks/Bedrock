@@ -6,6 +6,33 @@ const UPDATE_POST = '/POST/POST'
 
 
 
+/* --DELETE POST-- -------------------------------------------------------- */
+//action
+const deletePost = (post_id) => {
+    return {
+        type: DELETE_A_POST,
+        post_id
+    }
+}
+
+//thunk
+export const fetchDeletePost = (community_id, post_id) => async dispatch => {
+    const response = await fetch(`/api/posts/${community_id}/${post_id}`, {
+        method: "Delete"
+    })
+
+    if (response.ok) {
+        const data = await response.json()
+
+        if (data.Errors) return data.Errors
+
+        dispatch(deletePost(data["Id of post deleted"]))
+        return data["Id of post deleted"]
+    }
+}
+
+
+
 /* --GET POST BY ID-- ---------------------------------------------------- */
 
 //action
@@ -117,6 +144,11 @@ const posts = (state = {}, action) => {
             const post = action.post
             newState = { ...state }
             newState[post.id] = post
+            return newState
+
+        case DELETE_A_POST:
+            newState = { ...state }
+            delete newState[action.post_id]
             return newState
 
         default:
