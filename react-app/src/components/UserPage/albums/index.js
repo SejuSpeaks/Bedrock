@@ -6,6 +6,7 @@ import './index.css';
 import { useEffect, useState } from "react";
 import { authenticate } from "../../../store/session";
 import { useHistory } from "react-router-dom";
+import DeleteAlbum from "../../DeleteAlbum";
 
 const UserAlbums = () => {
     const [updateAlbumList, setUpdateAlbumList] = useState('thing')
@@ -25,7 +26,7 @@ const UserAlbums = () => {
 
                 <div>
                     <OpenModalButton buttonText={'Update'} modalComponent={<UpdateAlbum album={album} setUpdateAlbumList={setUpdateAlbumList} />}></OpenModalButton>
-                    <button>Delete</button>
+                    <OpenModalButton buttonText={'Delete'} modalComponent={<DeleteAlbum album_id={album.id} setUpdateAlbumList={setUpdateAlbumList} />} ></OpenModalButton>
                 </div>
 
             </div>

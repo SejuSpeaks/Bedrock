@@ -156,6 +156,35 @@ export const fetchUpdateAlbum = (album_id, payload) => async dispatch => {
     }
 }
 
+/* --DELETE ALBUM-- ----------------------------------------------------------- */
+
+//action
+const deleteAlbum = (album_id) => {
+    return {
+        type: DELETE_ALBUM,
+        album_id
+    }
+}
+
+//thunk
+export const fetchDeleteAlbum = (album_id) => async dispatch => {
+    const response = await fetch(`/api/albums/${album_id}`, {
+        method: "Delete"
+    })
+
+    if (response.ok) {
+        const data = await response.json()
+
+        if (data.Errors) {
+            return data.Errors
+        }
+        dispatch(deleteAlbum(album_id))
+        return data
+    }
+}
+
+
+
 
 
 /* --Reducer-- ---------------------------------------------------------------- */
@@ -186,6 +215,11 @@ const albums = (state = {}, action) => {
             const albumsByTag = action.albums.map(album => {
                 newState[album.id] = album
             })
+            return newState
+
+        case DELETE_ALBUM:
+            newState = { ...state }
+            delete newState[action.album_id]
             return newState
 
 

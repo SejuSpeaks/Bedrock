@@ -200,4 +200,4 @@ def delete_album(id):
 
     db.session.delete(album)
     db.session.commit()
-    return "Album is Deleted"
+    return {"album":"Album is Deleted"}
