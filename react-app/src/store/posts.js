@@ -116,17 +116,14 @@ export const fetchPostPost = (community_id, payload) => async dispatch => {
         body: JSON.stringify(payload)
     })
 
-    console.log('RESPONSE', response)
 
     if (response.ok) {
         const data = await response.json()
-        console.log(data, 'DATAJDSHDJ')
+
+        if (data.Errors) return data
+
         dispatch(postPost(data.post))
         return data.post
-    }
-    else {
-        const data = await response.json()
-        return data.Errors
     }
 
 }

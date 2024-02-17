@@ -14,7 +14,7 @@ const AlbumForm = () => {
     const [secondaryImage, setSecondaryImage] = useState('')
     const [date, setDate] = useState('')
     const [genre, setGenre] = useState('')
-    // const [tags, setTags] = useState([])
+    const [errors, setErrors] = useState({})
     const [description, setDescription] = useState('')
     const user = useSelector(state => state.session.user)
     const dispatch = useDispatch()
@@ -60,8 +60,6 @@ const AlbumForm = () => {
     const onSubmit = async (e) => {
         e.preventDefault()
 
-        console.log(fileArr)
-
         const album = {
             "title": title,
             "cover": cover,
@@ -71,9 +69,12 @@ const AlbumForm = () => {
         }
         //thunk for creating album
         const createdAlbum = await dispatch(fetchCreateAlbum(album))
-        console.log('CREATED albm', createdAlbum)
 
-        await fetchAddSecondImage(createdAlbum, secondaryImage)
+        if (createdAlbum.Errors) return setErrors({ ...errors, ...createdAlbum.Errors })
+
+        const addOtherImage = await fetchAddSecondImage(createdAlbum, secondaryImage)
+
+        if (addOtherImage.Errors) return setErrors({ ...errors, ...createdAlbum.Errors })
 
         if (fileArr.length) {
 
@@ -88,16 +89,25 @@ const AlbumForm = () => {
 
                 //dispatch song to the id of the album plus name of song
                 const createdSong = await dispatch(fetchCreateSong(createdAlbum.album.id, formData))
-                console.log(createdSong)
+                console.log(errors)
             }
         }
 
         history.push(`/artists/${user.id}/albums/${createdAlbum.album.id}`)
+
     }
 
+    const displayErrors = Object.values(errors).map(error => {
+        return (
+            <p>{error}</p>
+        )
+    })
+
+    console.log(errors)
 
     return (
         <div>
+            {displayErrors}
             <form action='/albums' method='POST' encType="multipart/form-data" onSubmit={(e) => onSubmit(e)} className='create-album-form-container'>
                 <div className='create-album-form-header'>
 
