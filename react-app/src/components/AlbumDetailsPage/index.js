@@ -111,7 +111,7 @@ const AlbumDetails = () => {
             {isLoaded &&
                 <>
                     <div className="album-images-container">
-                        <img src="example.com" alt="album visual" />
+                        <img className="album-secondary-image" src={album.images[0].url} alt="album visual" />
                         <audio controls src={songPlaying} />
                     </div>
 
