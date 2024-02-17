@@ -2,7 +2,9 @@ import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
 import TrashSvg from '../../Comments/TrashSvg'
+import SvgModalUpdate from "../../Comments/svgModalButtonUpdate"
 import DeletePost from "../DeletePostModal"
+import UpdatePost from "../UpdatePostModal"
 
 
 import './index.css'
@@ -95,6 +97,7 @@ const Post = ({ post, setPostDeleted }) => {
 
                             <div className="trash-edit-post-details">
                                 <TrashSvg modalComponent={<DeletePost post_id={post.id} setPostDeleted={setPostDeleted} />} />
+                                <SvgModalUpdate modalComponent={<UpdatePost post={post} />} />
                             </div>
                         )}
                     </div>

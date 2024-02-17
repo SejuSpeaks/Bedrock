@@ -5,6 +5,39 @@ const DELETE_A_POST = '/POST/DELETEPOST'
 const UPDATE_POST = '/POST/POST'
 
 
+/* --UPDATE POST-- --------------------------------------------------------- */
+
+//action
+const updatePost = (post) => {
+    return {
+        type: UPDATE_POST,
+        post
+    }
+}
+
+
+//thunk
+export const fetchUpdatePost = (community_id, post_id, payload) => async dispatch => {
+    const response = await fetch(`/api/posts/${community_id}/${post_id}`, {
+        method: "Put",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    })
+
+    if (response.ok) {
+        const data = await response.json()
+
+        if (data.Errors) {
+            return data.Errors
+        }
+
+        dispatch(updatePost(data.post))
+        return data.post
+    }
+}
+
 
 /* --DELETE POST-- -------------------------------------------------------- */
 //action
@@ -144,6 +177,11 @@ const posts = (state = {}, action) => {
             const post = action.post
             newState = { ...state }
             newState[post.id] = post
+            return newState
+
+        case UPDATE_POST:
+            newState = { ...state }
+            newState[action.post.id] = action.post
             return newState
 
         case DELETE_A_POST:

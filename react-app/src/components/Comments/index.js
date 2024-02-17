@@ -16,7 +16,7 @@ const Comments = ({ artist }) => {
     const [commentText, setCommentText] = useState('')
     const [commentPosted, setCommentPosted] = useState(false)
 
-    const user = useSelector(state => state.session.user.info)
+    const user = useSelector(state => state.session.user)
     const commentsState = useSelector(state => state.comments)
 
     const dispatch = useDispatch();

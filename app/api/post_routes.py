@@ -195,8 +195,11 @@ def post_post(community_id):
 
 #UPDATE POST
 @posts_routes.route('/<int:community_id>/<int:post_id>', methods=['PUT'])
+@login_required
 def update_post(community_id, post_id):
+
     user_id = current_user.id
+
     post = Post.query.filter(Post.community_id == community_id, Post.id == post_id).one_or_none()
 
     if not post: return {"Error": 'Post not found'}
