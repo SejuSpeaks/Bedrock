@@ -8,12 +8,13 @@ import { useModal } from '../../context/Modal'
 const UpdateAlbum = ({ album, setUpdateAlbumList }) => {
     const { closeModal } = useModal()
     const [title, setTitle] = useState(album.title)
+    const [errors, setErrors] = useState({})
     const [cover, setCover] = useState(album.cover)
     const [genre, setGenre] = useState(album.genre)
     const [description, setDescription] = useState(album.description)
     const dispatch = useDispatch()
 
-    const updateAlbum = (e) => {
+    const updateAlbum = async (e) => {
         e.preventDefault()
 
         const updatedAlbum = {
@@ -24,12 +25,13 @@ const UpdateAlbum = ({ album, setUpdateAlbumList }) => {
             'release_date': new Date(album.release_date).toISOString().split('T')[0]
         }
 
-        dispatch(fetchUpdateAlbum(album.id, updatedAlbum))
-            .then(() => setUpdateAlbumList(true))
-            .then(() => setUpdateAlbumList(false))
+        const updateDispatch = dispatch(fetchUpdateAlbum(album.id, updatedAlbum))
+        if (updateDispatch.Errors) setErrors({ ...errors, ...updateDispatch.errors })
+        setUpdateAlbumList(true)
+        setUpdateAlbumList(false)
         closeModal()
     }
-
+    console.log(errors)
     return (
         <div>
             <form onSubmit={(e) => updateAlbum(e)}>

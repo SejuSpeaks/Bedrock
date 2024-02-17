@@ -117,7 +117,7 @@ export const fetchCreateAlbum = (payload) => async dispatch => {
     if (response.ok) {
         const data = await response.json()
 
-        if (data.Errors) return data.Errors
+        if (data.Errors) return data
 
         dispatch(createAlbum(data.album))
         return data

@@ -12,7 +12,7 @@ const PostBox = ({ submitPost, followsArtist }) => {
     const [isLoaded, setIsLoaded] = useState(false)
     const user = useSelector(state => state.session.user)
     const artist = useSelector(state => state.artist)
-    const finishedPost = (e) => {
+    const finishedPost = async (e) => {
         e.preventDefault()
 
 
@@ -22,7 +22,8 @@ const PostBox = ({ submitPost, followsArtist }) => {
             'text': text
         }
 
-        dispatch(fetchPostPost(artist.community_id, post))
+        const postDispatch = await dispatch(fetchPostPost(artist.community_id, post))
+        if (postDispatch.Errors) return
         setText('')
     }
 
