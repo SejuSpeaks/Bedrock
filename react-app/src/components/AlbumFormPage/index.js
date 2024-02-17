@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCreateAlbum } from '../../store/albums'
 import { fetchCreateSong } from '../../store/songs'
+import { fetchAddSecondImage } from './addSecondImage'
 import './index.css'
 import { useHistory, Redirect } from 'react-router-dom'
 
@@ -10,6 +11,7 @@ const AlbumForm = () => {
     const [fileArr, setFileArr] = useState([])
     const [title, setTitle] = useState('')
     const [cover, setCover] = useState('')
+    const [secondaryImage, setSecondaryImage] = useState('')
     const [date, setDate] = useState('')
     const [genre, setGenre] = useState('')
     // const [tags, setTags] = useState([])
@@ -69,7 +71,9 @@ const AlbumForm = () => {
         }
         //thunk for creating album
         const createdAlbum = await dispatch(fetchCreateAlbum(album))
-        console.log('CREATED album', createdAlbum)
+        console.log('CREATED albm', createdAlbum)
+
+        await fetchAddSecondImage(createdAlbum, secondaryImage)
 
         if (fileArr.length) {
 
@@ -141,6 +145,11 @@ const AlbumForm = () => {
 
                         <label for='genre'>genre:</label>
                         <input value={genre} onChange={(e) => setGenre(e.target.value)} id='genre'></input>
+
+                        <label for='secondary-images'>Seconary Images: </label>
+                        <input value={secondaryImage} onChange={(e) => setSecondaryImage(e.target.value)} id='secondary-images'></input>
+
+                        <img src={secondaryImage} />
                     </div>
                 </div>
 
