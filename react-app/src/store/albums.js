@@ -4,6 +4,7 @@ const GET_ALL_ALBUMS = '/ALBUMS/ALLALBUMS'
 const GET_ALBUM_BY_TAG = '/ALBUMS/GETBYTAG'
 const GET_ALBUM = '/ALBUMS/GETALBUM'
 const DELETE_ALBUM = 'ALBUM/DELETEALBUM'
+const UPDATE_ALBUM = 'ALBUM/UPDATEALBUM'
 
 
 /* --Get all Albums-- ------------------------------------------------------------------------ */
@@ -123,6 +124,40 @@ export const fetchCreateAlbum = (payload) => async dispatch => {
     }
 }
 
+/* UPDATE ALBUM-- ------------------------------------------------------------ */
+
+//action
+const updateAlbum = (album) => {
+    return {
+        type: UPDATE_ALBUM,
+        album
+
+    }
+}
+
+export const fetchUpdateAlbum = (album_id, payload) => async dispatch => {
+    const response = await fetch(`/api/albums/${album_id}`, {
+        method: "Put",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    })
+
+    if (response.ok) {
+        const data = await response.json()
+
+        if (data.Errors) {
+            return data.Errors
+        }
+
+        dispatch(updateAlbum(data.album))
+        return data.album
+    }
+}
+
+
+
 /* --Reducer-- ---------------------------------------------------------------- */
 
 
@@ -138,6 +173,10 @@ const albums = (state = {}, action) => {
         case POST_ALBUM:
             newState[action.album.id] = action.album
             return newState
+
+        case UPDATE_ALBUM:
+            newState = { ...state }
+            newState[action.album.id] = action.album
 
         case GET_ALBUM:
             newState = action.album

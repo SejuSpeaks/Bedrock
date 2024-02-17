@@ -185,6 +185,7 @@ def update_album(id):
 
         db.session.commit()
         return {'album': album.to_dict()}
+    else: return {"Errors":validation_errors_to_error_messages(form.errors)}
 
 
 #DELETE ALBUM

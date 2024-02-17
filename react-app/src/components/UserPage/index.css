@@ -2,3 +2,9 @@
     height: 250px;
     width: 250px;
 }
+
+
+.user-profile-tabs-container {
+    display: flex;
+    justify-content: space-around;
+}

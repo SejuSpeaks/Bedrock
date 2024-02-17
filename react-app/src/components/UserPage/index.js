@@ -7,6 +7,7 @@ import Likes from "./likes";
 import Followers from "./followers";
 
 import './index.css'
+import UserAlbums from "./albums";
 
 const UserPage = ({ isLoaded }) => {
     const [tab, setTab] = useState('likes')
@@ -36,13 +37,15 @@ const UserPage = ({ isLoaded }) => {
                         <img className="user-profile-profile-picture" src={user.profile_picture} alt='user profile' />
                         <p>{user.username}</p>
                     </div>
-                    <div>
+                    <div className="user-profile-tabs-container">
                         <p onClick={() => setTab('likes')}>Likes</p>
                         <p onClick={() => setTab('followers')} >Followers</p>
+                        <p onClick={() => setTab('albums')}>My Albums</p>
                     </div>
                     <div>
                         {tab == 'likes' && <Likes />}
                         {tab == 'followers' && <Followers />}
+                        {tab == 'albums' && <UserAlbums />}
                     </div>
                 </>
             )}
