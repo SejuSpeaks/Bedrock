@@ -1,0 +1,13 @@
+.all-user-albums-user-page-container {
+    display: flex;
+}
+
+.album-container-user-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.image-album-user-page {
+    height: 220px;
+    width: 220px;
+}
