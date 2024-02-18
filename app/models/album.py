@@ -29,6 +29,7 @@ class Album(db.Model):
             'genre': self.genre,
             'artist_username': self.artist.artist_name,
             'likes': len(self.likes),
+            'songs': [song.to_dict() for song in self.songs],
             'artist_id': self.artist.id,
             'release_date': self.release_date,
             'description': self.description,

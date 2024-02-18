@@ -1,6 +1,7 @@
 .landing-page-tags-container {
     position: sticky;
-    top: 42px;
+    top: 70px;
+    background-color: white;
 }
 
 
@@ -23,7 +24,8 @@
 .hot-album-component-container {
     display: flex;
     overflow-y: scroll;
-    justify-content: center;
+    /* justify-content: center; */
+    /* width: 100%; */
     /* justify-content: center;
     align-items: center; */
 }

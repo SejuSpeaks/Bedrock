@@ -14,7 +14,8 @@
 .search-bar {
   background: #DEE1E6FF;
   border: none;
-  padding: 7px 8px;
+  padding: 10px 8px;
+  width: 250px;
 }
 
 .nav-logo-name {

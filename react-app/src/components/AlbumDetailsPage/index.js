@@ -104,6 +104,7 @@ const AlbumDetails = () => {
     //element states
     const heartFill = liked ? "red" : "none"
     const heartStroke = liked ? "none" : "black"
+    console.log('SONG PLAYING', songPlaying)
 
     return (
         <div className="album-details-page-container">

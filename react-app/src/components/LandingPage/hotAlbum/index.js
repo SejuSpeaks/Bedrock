@@ -39,6 +39,8 @@ const HotAlbum = ({ selectedtab }) => {
         }
     };
 
+    console.log(hotAlbum)
+
     return (
 
         <div>
@@ -47,7 +49,7 @@ const HotAlbum = ({ selectedtab }) => {
                     <div className='hot-album-container' ref={scrollRef} onWheel={(e) => handleWheel(e)}>
                         <img className="hot-album-album-cover" src={hotAlbum?.cover} />
                         <div>
-                            <audio controls></audio>
+                            <audio controls src={hotAlbum?.songs[0].url}></audio>
                         </div>
 
                         <div className="hot-albums-buttons-container">
@@ -74,7 +76,7 @@ const HotAlbum = ({ selectedtab }) => {
                             <p>{hotAlbum?.artist_username}</p>
                         </div>
                     </div>
-                    <div>
+                    <div className="space-under-hot-album">
 
                     </div>
 
