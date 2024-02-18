@@ -74,6 +74,9 @@ function App() {
           </Switch>
         </>
       )}
+      <div className="footer">
+        <p style={{ color: "white" }}>BEDROCK</p>
+      </div >
     </>
   );
 }

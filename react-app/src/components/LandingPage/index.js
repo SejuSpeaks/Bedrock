@@ -7,6 +7,7 @@ import { fetchAlbumsByTag } from "../../store/albums";
 import Tags from "./tags";
 import './index.css'
 import Albums from "./albums";
+import HotAlbum from "./hotAlbum";
 
 
 
@@ -23,16 +24,25 @@ const LandingPage = () => {
     }, [albums])
 
     return (
-
-        <div>
+        <>
             {isLoaded && (
+                <div className="landing-page-container">
+                    <div className="landing-page-tags-container">
+                        <Tags tags={tags} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+                    </div>
+                    <div className="landing-page-albums-container">
 
-                <div>
-                    <Tags tags={tags} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-                    <Albums selectedtab={selectedTab} />
+                        <div>
+                            <Albums selectedtab={selectedTab} />
+                        </div>
+
+                        <div className="hot-album-component-container">
+                            <HotAlbum selectedtab={selectedTab} />
+                        </div>
+                    </div>
                 </div>
             )}
-        </div>
+        </>
     );
 }
 

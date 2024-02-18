@@ -11,9 +11,22 @@ def seed_users():
     bobbie = User(
         username='bobbie', email='bobbie@aa.io', password='password', artist_account=False, profile_picture='https://upload.wikimedia.org/wikipedia/commons/9/9d/MIKE_-_Bruiser_Thanksgiving%2C_2022.jpg')
 
+    musician1 = User(
+        username='musician1', email='musician1@example.com', password='password', artist_account=True, artist_name='Eric Clapton', profile_picture='https://source.unsplash.com/random/200x200')
+    musician2 = User(
+        username='musician2', email='musician2@example.com', password='password', artist_account=True, artist_name='Jimi Hendrix', profile_picture='https://source.unsplash.com/random/200x200')
+    musician3 = User(
+        username='musician3', email='musician3@example.com', password='password', artist_account=True, artist_name='Adele', profile_picture='https://source.unsplash.com/random/200x200')
+    musician4 = User(
+        username='musician4', email='musician4@example.com', password='password', artist_account=True, artist_name='Maxo', profile_picture='https://source.unsplash.com/random/200x200')
+
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
+    db.session.add(musician1)
+    db.session.add(musician2)
+    db.session.add(musician3)
+    db.session.add(musician4)
     db.session.commit()
 
 

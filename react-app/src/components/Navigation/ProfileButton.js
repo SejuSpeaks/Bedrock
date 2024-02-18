@@ -43,10 +43,10 @@ function ProfileButton({ isLoaded, user }) {
   return (
     <div>
       {isLoaded && (<>
-        {console.log('THIS IS WHAT USER CONTAINS', user)}
-        <button onClick={openMenu}>
-          <i className="fas fa-user-circle" />
-        </button>
+        <div className="user-profile-picture-container">
+          <img className="user-profile-picture" onClick={openMenu} src={user.profile_picture} />
+        </div>
+
         <div className={ulClassName} ref={ulRef}>
           {user && (
             <>
