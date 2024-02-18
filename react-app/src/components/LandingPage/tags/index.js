@@ -23,7 +23,7 @@ const Tags = ({ tags, selectedTab, setSelectedTab }) => {
 
 
     return (
-        <div>
+        <div className='tabs-container-landing-page'>
             {displayTags}
         </div>
     );
