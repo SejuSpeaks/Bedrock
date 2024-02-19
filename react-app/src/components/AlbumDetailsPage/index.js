@@ -111,49 +111,50 @@ const AlbumDetails = () => {
             <ArtistPageNav />
             {isLoaded &&
                 <>
-                    <div className="album-images-container">
-                        <img className="album-secondary-image" src={album.images.length ? album.images[0].url : "noimage.com"} alt="album visual" />
-                        <audio controls src={songPlaying} />
-                    </div>
+                    <div className="album-details-content-container">
+                        <ProfileHeader followsArtist={followsArtist} followArtist={followArtist} />
+                        <div className="album-images-container">
+                            <img className="album-secondary-image" src={album.images.length ? album.images[0].url : "https://media.newyorker.com/photos/641b2438c7a56c8e6b95a36d/master/pass/Gopnik-We-Love-NYC.jpg"} alt="album visual" />
+                            <audio controls src={songPlaying} />
+                        </div>
 
-                    <div className="album-details-container">
-                        <div>
-                            <p>{album.details.title}</p>
-                            <p>by {artist.artist_name}</p>
-                            <img className='album-details-image' src={album.details.cover} />
-                            {user && (
-
+                        <div className="album-details-container">
+                            <div className="content-container-album-details">
                                 <div>
-                                    <p>Wishlist</p>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24"
-                                        width="16"
-                                        height="16"
-                                        stroke={heartStroke}
-                                        fill={heartFill}
-                                        onClick={() => { likeAlbum(albumid, setLiked, liked, dispatch) }}
-                                    >
-                                        <path
-                                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                                        />
-                                    </svg>
+
+                                    <p className="album-details-album-title">{album.details.title}</p>
+                                    <p>by {artist.artist_name}</p>
+                                    <img className='album-details-image' src={album.details.cover} />
+                                    {user && (
+
+                                        <div className="album-details-wishlist-container">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 24 24"
+                                                width="16"
+                                                height="16"
+                                                stroke={heartStroke}
+                                                fill={heartFill}
+                                                onClick={() => { likeAlbum(albumid, setLiked, liked, dispatch) }}
+                                            >
+                                                <path
+                                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                                                />
+                                            </svg>
+                                            <p>Wishlist</p>
+                                        </div>
+                                    )}
                                 </div>
-                            )}
-                        </div>
+                            </div>
 
 
-                        <div>
-                            {allSongs}
+                            <div className="all-songs-container">
+                                {allSongs}
+                            </div>
                         </div>
                     </div>
-
-                    {/* <div>
-                        <ProfileHeader artist={artist} />
-                    </div> */}
                 </>
             }
-            <ProfileHeader followsArtist={followsArtist} followArtist={followArtist} />
         </div>
     );
 

@@ -102,7 +102,7 @@ def post_comment(community_id, post_id):
             db.session.add(comment)
             db.session.commit()
             return {'comment': comment.to_dict()}
-        else: return {'Error': "User has no acess to community"}
+        else: return {'Errors': "User has no acess to community"}
 
 
 #UPDATE USER COMMENT
@@ -125,7 +125,7 @@ def update_comment(community_id, post_id, comment_id):
             return {'comment': user_comment.to_dict()}
         else: return {"Errors": form.errors}
 
-    else: return {"Error": "User has no acess to community"}
+    else: return {"Errors": "User has no acess to community"}
 
 
 #DELETE Comment
@@ -170,7 +170,7 @@ def get_post(community_id, post_id):
 def post_post(community_id):
 
     community = Community.query.get(community_id)
-    if not community : return {"Community dosent exist"}
+    if not community : return { "Errors": "Community dosent exist"}
 
     user_id = current_user.id
     form = Post_Form()

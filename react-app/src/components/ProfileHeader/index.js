@@ -30,10 +30,10 @@ const ProfileHeader = ({ followArtist, followsArtist }) => {
 
     const allAlbums = albums ? albums.map(album => {
         return (
-            <div key={album.id}>
+            <div key={album.id} className='album-container-profile-header' >
                 <img className="profile-header-album-cover" src={album.cover} alt="cover" />
                 <p>{album.title}</p>
-                <p>{album.release_date}</p>
+                <p>{new Date(album.release_date).getUTCFullYear()}</p>
             </div>
         );
     }) : "no albums"
@@ -43,16 +43,16 @@ const ProfileHeader = ({ followArtist, followsArtist }) => {
 
 
     return (
-        <div>
+        <div className='profile-header-container-whole'>
             {isLoaded && (
                 <>
-                    <div>
+                    <div style={{ display: "flex", flexDirection: 'column' }}>
                         <img className="profile-header-image" src={artist.profile_picture} alt="profilepicture" />
                         <p>{artist.artist_name}</p>
                         <button onClick={() => followArtist(artist.id)} className={followButtonClass}>{followsArtist ? "Following" : "Follow"}</button>
                     </div>
 
-                    <div>
+                    <div className='all-albums-profile-header'>
                         <p>disography</p>
                         {allAlbums}
                     </div>
