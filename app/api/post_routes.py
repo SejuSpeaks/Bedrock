@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import Post, Comment, Community,Like ,community_users, db
+from app.models import Post, Comment, Community,Like, Following, community_users, db
 from flask_login import current_user, login_required
 from ..forms.create_post import Post_Form
 from ..forms.comment_form import CommentForm
@@ -13,14 +13,17 @@ def validate_user(id):
     user = current_user
     post = Post.query.get(id)
 
-    #query join table user and community
-    user_in_group = db.session.query(community_users).where(community_users.c.user_id == user.id, community_users.c.community_id == post.community_id).one_or_none()
+    # #user follows owner
+    user_in_followers = Following.query.filter(Following.user_id == user.id, Following.followed_user_id == post.community.artist_id).one_or_none()
+
+    # #query join table user and community
+    # user_in_group = db.session.query(community_users).where(community_users.c.user_id == user.id, community_users.c.community_id == post.community_id).one_or_none()
 
     #community user owns
     user_owned_community = user.community
 
     #validate user
-    if user_in_group or user_owned_community and user_owned_community[0].id == post.community_id: return True
+    if user_in_followers or user_owned_community and user_owned_community[0].id == post.community_id: return True
     else: return False
 
 
@@ -228,3 +231,14 @@ def delete_post(community_id, post_id):
     db.session.delete(post)
     db.session.commit()
     return {"Id of post deleted": post_id}
+
+
+
+#TEST ROUTE
+@posts_routes.route('/<int:community_id>/<int:post_id>/posty')
+def testing(community_id, post_id):
+    post = Post.query.filter(Post.community_id == community_id, Post.id == post_id).one_or_none()
+
+
+
+    return {'post': post.to_dict()}

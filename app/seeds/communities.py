@@ -7,9 +7,25 @@ def seed_communities():
     demo1_community = Community(
         artist_id = 1
     )
+    demo2_community = Community(
+        artist_id = 4
+    )
+    demo3_community = Community(
+        artist_id = 5
+    )
+    demo4_community = Community(
+        artist_id = 6
+    )
+    demo5_community = Community(
+        artist_id = 7
+    )
 
 
     db.session.add(demo1_community)
+    db.session.add(demo2_community)
+    db.session.add(demo3_community)
+    db.session.add(demo4_community)
+    db.session.add(demo5_community)
     db.session.commit()
 
 

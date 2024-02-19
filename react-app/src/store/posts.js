@@ -165,10 +165,13 @@ const posts = (state = {}, action) => {
             return newState
 
         case GET_ALL_POSTS:
-            const posts = action.posts.map(post => {
-                newState[post.id] = post
-            })
-            return newState
+            if (action.posts) {
+                const posts = action.posts.map(post => {
+                    newState[post.id] = post
+                })
+                return newState
+            }
+            else return newState
 
         case POST_A_POST:
             const post = action.post
