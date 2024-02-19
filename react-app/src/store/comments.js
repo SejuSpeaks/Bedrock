@@ -125,10 +125,13 @@ const comments = (state = {}, action) => {
     let newState = {};
     switch (action.type) {
         case GET_COMMENTS:
-            action.comments.map(comment => {
-                newState[comment.id] = comment
-            })
-            return newState
+            if (action.comments) {
+                action.comments.map(comment => {
+                    newState[comment.id] = comment
+                })
+                return newState
+            }
+            else return newState
 
         case POST_COMMENT:
             newState = { ...state }

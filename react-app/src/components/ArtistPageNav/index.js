@@ -1,13 +1,13 @@
 import { NavLink, useParams } from "react-router-dom";
 
-
+import './index.css'
 
 const ArtistPageNav = () => {
     const { artistid } = useParams()
     return (
-        <div>
-            <NavLink to={`/artists/${artistid}/albums`} >music</NavLink>
-            <NavLink to={`/artists/${artistid}/community`} >community</NavLink>
+        <div className="nav-links-container-artist">
+            <NavLink className='navlinks' to={`/artists/${artistid}/albums`} >music</NavLink>
+            <NavLink className='navlinks' to={`/artists/${artistid}/community`} >community</NavLink>
         </div>
     );
 }

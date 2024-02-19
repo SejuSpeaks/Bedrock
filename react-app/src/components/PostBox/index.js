@@ -15,6 +15,7 @@ const PostBox = ({ submitPost, followsArtist }) => {
     const finishedPost = async (e) => {
         e.preventDefault()
 
+        if (artist.community_id == 'no community') return setText('Community not Yet Created')
 
         const post = {
             'user_id': user.id,
@@ -23,6 +24,7 @@ const PostBox = ({ submitPost, followsArtist }) => {
         }
 
         const postDispatch = await dispatch(fetchPostPost(artist.community_id, post))
+
         if (postDispatch.Errors) return
         setText('')
     }

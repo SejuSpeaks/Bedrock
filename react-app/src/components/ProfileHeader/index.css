@@ -6,9 +6,39 @@
 .profile-header-image {
     height: 150px;
     width: 110px;
+    margin-top: 35px;
+}
+
+.album-container-profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-header-container-whole {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-color: antiquewhite; */
+}
+
+.all-albums-profile-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-container-album-details {
+    display: flex;
 }
 
 .profile-header-follow-button-active {
     background-color: black;
     color: white;
+}
+
+.profile-header-follow-button {
+    padding: 6px 20px;
 }

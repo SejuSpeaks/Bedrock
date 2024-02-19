@@ -13,6 +13,7 @@ class Post(db.Model):
     text = db.Column(db.String, nullable=False)
 
     owner = db.relationship('User', back_populates='posts')
+    community = db.relationship('Community', backref='posts')
     post_images = db.relationship('PostImage', back_populates='post')
     comments = db.relationship('Comment', back_populates='post')
     likes = db.relationship('Like', back_populates='post')
