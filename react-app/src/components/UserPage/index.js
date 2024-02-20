@@ -33,6 +33,7 @@ const UserPage = ({ isLoaded }) => {
                     <div className="profile-header">
 
                     </div>
+<<<<<<< HEAD
                     <div>
                         <img className="user-profile-profile-picture" src={user.profile_picture} alt='user profile' />
                         <p>{user.username}</p>
@@ -43,6 +44,19 @@ const UserPage = ({ isLoaded }) => {
                         <p onClick={() => setTab('albums')}>My Albums</p>
                     </div>
                     <div>
+=======
+                    <div className="user-profile-image-name-container">
+                        <img className="user-profile-profile-picture" src={user.profile_picture} alt='user profile' />
+                        <p>{user.username}</p>
+                        <p>{user.bio}</p>
+                    </div>
+                    <div className="user-profile-tabs-container">
+                        <p className={tab === 'likes' ? 'tabactive' : ''} onClick={() => setTab('likes')}>Likes</p>
+                        <p className={tab === 'followers' ? 'tabactive' : ''} onClick={() => setTab('followers')} >Followers</p>
+                        <p className={tab === 'albums' ? 'tabactive' : ''} onClick={() => setTab('albums')}>My Albums</p>
+                    </div>
+                    <div className="tab-inside-container">
+>>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
                         {tab == 'likes' && <Likes />}
                         {tab == 'followers' && <Followers />}
                         {tab == 'albums' && <UserAlbums />}

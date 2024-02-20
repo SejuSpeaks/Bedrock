@@ -1,7 +1,18 @@
 .all-posts-page-container {
     display: flex;
+<<<<<<< HEAD
+=======
+    background-color: rgba(210, 215, 215, 0.19);
+>>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
 }
 
 .all-posts-feed-post-box-container {
     width: 80%;
 }
+<<<<<<< HEAD
+=======
+
+.all-posts-post-box-container {
+    padding: 22px 22px;
+}
+>>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3

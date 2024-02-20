@@ -10,7 +10,10 @@ const AllAlbums = () => {
     const { artistid } = useParams()
 
     const albums = useSelector(state => state.artist.albums)
+<<<<<<< HEAD
     console.log(albums, 'albums from arttist state')
+=======
+>>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
 
     const dispatch = useDispatch()
     const history = useHistory();

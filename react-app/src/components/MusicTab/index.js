@@ -22,7 +22,10 @@ const MusicTab = () => {
         }
         else {
             const data = await response.json()
+<<<<<<< HEAD
             console.log('UhOh', data)
+=======
+>>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
         }
     }
 

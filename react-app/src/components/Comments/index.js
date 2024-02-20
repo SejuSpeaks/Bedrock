@@ -8,6 +8,10 @@ import EditComment from "../EditCommentModal";
 import ConfirmDelete from "../ConfirmDelete";
 
 
+<<<<<<< HEAD
+=======
+import './index.css'
+>>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
 
 const Comments = ({ artist }) => {
     const { postid } = useParams()
@@ -25,7 +29,11 @@ const Comments = ({ artist }) => {
     useEffect(() => {
         dispatch(fetchGetComments(communityid, postid))
             .then(() => setIsLoaded(true))
+<<<<<<< HEAD
     }, [commentPosted])
+=======
+    }, [commentPosted, dispatch, postid])
+>>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
 
     const updateComment = (comment_id, text) => {
 
@@ -65,7 +73,11 @@ const Comments = ({ artist }) => {
     const comments = Object.values(commentsState).map(comment => {
         return (
             <div className="post-details-comment-container" key={comment.id}>
+<<<<<<< HEAD
                 <div>
+=======
+                <div className="user-img-username-container">
+>>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
                     <img className="post-profile-picture" src={comment.profile_picture} />
                     <p>{comment.username}</p>
                 </div>
@@ -86,12 +98,24 @@ const Comments = ({ artist }) => {
         <div>
             {isLoaded && (
                 <>
+<<<<<<< HEAD
                     <div>
                         <p>Comments</p>
                         <form onSubmit={(e) => submitComment(e)}>
                             <input value={commentText} onChange={(e) => setCommentText(e.target.value)} placeholder="post a comment" />
                             <button>Submit Comment</button>
                         </form>
+=======
+                    <div className="comment-input-container">
+                        <div>
+                            <i class="fa-regular fa-message fa-lg"></i>
+                        </div>
+                        <div>
+                            <form className="post-comment-form" onSubmit={(e) => submitComment(e)}>
+                                <input className="post-comment-form-input" value={commentText} onChange={(e) => setCommentText(e.target.value)} placeholder="post a comment" />
+                            </form>
+                        </div>
+>>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
                     </div>
                     <div>
                         {comments}

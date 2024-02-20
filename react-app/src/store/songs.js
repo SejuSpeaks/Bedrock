@@ -40,7 +40,10 @@ const songs_posted = (state = {}, action) => {
     switch (action.type) {
         case POST_ALBUM_SONG:
             const newState = { ...state }
+<<<<<<< HEAD
             console.log('ACTION SONG', action.song)
+=======
+>>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
             newState[action.song.id] = action.song
             return newState
 

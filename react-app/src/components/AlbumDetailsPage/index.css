@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+<<<<<<< HEAD
 }
 
 .album-details-content-container {
@@ -9,6 +10,29 @@
     justify-content: center;
     gap: 20px;
     flex-direction: row-reverse;
+=======
+
+}
+
+.play-button-container {
+    padding: 0px 5px;
+}
+
+.play-button-container:hover {
+    cursor: pointer;
+}
+
+.album-details-container {
+    grid-area: album;
+}
+
+.album-details-content-container {
+    margin-top: 45px;
+    display: flex;
+    gap: 58px;
+    flex-direction: row-reverse;
+    justify-content: center;
+>>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
 }
 
 .album-details-song-container {
@@ -27,6 +51,7 @@
     display: flex;
 }
 
+<<<<<<< HEAD
 .album-images-container {
     display: flex;
     flex-direction: column;
@@ -37,6 +62,30 @@
 .album-details-image {
     height: 500px;
     width: 500px;
+=======
+.artist-profile-header-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    grid-column-start: 3;
+    grid-row-start: 2;
+}
+
+.album-title-and-owner-container {
+    grid-area: title;
+}
+
+.album-images-container {
+    padding: 20px;
+    grid-column-start: 1;
+    grid-row-start: 2;
+
+}
+
+.album-details-image {
+    height: 350px;
+    width: 350px;
+>>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
 }
 
 .all-songs-container {
@@ -50,3 +99,11 @@
     height: 220px;
     width: 340px;
 }
+<<<<<<< HEAD
+=======
+
+.content-container-album-details {
+    display: flex;
+    flex-direction: row-reverse;
+}
+>>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3

@@ -1,15 +1,28 @@
 .profile-header-album-cover {
+<<<<<<< HEAD
     height: 100px;
     width: 100px;
+=======
+    height: 120px;
+    width: 120px;
+>>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
 }
 
 .profile-header-image {
     height: 150px;
+<<<<<<< HEAD
     width: 110px;
     margin-top: 35px;
 }
 
 .album-container-profile-header {
+=======
+    width: 120px;
+}
+
+.album-container-profile-header {
+    padding: 8px;
+>>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,6 +30,10 @@
 
 .profile-header-container-whole {
     display: flex;
+<<<<<<< HEAD
+=======
+    gap: 10px;
+>>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -35,10 +52,50 @@
 }
 
 .profile-header-follow-button-active {
+<<<<<<< HEAD
     background-color: black;
     color: white;
 }
 
 .profile-header-follow-button {
     padding: 6px 20px;
+=======
+    background-color: #6888EA;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    padding: 6px 12px;
+}
+
+.artist-bio-profile-headers-more {
+    color: #6888EA;
+    font-size: 12px;
+    text-align: right;
+}
+
+.artist-bio-profile-headers {
+    font-size: 13px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    display: -webkit-box;
+    max-width: 120px;
+}
+
+.artist-bio-profile-headers-open {
+    font-size: 13px;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    display: -webkit-box;
+    max-width: 120px;
+}
+
+
+.profile-header-follow-button {
+    background-color: white;
+    border: 1px solid #6888EA;
+    border-radius: 3px;
+    color: #6888EA;
+    padding: 6px 12px;
+>>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
 }

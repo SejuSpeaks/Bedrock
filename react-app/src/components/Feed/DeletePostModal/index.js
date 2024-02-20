@@ -10,7 +10,10 @@ const DeletePost = ({ post_id, setPostDeleted }) => {
     const dispatch = useDispatch()
 
     const artist = useSelector(state => state.artist)
+<<<<<<< HEAD
     console.log(artist)
+=======
+>>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
 
     const deletePost = (e) => {
         e.preventDefault()

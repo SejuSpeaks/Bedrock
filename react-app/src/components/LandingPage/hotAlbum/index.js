@@ -39,7 +39,10 @@ const HotAlbum = ({ selectedtab }) => {
         }
     };
 
+<<<<<<< HEAD
     console.log(hotAlbum)
+=======
+>>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
 
     return (
 

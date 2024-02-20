@@ -39,7 +39,13 @@ const PostBox = ({ submitPost, followsArtist }) => {
             {isLoaded && followsArtist ? (
 
                 <form onSubmit={(e) => finishedPost(e)}>
+<<<<<<< HEAD
                     <textarea id='post-text-input' value={text} onChange={(e) => setText(e.target.value)} placeholder='Text'></textarea>
+=======
+                    <div className='post-input-container'>
+                        <textarea id='post-text-input' value={text} onChange={(e) => setText(e.target.value)} placeholder='Text'></textarea>
+                    </div>
+>>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
 
                     <div className='post-button-container-post-text-box'>
                         <button className='post-button-post-text-box'>Post</button>

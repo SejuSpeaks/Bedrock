@@ -82,7 +82,10 @@ export const fetchGetAPost = (community_id, post_id) => async dispatch => {
 
     if (response.ok) {
         const data = await response.json()
+<<<<<<< HEAD
         console.log('DATA THIS IS DATA', data)
+=======
+>>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
         dispatch(getPost(data.post))
         return data.post
     }
@@ -119,7 +122,10 @@ export const fetchPostPost = (community_id, payload) => async dispatch => {
 
     if (response.ok) {
         const data = await response.json()
+<<<<<<< HEAD
         console.log("TEST DATA", data)
+=======
+>>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
         if (data.Errors) return data
 
         dispatch(postPost(data.post))

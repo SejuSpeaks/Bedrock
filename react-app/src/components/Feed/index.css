@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .post-profile-picture {
     height: 30px;
     width: 30px;
@@ -7,4 +8,9 @@
 .post-container {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
+=======
+.post-container {
+    border-bottom: 1px solid lightgrey;
+    /* border-bottom: 1px solid black; */
+>>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
 }
