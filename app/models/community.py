@@ -3,10 +3,14 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 community_users = db.Table(
     'community_users',
+    db.Model.metadata,
     db.Column('id', db.Integer, primary_key=True),
     db.Column('user_id', db.Integer, db.ForeignKey(add_prefix_for_prod('users.id'))),
     db.Column('community_id', db.Integer, db.ForeignKey(add_prefix_for_prod('communities.id')))
 )
+
+if environment == "production":
+    community_users.schema = SCHEMA
 
 
 
