@@ -8,8 +8,8 @@ class Post(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
-    community_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('communities.id')))
+    user_id = db.Column(db.Integer, add_prefix_for_prod(db.ForeignKey('users.id')))
+    community_id = db.Column(db.Integer, add_prefix_for_prod(db.ForeignKey('communities.id')))
     text = db.Column(db.String, nullable=False)
 
     owner = db.relationship('User', back_populates='posts')

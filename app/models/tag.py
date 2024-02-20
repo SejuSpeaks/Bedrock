@@ -5,8 +5,8 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 album_tags = db.Table(
     'album_tags',
     db.Column('id', db.Integer, primary_key=True),
-    db.Column('album_id', db.Integer, db.ForeignKey(add_prefix_for_prod('albums.id'))),
-    db.Column('tag_id', db.Integer, db.ForeignKey(add_prefix_for_prod('tags.id')))
+    db.Column('album_id', db.Integer, add_prefix_for_prod(db.ForeignKey('albums.id'))),
+    db.Column('tag_id', db.Integer, add_prefix_for_prod(db.ForeignKey('tags.id')))
 
 )
 
