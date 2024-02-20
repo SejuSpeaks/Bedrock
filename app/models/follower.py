@@ -8,8 +8,8 @@ class Follower(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, add_prefix_for_prod(db.ForeignKey('users.id')))
-    follower_id = db.Column(db.Integer, add_prefix_for_prod(db.ForeignKey('users.id')))
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
+    follower_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
 
     user = db.relationship('User', foreign_keys=[user_id])
     follower = db.relationship('User', back_populates='following', foreign_keys=[follower_id])
