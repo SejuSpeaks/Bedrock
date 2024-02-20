@@ -31,17 +31,25 @@ const PostDetails = ({ posts }) => {
             <ArtistPageNav />
             {isLoaded && (
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <>
+=======
+                <div className="post-details-continaer">
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
                     <div className="post-details-post-container">
-                        <div className="post-details-post-container-header">
-                            <img className='post-profile-picture' src={post.owner_profile_picture} />
-                            <p>{post.owner_username}</p>
-                        </div>
-                        <div className="post-details-content">
-                            <p>{post.text}</p>
+                        <div>
+
+                            <div className="post-details-post-container-header">
+                                <img className='post-profile-picture' src={post.owner_profile_picture} />
+                                <p>{post.owner_username}</p>
+                            </div>
+                            <div className="post-details-content">
+                                <p>{post.text}</p>
+                            </div>
                         </div>
                     </div>
                     <Comments artist={artist} />
+<<<<<<< HEAD
                 </>
 =======
                 <div className="post-details-continaer">
@@ -60,6 +68,9 @@ const PostDetails = ({ posts }) => {
                     <Comments artist={artist} />
                 </div>
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+                </div>
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
             )}
 
         </div>

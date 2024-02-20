@@ -1,5 +1,8 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
 .post-container {
     padding: 10px 10px;
 }
@@ -23,13 +26,19 @@
     justify-content: space-between;
 }
 
+<<<<<<< HEAD
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
 .post-edit-container-all-posts {
     display: flex;
     justify-content: flex-end;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
 
 .post-container-user-img-username-container {
     display: flex;
@@ -71,4 +80,7 @@
 .comments-container-post-details:hover {
     cursor: pointer;
 }
+<<<<<<< HEAD
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140

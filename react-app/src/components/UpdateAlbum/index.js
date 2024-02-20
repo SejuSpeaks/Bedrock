@@ -32,9 +32,12 @@ const UpdateAlbum = ({ album, setUpdateAlbumList }) => {
         closeModal()
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     console.log(errors)
 =======
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
     return (
         <div>
             <form onSubmit={(e) => updateAlbum(e)}>

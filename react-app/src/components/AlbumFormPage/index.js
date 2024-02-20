@@ -1,8 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react'
 =======
 import React, { useState } from 'react'
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+import React, { useState } from 'react'
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCreateAlbum } from '../../store/albums'
 import { fetchCreateSong } from '../../store/songs'
@@ -93,11 +97,15 @@ const AlbumForm = () => {
 
                 //dispatch song to the id of the album plus name of song
 <<<<<<< HEAD
+<<<<<<< HEAD
                 const createdSong = await dispatch(fetchCreateSong(createdAlbum.album.id, formData))
                 console.log(errors)
 =======
                 await dispatch(fetchCreateSong(createdAlbum.album.id, formData))
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+                await dispatch(fetchCreateSong(createdAlbum.album.id, formData))
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
             }
         }
 
@@ -112,9 +120,12 @@ const AlbumForm = () => {
     })
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     console.log(errors)
 =======
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
 
     return (
         <div>
@@ -171,10 +182,14 @@ const AlbumForm = () => {
                         <input value={secondaryImage} onChange={(e) => setSecondaryImage(e.target.value)} id='secondary-images'></input>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <img src={secondaryImage} />
 =======
                         <img src={secondaryImage} alt='secondary ' />
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+                        <img src={secondaryImage} alt='secondary ' />
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
                     </div>
                 </div>
 

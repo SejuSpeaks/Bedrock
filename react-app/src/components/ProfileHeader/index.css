@@ -1,15 +1,21 @@
 .profile-header-album-cover {
 <<<<<<< HEAD
+<<<<<<< HEAD
     height: 100px;
     width: 100px;
 =======
     height: 120px;
     width: 120px;
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+    height: 120px;
+    width: 120px;
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
 }
 
 .profile-header-image {
     height: 150px;
+<<<<<<< HEAD
 <<<<<<< HEAD
     width: 110px;
     margin-top: 35px;
@@ -23,6 +29,13 @@
 .album-container-profile-header {
     padding: 8px;
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+    width: 120px;
+}
+
+.album-container-profile-header {
+    padding: 8px;
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,9 +44,13 @@
 .profile-header-container-whole {
     display: flex;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     gap: 10px;
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+    gap: 10px;
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -53,10 +70,18 @@
 
 .profile-header-follow-button-active {
 <<<<<<< HEAD
+<<<<<<< HEAD
     background-color: black;
+=======
+    background-color: #6888EA;
+    border: none;
+    border-radius: 3px;
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
     color: white;
+    padding: 6px 12px;
 }
 
+<<<<<<< HEAD
 .profile-header-follow-button {
     padding: 6px 20px;
 =======
@@ -67,6 +92,8 @@
     padding: 6px 12px;
 }
 
+=======
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
 .artist-bio-profile-headers-more {
     color: #6888EA;
     font-size: 12px;
@@ -97,5 +124,8 @@
     border-radius: 3px;
     color: #6888EA;
     padding: 6px 12px;
+<<<<<<< HEAD
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
 }

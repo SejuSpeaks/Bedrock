@@ -2,6 +2,7 @@
     height: 250px;
     width: 250px;
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 
 =======
@@ -10,17 +11,30 @@
     margin-left: 70px;
 }
 
+=======
+    position: relative;
+    bottom: 70px;
+    margin-left: 70px;
+}
+
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
 .tabactive {
     text-decoration: underline blue;
     color: blue;
 }
+<<<<<<< HEAD
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
 
 .user-profile-tabs-container {
     display: flex;
     justify-content: space-around;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
     border-bottom: 1px solid lightgrey;
     margin-bottom: 19px;
 }
@@ -41,5 +55,8 @@
     font-weight: bold;
     font-size: 30px;
     gap: 10px;
+<<<<<<< HEAD
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
 }

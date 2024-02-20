@@ -3,18 +3,26 @@
     /* white */
     border-radius: 0px;
 <<<<<<< HEAD
+<<<<<<< HEAD
     box-shadow: 0px 4px 9px #999ea7, 0px 0px 2px #868c97;
 =======
     box-shadow: 3px 2px 6px #999ea7, 3px 0px 2px #868c97;
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+    box-shadow: 3px 2px 6px #999ea7, 3px 0px 2px #868c97;
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
     /* shadow-m */
     resize: none;
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
 #post-text-input {
     border: none;
     height: 56px;
@@ -34,6 +42,7 @@
 .post-button-post-text-box {
     height: 36px;
 <<<<<<< HEAD
+<<<<<<< HEAD
     padding: 0 12px;
     display: flex;
     align-items: center;
@@ -46,6 +55,13 @@
     align-items: center;
     justify-content: flex-end;
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+    margin: 10px;
+    padding: 0 38px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
     font-size: 14px;
     font-weight: 400;
     line-height: 22px;

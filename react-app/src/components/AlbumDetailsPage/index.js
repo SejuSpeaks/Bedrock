@@ -1,5 +1,6 @@
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 //dispatch album details
 //artist all albums
@@ -10,6 +11,8 @@
 
 =======
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -38,9 +41,12 @@ const AlbumDetails = () => {
         else {
             const data = await response.json()
 <<<<<<< HEAD
+<<<<<<< HEAD
             console.log('UhOh', data)
 =======
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
         }
     }
 
@@ -59,17 +65,23 @@ const AlbumDetails = () => {
             const data = await response.json()
             setFollowsArtist(!followsArtist)
 <<<<<<< HEAD
+<<<<<<< HEAD
             console.log(followsArtist, 'after change')
 =======
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
             return data
         }
         else {
             const data = await response.json()
 <<<<<<< HEAD
+<<<<<<< HEAD
             console.log('UhOh', data)
 =======
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
         }
     }
 
@@ -108,13 +120,19 @@ const AlbumDetails = () => {
         return (
             <div key={song.id} className="album-details-song-container">
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <button onClick={() => setSongPlaying(song.url)}>Play</button>
 =======
+=======
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
                 <div className="play-button-container">
                     <i onClick={() => setSongPlaying(song.url)} class="fa-solid fa-play"></i>
                 </div>
                 {/* <button >Play</button> */}
+<<<<<<< HEAD
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
                 <p>{song.name}</p>
             </div>
         );
@@ -124,9 +142,12 @@ const AlbumDetails = () => {
     const heartFill = liked ? "red" : "none"
     const heartStroke = liked ? "none" : "black"
 <<<<<<< HEAD
+<<<<<<< HEAD
     console.log('SONG PLAYING', songPlaying)
 =======
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
 
     return (
         <div className="album-details-page-container">
@@ -135,16 +156,26 @@ const AlbumDetails = () => {
                 <>
                     <div className="album-details-content-container">
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <ProfileHeader followsArtist={followsArtist} followArtist={followArtist} />
                         <div className="album-images-container">
                             <img className="album-secondary-image" src={album.images.length ? album.images[0].url : "https://media.newyorker.com/photos/641b2438c7a56c8e6b95a36d/master/pass/Gopnik-We-Love-NYC.jpg"} alt="album visual" />
                             <audio controls src={songPlaying} />
+=======
+
+
+                        <div className="artist-profile-header-container">
+                            <ProfileHeader followsArtist={followsArtist} followArtist={followArtist} />
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
                         </div>
+
+
 
                         <div className="album-details-container">
                             <div className="content-container-album-details">
-                                <div>
+                                <div className="album-container-album-details">
 
+<<<<<<< HEAD
                                     <p className="album-details-album-title">{album.details.title}</p>
                                     <p>by {artist.artist_name}</p>
                                     <img className='album-details-image' src={album.details.cover} />
@@ -163,6 +194,9 @@ const AlbumDetails = () => {
 
                                     <img className='album-details-image' src={album.details.cover} alt="album cover" />
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+                                    <img className='album-details-image' src={album.details.cover} alt="album cover" />
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
                                     {user && (
 
                                         <div className="album-details-wishlist-container">
@@ -180,13 +214,29 @@ const AlbumDetails = () => {
                                                 />
                                             </svg>
 <<<<<<< HEAD
+<<<<<<< HEAD
                                             <p>Wishlist</p>
+=======
+                                            <p style={{ fontSize: '12px' }}>Wishlist</p>
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
                                         </div>
                                     )}
+                                </div>
+                                <div className="album-images-container">
+                                    <div className="album-title-and-owner-container">
+                                        <p className="album-details-album-title">{album.details.title}</p>
+                                        <p>by {artist.artist_name}</p>
+                                    </div>
+                                    {/* <img className="album-secondary-image" src={album.images.length ? album.images[0].url : "https://media.newyorker.com/photos/641b2438c7a56c8e6b95a36d/master/pass/Gopnik-We-Love-NYC.jpg"} alt="album visual" /> */}
+                                    <audio controls src={songPlaying} />
+                                    <div className="all-songs-container">
+                                        {allSongs}
+                                    </div>
                                 </div>
                             </div>
 
 
+<<<<<<< HEAD
                             <div className="all-songs-container">
                                 {allSongs}
                             </div>
@@ -211,6 +261,9 @@ const AlbumDetails = () => {
 
 
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
                         </div>
                     </div>
                 </>

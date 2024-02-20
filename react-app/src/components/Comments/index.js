@@ -9,9 +9,13 @@ import ConfirmDelete from "../ConfirmDelete";
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import './index.css'
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+import './index.css'
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
 
 const Comments = ({ artist }) => {
     const { postid } = useParams()
@@ -30,10 +34,14 @@ const Comments = ({ artist }) => {
         dispatch(fetchGetComments(communityid, postid))
             .then(() => setIsLoaded(true))
 <<<<<<< HEAD
+<<<<<<< HEAD
     }, [commentPosted])
 =======
     }, [commentPosted, dispatch, postid])
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+    }, [commentPosted, dispatch, postid])
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
 
     const updateComment = (comment_id, text) => {
 
@@ -74,10 +82,14 @@ const Comments = ({ artist }) => {
         return (
             <div className="post-details-comment-container" key={comment.id}>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <div>
 =======
                 <div className="user-img-username-container">
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+                <div className="user-img-username-container">
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
                     <img className="post-profile-picture" src={comment.profile_picture} />
                     <p>{comment.username}</p>
                 </div>
@@ -99,6 +111,7 @@ const Comments = ({ artist }) => {
             {isLoaded && (
                 <>
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <div>
                         <p>Comments</p>
                         <form onSubmit={(e) => submitComment(e)}>
@@ -106,6 +119,8 @@ const Comments = ({ artist }) => {
                             <button>Submit Comment</button>
                         </form>
 =======
+=======
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
                     <div className="comment-input-container">
                         <div>
                             <i class="fa-regular fa-message fa-lg"></i>
@@ -115,7 +130,10 @@ const Comments = ({ artist }) => {
                                 <input className="post-comment-form-input" value={commentText} onChange={(e) => setCommentText(e.target.value)} placeholder="post a comment" />
                             </form>
                         </div>
+<<<<<<< HEAD
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
                     </div>
                     <div>
                         {comments}

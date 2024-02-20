@@ -40,9 +40,12 @@ const HotAlbum = ({ selectedtab }) => {
     };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     console.log(hotAlbum)
 =======
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
 
     return (
 

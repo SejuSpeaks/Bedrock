@@ -11,9 +11,12 @@ const AllAlbums = () => {
 
     const albums = useSelector(state => state.artist.albums)
 <<<<<<< HEAD
+<<<<<<< HEAD
     console.log(albums, 'albums from arttist state')
 =======
 >>>>>>> 207fad1617ac56749c0160b847c7270a1a1343a3
+=======
+>>>>>>> 7b101935324880b3d94c82a8fe5a306252da7140
 
     const dispatch = useDispatch()
     const history = useHistory();
