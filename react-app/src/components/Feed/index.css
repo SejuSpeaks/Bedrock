@@ -1,10 +1,4 @@
-.post-profile-picture {
-    height: 30px;
-    width: 30px;
-    border-radius: 30px;
-}
-
 .post-container {
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid lightgrey;
+    /* border-bottom: 1px solid black; */
 }

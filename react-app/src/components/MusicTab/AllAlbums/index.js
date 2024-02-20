@@ -10,7 +10,6 @@ const AllAlbums = () => {
     const { artistid } = useParams()
 
     const albums = useSelector(state => state.artist.albums)
-    console.log(albums, 'albums from arttist state')
 
     const dispatch = useDispatch()
     const history = useHistory();

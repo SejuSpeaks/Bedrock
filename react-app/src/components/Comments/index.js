@@ -8,6 +8,7 @@ import EditComment from "../EditCommentModal";
 import ConfirmDelete from "../ConfirmDelete";
 
 
+import './index.css'
 
 const Comments = ({ artist }) => {
     const { postid } = useParams()
@@ -25,7 +26,7 @@ const Comments = ({ artist }) => {
     useEffect(() => {
         dispatch(fetchGetComments(communityid, postid))
             .then(() => setIsLoaded(true))
-    }, [commentPosted])
+    }, [commentPosted, dispatch, postid])
 
     const updateComment = (comment_id, text) => {
 
@@ -65,7 +66,7 @@ const Comments = ({ artist }) => {
     const comments = Object.values(commentsState).map(comment => {
         return (
             <div className="post-details-comment-container" key={comment.id}>
-                <div>
+                <div className="user-img-username-container">
                     <img className="post-profile-picture" src={comment.profile_picture} />
                     <p>{comment.username}</p>
                 </div>
@@ -86,12 +87,15 @@ const Comments = ({ artist }) => {
         <div>
             {isLoaded && (
                 <>
-                    <div>
-                        <p>Comments</p>
-                        <form onSubmit={(e) => submitComment(e)}>
-                            <input value={commentText} onChange={(e) => setCommentText(e.target.value)} placeholder="post a comment" />
-                            <button>Submit Comment</button>
-                        </form>
+                    <div className="comment-input-container">
+                        <div>
+                            <i class="fa-regular fa-message fa-lg"></i>
+                        </div>
+                        <div>
+                            <form className="post-comment-form" onSubmit={(e) => submitComment(e)}>
+                                <input className="post-comment-form-input" value={commentText} onChange={(e) => setCommentText(e.target.value)} placeholder="post a comment" />
+                            </form>
+                        </div>
                     </div>
                     <div>
                         {comments}
