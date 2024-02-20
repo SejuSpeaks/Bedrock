@@ -8,8 +8,8 @@ class Like(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    post_id = db.Column(db.Integer, add_prefix_for_prod(db.ForeignKey('posts.id')))
-    user_id = db.Column(db.Integer, add_prefix_for_prod(db.ForeignKey('users.id')))
+    post_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('posts.id')))
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
 
     post = db.relationship('Post', back_populates='likes')
     user = db.relationship('User', back_populates='likes')

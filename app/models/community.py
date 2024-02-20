@@ -4,8 +4,8 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 community_users = db.Table(
     'community_users',
     db.Column('id', db.Integer, primary_key=True),
-    db.Column('user_id', db.Integer, add_prefix_for_prod(db.ForeignKey('users.id'))),
-    db.Column('community_id', db.Integer, add_prefix_for_prod(db.ForeignKey('communities.id')))
+    db.Column('user_id', db.Integer, db.ForeignKey(add_prefix_for_prod('users.id'))),
+    db.Column('community_id', db.Integer, db.ForeignKey(add_prefix_for_prod('communities.id')))
 )
 
 

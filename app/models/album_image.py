@@ -8,7 +8,7 @@ class AlbumImage(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    album_id = db.Column(db.Integer, add_prefix_for_prod(db.ForeignKey('albums.id')))
+    album_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('albums.id')))
     url = db.Column(db.String)
 
     album = db.relationship('Album', back_populates='album_images')
