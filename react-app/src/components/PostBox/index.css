@@ -1,0 +1,42 @@
+.post-textarea {
+    background: #FFFFFFFF;
+    /* white */
+    border-radius: 0px;
+    box-shadow: 3px 2px 6px #999ea7, 3px 0px 2px #868c97;
+    /* shadow-m */
+    resize: none;
+}
+
+
+#post-text-input {
+    border: none;
+    height: 56px;
+    width: 100%;
+    resize: none;
+}
+
+#post-text-input:focus {
+    outline: none;
+}
+
+.post-button-container-post-text-box {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.post-button-post-text-box {
+    height: 36px;
+    margin: 10px;
+    padding: 0 38px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #FFFFFFFF;
+    background: #1C49D0FF;
+    opacity: 1;
+    border: none;
+    border-radius: 4px;
+}

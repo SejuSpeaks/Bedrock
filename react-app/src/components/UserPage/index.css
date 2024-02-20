@@ -1,0 +1,37 @@
+.user-profile-profile-picture {
+    height: 250px;
+    width: 250px;
+    position: relative;
+    bottom: 70px;
+    margin-left: 70px;
+}
+
+.tabactive {
+    text-decoration: underline blue;
+    color: blue;
+}
+
+.user-profile-tabs-container {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid lightgrey;
+    margin-bottom: 19px;
+}
+
+.tab-inside-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 30px;
+}
+
+.profile-header {
+    background-color: blue;
+    height: 150px;
+}
+
+.user-profile-image-name-container {
+    display: flex;
+    font-weight: bold;
+    font-size: 30px;
+    gap: 10px;
+}

@@ -24,7 +24,20 @@ def authenticate():
     Authenticates a user.
     """
     if current_user.is_authenticated:
-        return current_user.to_dict()
+        print(current_user.community)
+        user = {
+            "id": current_user.id,
+            "artist_account": current_user.artist_account,
+            "artist_name": current_user.artist_name,
+            "bio": current_user.bio,
+            "community_id": current_user.community[0].id,
+            "email": current_user.email,
+            "profile_picture": current_user.profile_picture,
+            "username": current_user.username,
+            "albums": [album.to_dict() for album in current_user.albums]
+        }
+        return user
+        # return {'info': current_user.to_dict(), 'albums': [album.to_dict() for album in current_user.albums]}
     return {'errors': ['Unauthorized']}
 
 

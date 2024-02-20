@@ -1,0 +1,83 @@
+.album-details-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.play-button-container {
+    padding: 0px 5px;
+}
+
+.play-button-container:hover {
+    cursor: pointer;
+}
+
+.album-details-container {
+    grid-area: album;
+}
+
+.album-details-content-container {
+    margin-top: 45px;
+    display: flex;
+    gap: 58px;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+
+.album-details-song-container {
+    display: flex;
+    padding: 8px 8px;
+    border-top: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
+}
+
+.album-details-album-title {
+    font-weight: 20;
+    font-size: 30px;
+}
+
+.album-details-wishlist-container {
+    display: flex;
+}
+
+.artist-profile-header-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    grid-column-start: 3;
+    grid-row-start: 2;
+}
+
+.album-title-and-owner-container {
+    grid-area: title;
+}
+
+.album-images-container {
+    padding: 20px;
+    grid-column-start: 1;
+    grid-row-start: 2;
+
+}
+
+.album-details-image {
+    height: 350px;
+    width: 350px;
+}
+
+.all-songs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.album-secondary-image {
+    margin-top: 20px;
+    height: 220px;
+    width: 340px;
+}
+
+.content-container-album-details {
+    display: flex;
+    flex-direction: row-reverse;
+}

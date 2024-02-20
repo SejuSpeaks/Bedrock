@@ -4,9 +4,11 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { useHistory } from "react-router-dom";
 
-function ProfileButton({ user }) {
+function ProfileButton({ isLoaded, user }) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
@@ -19,7 +21,7 @@ function ProfileButton({ user }) {
     if (!showMenu) return;
 
     const closeMenu = (e) => {
-      if (!ulRef.current.contains(e.target)) {
+      if (ulRef.current && !ulRef.current.contains(e.target)) {
         setShowMenu(false);
       }
     };
@@ -32,42 +34,38 @@ function ProfileButton({ user }) {
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
+    return history.push('/')
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
   return (
-    <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
-      </button>
-      <ul className={ulClassName} ref={ulRef}>
-        {user ? (
-          <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>
-              <button onClick={handleLogout}>Log Out</button>
-            </li>
-          </>
-        ) : (
-          <>
-            <OpenModalButton
-              buttonText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<LoginFormModal />}
-            />
+    <div>
+      {isLoaded && (<>
+        <div className="user-profile-picture-container">
+          <img className="user-profile-picture" onClick={openMenu} src={user.profile_picture} />
+        </div>
 
-            <OpenModalButton
-              buttonText="Sign Up"
-              onItemClick={closeMenu}
-              modalComponent={<SignupFormModal />}
-            />
-          </>
-        )}
-      </ul>
-    </>
+        <div className={ulClassName} ref={ulRef}>
+          {user && (
+            <>
+              <div>
+                <li>Hello {user.username}</li>
+                <li>{user.email}</li>
+
+                <div className="profile-buttons-profile-dropdown">
+                  <button onClick={() => history.push('/current')}>Profile</button>
+                  {user.artist_account && (<button onClick={() => history.push(`/artists/${user.id}/community`)}>Community</button>)}
+                  <button onClick={handleLogout}>Log Out</button>
+                </div>
+
+              </div>
+            </>
+          )}
+        </div>
+      </>)}
+    </div>
   );
 }
 

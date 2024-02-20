@@ -1,7 +1,105 @@
 .profile-dropdown {
+  list-style: none;
   position: absolute;
+  padding: 10px 12px;
+  right: -20px;
+  top: 70px;
+  background-color: white;
 }
 
 .hidden {
   display: none;
+}
+
+.search-bar {
+  background: #DEE1E6FF;
+  border: none;
+  padding: 10px 8px;
+  width: 250px;
+}
+
+.nav-logo-name {
+  font-weight: 50px;
+}
+
+.nav-container {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: white;
+  border-bottom: 1px solid rgba(164, 163, 163, 0.416);
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 20px;
+}
+
+.user-profile-picture {
+  height: 35px;
+  width: 35px;
+
+  border-radius: 40px;
+}
+
+.user-profile-picture-container {
+  padding: 6px 6px;
+}
+
+.user-profile-picture-container:hover {
+  background-color: rgba(198, 193, 193, 0.335);
+  border-radius: 5px;
+  padding: 6px 6px
+}
+
+.search-icon {
+  position: relative;
+  right: 17px;
+  top: 2px;
+
+}
+
+.nav-logo-container {
+  display: flex;
+  align-items: center;
+  padding: 15px 0px;
+  margin: 0px 50px 0px 0px;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.upload-album-container {
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  padding: 6px 6px;
+}
+
+.upload-album-container:hover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+
+  height: 40px;
+  width: 30px;
+  background-color: rgba(198, 193, 193, 0.335);
+}
+
+.logged-in-links-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-buttons-profile-dropdown {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
 }

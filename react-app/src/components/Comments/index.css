@@ -1,0 +1,22 @@
+.comment-input-container {
+    display: flex;
+    margin: 10px 0px;
+    gap: 10px;
+}
+
+.post-details-comment-container {
+    margin-bottom: 10px;
+}
+
+.post-comment-form {
+    width: 50vh;
+}
+
+.post-comment-form-input {
+    width: 100%;
+}
+
+.user-img-username-container {
+    display: flex;
+    align-items: center;
+}

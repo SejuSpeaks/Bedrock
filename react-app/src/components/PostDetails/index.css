@@ -1,0 +1,25 @@
+.post-details-post-container-header {
+    display: flex;
+    align-items: center;
+}
+
+
+
+.post-details-post-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* border: 1px solid black; */
+    padding: 10px 12px;
+    width: 100%;
+}
+
+.post-details-continaer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(210, 215, 215, 0.322);
+    height: 100vh;
+}

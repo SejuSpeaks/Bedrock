@@ -1,0 +1,12 @@
+.all-posts-page-container {
+    display: flex;
+    background-color: rgba(210, 215, 215, 0.19);
+}
+
+.all-posts-feed-post-box-container {
+    width: 80%;
+}
+
+.all-posts-post-box-container {
+    padding: 22px 22px;
+}
