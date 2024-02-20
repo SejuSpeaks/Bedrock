@@ -10,7 +10,6 @@ const DeletePost = ({ post_id, setPostDeleted }) => {
     const dispatch = useDispatch()
 
     const artist = useSelector(state => state.artist)
-    console.log(artist)
 
     const deletePost = (e) => {
         e.preventDefault()

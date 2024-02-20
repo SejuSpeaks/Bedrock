@@ -1,15 +1,15 @@
 .profile-header-album-cover {
-    height: 100px;
-    width: 100px;
+    height: 120px;
+    width: 120px;
 }
 
 .profile-header-image {
     height: 150px;
-    width: 110px;
-    margin-top: 35px;
+    width: 120px;
 }
 
 .album-container-profile-header {
+    padding: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,6 +17,7 @@
 
 .profile-header-container-whole {
     display: flex;
+    gap: 10px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -35,10 +36,41 @@
 }
 
 .profile-header-follow-button-active {
-    background-color: black;
+    background-color: #6888EA;
+    border: none;
+    border-radius: 3px;
     color: white;
+    padding: 6px 12px;
 }
 
+.artist-bio-profile-headers-more {
+    color: #6888EA;
+    font-size: 12px;
+    text-align: right;
+}
+
+.artist-bio-profile-headers {
+    font-size: 13px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    display: -webkit-box;
+    max-width: 120px;
+}
+
+.artist-bio-profile-headers-open {
+    font-size: 13px;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    display: -webkit-box;
+    max-width: 120px;
+}
+
+
 .profile-header-follow-button {
-    padding: 6px 20px;
+    background-color: white;
+    border: 1px solid #6888EA;
+    border-radius: 3px;
+    color: #6888EA;
+    padding: 6px 12px;
 }

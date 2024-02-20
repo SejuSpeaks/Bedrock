@@ -22,7 +22,6 @@ const MusicTab = () => {
         }
         else {
             const data = await response.json()
-            console.log('UhOh', data)
         }
     }
 

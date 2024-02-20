@@ -4,7 +4,6 @@ import Feed from "../Feed";
 import ProfileHeader from "../ProfileHeader";
 import ArtistPageNav from "../ArtistPageNav";
 import PostBox from "../PostBox";
-import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom"
 
@@ -16,7 +15,6 @@ const AllPosts = () => {
     const { artistid } = useParams()
     const [followsArtist, setFollowsArtist] = useState(false)
     const [isLoaded, setIsLoaded] = useState(false)
-    const dispatch = useDispatch()
 
     //CHECK IF USER FOLLOWS ARTIST
     const checkUserFollowingStatus = async id => {
@@ -29,7 +27,6 @@ const AllPosts = () => {
         }
         else {
             const data = await response.json()
-            console.log('UhOh', data)
         }
     }
 
@@ -45,12 +42,10 @@ const AllPosts = () => {
         if (response.ok) {
             const data = await response.json()
             setFollowsArtist(!followsArtist)
-            console.log(followsArtist, 'after change')
             return data
         }
         else {
             const data = await response.json()
-            console.log('UhOh', data)
         }
     }
 
@@ -58,20 +53,24 @@ const AllPosts = () => {
     useEffect(() => {
         checkUserFollowingStatus(artistid)
             .then(() => setIsLoaded(true))
-    }, [followsArtist])
+    }, [followsArtist, artistid])
 
     return (
         <div>
             <ArtistPageNav />
+            {isLoaded && (<>
+                <div className="all-posts-page-container">
+                    <div className="all-posts-feed-post-box-container">
+                        <div className="all-posts-post-box-container">
+                            <PostBox followsArtist={followsArtist} />
+                        </div>
 
-            <div className="all-posts-page-container">
-                <div className="all-posts-feed-post-box-container">
-                    <PostBox followsArtist={followsArtist} />
-                    <Feed followsArtist={followsArtist} />
+                        <Feed followsArtist={followsArtist} />
+                    </div>
+
+                    <ProfileHeader followArtist={followArtist} followsArtist={followsArtist} />
                 </div>
-
-                <ProfileHeader followArtist={followArtist} followsArtist={followsArtist} />
-            </div>
+            </>)}
 
 
         </div>

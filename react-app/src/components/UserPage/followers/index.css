@@ -1,0 +1,15 @@
+.follower-image {
+    height: 100px;
+    width: 100px;
+}
+
+.follower-container {
+    display: flex;
+    gap: 10px;
+}
+
+.follower-tab-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+}

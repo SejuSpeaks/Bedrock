@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchGetFollowers } from "../../../store/followers"
 
+import './index.css'
 
 const Followers = () => {
     const dispatch = useDispatch()
@@ -17,8 +18,8 @@ const Followers = () => {
 
     const allFollowers = isLoaded && Object.values(followers).map(follower => {
         return (
-            <div>
-                <img src={follower.profile_picture} />
+            <div className="follower-container">
+                <img className="follower-image" src={follower.profile_picture} />
                 <p>{follower.username}</p>
             </div>
         )
@@ -27,8 +28,8 @@ const Followers = () => {
     return (
         <div>
             {isLoaded && (
-                <>
-                    <div>
+                < >
+                    <div className="follower-tab-container">
                         {allFollowers}
                     </div>
                 </>

@@ -39,7 +39,6 @@ const HotAlbum = ({ selectedtab }) => {
         }
     };
 
-    console.log(hotAlbum)
 
     return (
 

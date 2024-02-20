@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCreateAlbum } from '../../store/albums'
 import { fetchCreateSong } from '../../store/songs'
@@ -88,8 +88,7 @@ const AlbumForm = () => {
 
 
                 //dispatch song to the id of the album plus name of song
-                const createdSong = await dispatch(fetchCreateSong(createdAlbum.album.id, formData))
-                console.log(errors)
+                await dispatch(fetchCreateSong(createdAlbum.album.id, formData))
             }
         }
 
@@ -103,7 +102,6 @@ const AlbumForm = () => {
         )
     })
 
-    console.log(errors)
 
     return (
         <div>
@@ -159,7 +157,7 @@ const AlbumForm = () => {
                         <label for='secondary-images'>Seconary Images: </label>
                         <input value={secondaryImage} onChange={(e) => setSecondaryImage(e.target.value)} id='secondary-images'></input>
 
-                        <img src={secondaryImage} />
+                        <img src={secondaryImage} alt='secondary ' />
                     </div>
                 </div>
 

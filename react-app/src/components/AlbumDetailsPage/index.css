@@ -2,13 +2,27 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+}
+
+.play-button-container {
+    padding: 0px 5px;
+}
+
+.play-button-container:hover {
+    cursor: pointer;
+}
+
+.album-details-container {
+    grid-area: album;
 }
 
 .album-details-content-container {
+    margin-top: 45px;
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    gap: 58px;
     flex-direction: row-reverse;
+    justify-content: center;
 }
 
 .album-details-song-container {
@@ -27,16 +41,28 @@
     display: flex;
 }
 
-.album-images-container {
+.artist-profile-header-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 40px;
+    align-items: flex-start;
+    justify-content: center;
+    grid-column-start: 3;
+    grid-row-start: 2;
+}
+
+.album-title-and-owner-container {
+    grid-area: title;
+}
+
+.album-images-container {
+    padding: 20px;
+    grid-column-start: 1;
+    grid-row-start: 2;
+
 }
 
 .album-details-image {
-    height: 500px;
-    width: 500px;
+    height: 350px;
+    width: 350px;
 }
 
 .all-songs-container {
@@ -49,4 +75,9 @@
     margin-top: 20px;
     height: 220px;
     width: 340px;
+}
+
+.content-container-album-details {
+    display: flex;
+    flex-direction: row-reverse;
 }

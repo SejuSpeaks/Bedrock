@@ -37,8 +37,8 @@ const Feed = ({ followsArtist }) => {
     return (
         <div>
 
-            <p>Feed</p>
-            <div>
+            {/* <p className="all-posts-feed-heading">Feed</p> */}
+            <div className="all-posts-container">
                 {followsArtist ? (
                     <>
                         <div>

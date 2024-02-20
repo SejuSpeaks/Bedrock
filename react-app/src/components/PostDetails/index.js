@@ -30,18 +30,21 @@ const PostDetails = ({ posts }) => {
         <div>
             <ArtistPageNav />
             {isLoaded && (
-                <>
+                <div className="post-details-continaer">
                     <div className="post-details-post-container">
-                        <div className="post-details-post-container-header">
-                            <img className='post-profile-picture' src={post.owner_profile_picture} />
-                            <p>{post.owner_username}</p>
-                        </div>
-                        <div className="post-details-content">
-                            <p>{post.text}</p>
+                        <div>
+
+                            <div className="post-details-post-container-header">
+                                <img className='post-profile-picture' src={post.owner_profile_picture} />
+                                <p>{post.owner_username}</p>
+                            </div>
+                            <div className="post-details-content">
+                                <p>{post.text}</p>
+                            </div>
                         </div>
                     </div>
                     <Comments artist={artist} />
-                </>
+                </div>
             )}
 
         </div>

@@ -31,7 +31,6 @@ const UpdateAlbum = ({ album, setUpdateAlbumList }) => {
         setUpdateAlbumList(false)
         closeModal()
     }
-    console.log(errors)
     return (
         <div>
             <form onSubmit={(e) => updateAlbum(e)}>

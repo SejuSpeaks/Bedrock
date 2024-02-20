@@ -23,6 +23,7 @@ class Post(db.Model):
             'id': self.id,
             'owner_username': self.owner.username,
             'owner_profile_picture': self.owner.profile_picture,
+            'likes': len(self.likes),
             'post_owner': self.user_id,
             'text': self.text,
         }
