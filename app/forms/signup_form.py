@@ -19,11 +19,22 @@ def username_exists(form, field):
     if user:
         raise ValidationError('Username is already in use.')
 
+def is_artist_account(form,field):
+    artist_account = form.artist_account.data
+    artist_name = field.data
+    if artist_account and not artist_name:
+        raise ValidationError('If Artist Account must have artist name')
+
+    if not artist_account and artist_name:
+        raise ValidationError('Must be Artist Account to have Name')
+
 
 class SignUpForm(FlaskForm):
     username = StringField(
         'username', validators=[DataRequired(), username_exists])
     email = StringField('email', validators=[DataRequired(), user_exists])
-    artist_account = BooleanField('artist_account', validators=[DataRequired()])
+    artist_account = BooleanField('artist_account')
     bio = StringField('bio')
+    profile_picture = StringField('prof_pic', validators=[DataRequired()])
+    artist_name = StringField('artist_name', validators=[DataRequired(), is_artist_account])
     password = StringField('password', validators=[DataRequired()])

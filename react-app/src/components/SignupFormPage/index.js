@@ -8,6 +8,10 @@ function SignupFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
+  const [bio, setBio] = useState("");
+  const [img, setImg] = useState("");
+  const [artistName, setArtistName] = useState('')
+  const [artistAccount, setArtistAccount] = useState(false)
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -18,19 +22,19 @@ function SignupFormPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
-        const data = await dispatch(signUp(username, email, password));
-        if (data) {
-          setErrors(data)
-        }
+      const data = await dispatch(signUp(username, email, password, bio, img, artistAccount, artistName));
+      if (data) {
+        setErrors(data)
+      }
     } else {
-        setErrors(['Confirm Password field must be the same as the Password field']);
+      setErrors(['Confirm Password field must be the same as the Password field']);
     }
   };
 
   return (
     <>
       <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="signup-form-container" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
@@ -50,6 +54,38 @@ function SignupFormPage() {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
+          />
+        </label>
+        <label>
+          Artist Account
+          <input
+            type="checkbox"
+            checked={artistAccount}
+            onChange={(e) => setArtistAccount(e.target.checked)}
+          />
+        </label>
+        <label>
+          Artist Name
+          <input
+            type="text"
+            value={artistName}
+            onChange={(e) => setArtistName(e.target.value)}
+          />
+        </label>
+        <label>
+          Profile Picture
+          <input
+            type="text"
+            value={img}
+            onChange={(e) => setImg(e.target.value)}
+          />
+        </label>
+        <label>
+          Bio
+          <input
+            type="text"
+            value={bio}
+            onChange={(e) => setBio(e.target.value)}
           />
         </label>
         <label>
