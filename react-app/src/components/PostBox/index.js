@@ -5,8 +5,10 @@ import './index.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPostPost } from '../../store/posts';
 import { authenticate } from '../../store/session';
+import { useParams } from "react-router-dom"
 
 const PostBox = ({ submitPost, followsArtist }) => {
+    const { artistid } = useParams()
     const dispatch = useDispatch()
     const [text, setText] = useState('')
     const [isLoaded, setIsLoaded] = useState(false)
@@ -34,9 +36,12 @@ const PostBox = ({ submitPost, followsArtist }) => {
             .then(() => setIsLoaded(true))
     }, [])
 
+    const userValid = isLoaded && followsArtist || isLoaded && user && user.id === Number(artistid)
+    console.log(userValid)
+
     return (
         <div className='post-textarea'>
-            {isLoaded && followsArtist ? (
+            {userValid ? (
 
                 <form onSubmit={(e) => finishedPost(e)}>
                     <div className='post-input-container'>

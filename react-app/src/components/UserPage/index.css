@@ -1,6 +1,6 @@
 .user-profile-profile-picture {
-    height: 250px;
-    width: 250px;
+    height: 210px;
+    width: 210px;
     position: relative;
     bottom: 70px;
     margin-left: 70px;
@@ -8,6 +8,12 @@
 
 .tabactive {
     text-decoration: underline blue;
+    color: blue;
+    cursor: pointer;
+}
+
+.tab:hover {
+    cursor: pointer;
     color: blue;
 }
 

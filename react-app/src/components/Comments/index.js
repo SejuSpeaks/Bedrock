@@ -50,6 +50,8 @@ const Comments = ({ artist }) => {
             'text': commentText
         }
 
+        if (!commentText) return
+
         dispatch(fetchPostComment(communityid, postid, comment))
             .then(() => setCommentText(''))
             .then(() => setCommentPosted(true))

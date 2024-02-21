@@ -9,6 +9,7 @@ const EditComment = ({ comment, updateComment }) => {
 
     const submit = (e) => {
         e.preventDefault()
+        if (!text) return
         updateComment(comment.id, text)
         closeModal()
 

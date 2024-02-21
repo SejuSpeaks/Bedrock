@@ -35,7 +35,6 @@ const Feed = ({ followsArtist }) => {
     })
 
     const userValid = followsArtist || user && user.id === Number(artistid);
-    console.log(userValid, 'uservalid')
 
     return (
         <div>

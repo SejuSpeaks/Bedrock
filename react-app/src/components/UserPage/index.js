@@ -41,9 +41,9 @@ const UserPage = ({ isLoaded }) => {
                         </div>
                     </div>
                     <div className="user-profile-tabs-container">
-                        <p className={tab === 'likes' ? 'tabactive' : ''} onClick={() => setTab('likes')}>Likes</p>
-                        <p className={tab === 'followers' ? 'tabactive' : ''} onClick={() => setTab('followers')} >Followers</p>
-                        <p className={tab === 'albums' ? 'tabactive' : ''} onClick={() => setTab('albums')}>My Albums</p>
+                        <p className={tab === 'likes' ? 'tabactive' : 'tab'} onClick={() => setTab('likes')}>Likes</p>
+                        <p className={tab === 'followers' ? 'tabactive' : 'tab'} onClick={() => setTab('followers')} >Followers</p>
+                        <p className={tab === 'albums' ? 'tabactive' : 'tab'} onClick={() => setTab('albums')}>My Albums</p>
                     </div>
                     <div className="tab-inside-container">
                         {tab == 'likes' && <Likes />}
