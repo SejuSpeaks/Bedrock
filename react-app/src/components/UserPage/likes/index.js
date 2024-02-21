@@ -26,7 +26,7 @@ const Likes = () => {
     const allAlbums = isLoaded && Object.values(likes).map(like => {
         return (
             <div key={like.id}>
-                <img src={like.cover} />
+                <img className="album-image" src={like.cover} />
                 <p>{like.title}</p>
             </div>
         )
@@ -35,7 +35,7 @@ const Likes = () => {
     return (
         <div>
             {isLoaded && (<>
-                <div>
+                <div className="all-likes-container">
                     {allAlbums}
                 </div>
             </>)}

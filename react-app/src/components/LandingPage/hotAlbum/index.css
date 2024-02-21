@@ -7,7 +7,7 @@
 .hot-album-container {
     padding: 12px 10px;
     display: flex;
-    gap: 40px;
+    gap: 20px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -28,6 +28,8 @@
 .hot-albums-buttons-container {
     display: flex;
     flex-direction: column;
+    position: relative;
+    bottom: 35px;
     gap: 10px;
 }
 

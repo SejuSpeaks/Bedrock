@@ -16,3 +16,13 @@
     width: 100%;
     /* overflow-y: hidden; */
 }
+
+.album-image {
+    height: 220px;
+    width: 220px;
+}
+
+.navlink {
+    text-decoration: none;
+    color: black;
+}

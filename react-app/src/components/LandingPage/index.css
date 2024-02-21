@@ -24,6 +24,7 @@
 .hot-album-component-container {
     display: flex;
     overflow-y: scroll;
+    justify-content: space-around;
     /* justify-content: center; */
     /* width: 100%; */
     /* justify-content: center;

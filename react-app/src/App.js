@@ -13,6 +13,7 @@ import AllPosts from "./components/AllPosts";
 import PostDetails from "./components/PostDetails";
 import MusicTab from "./components/MusicTab";
 import UserPage from "./components/UserPage";
+import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,10 @@ function App() {
 
             <Route exact path='/'>
               <LandingPage />
+            </Route>
+
+            <Route path='/audioplayertest'>
+              <AudioPlayer />
             </Route>
 
             <Route path='/artists/:artistid/community/:postid'>

@@ -14,14 +14,14 @@ import HotAlbum from "./hotAlbum";
 const LandingPage = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [selectedTab, setSelectedTab] = useState('all genres');
+    const [selectedAlbum, setSelectedAlbum] = useState({})
     const tags = useSelector(state => state.tags)
-    const albums = useSelector(state => state.albums)
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(fetchGetTags())
             .then(() => setIsLoaded(true))
-    }, [albums])
+    }, [])
 
     return (
         <>
@@ -33,11 +33,11 @@ const LandingPage = () => {
                     <div className="landing-page-albums-container">
 
                         <div>
-                            <Albums selectedtab={selectedTab} />
+                            <Albums selectedtab={selectedTab} setSelectedAlbum={setSelectedAlbum} />
                         </div>
 
                         <div className="hot-album-component-container">
-                            <HotAlbum selectedtab={selectedTab} />
+                            <HotAlbum selectedtab={selectedTab} selectedAlbum={selectedAlbum} />
                         </div>
                     </div>
                 </div>

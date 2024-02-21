@@ -3,6 +3,45 @@
     width: 250px;
 }
 
+/* .landing-page-album-img-buttons:hover {
+    position: relative;
+    border: none;
+    bottom: 45px;
+    left: 5px;
+    border-radius: 20px;
+    padding: 10px 12px;
+} */
+
+.image-and-play-button:hover button {
+    position: relative;
+    cursor: pointer;
+    visibility: visible;
+    display: inline;
+    border: none;
+    bottom: 45px;
+    left: 5px;
+    border-radius: 20px;
+    padding: 10px 12px;
+}
+
+.landing-page-album-title {
+    position: relative;
+    bottom: 30px;
+}
+
+.landing-page-album-img-buttons {
+    visibility: hidden;
+    position: relative;
+    border: none;
+    bottom: 45px;
+    left: 5px;
+    border-radius: 20px;
+    padding: 10px 12px;
+    /* height: 20px;
+    width: 20px; */
+}
+
+
 .landing-page-album-container {
     margin: 10px 7px;
 }

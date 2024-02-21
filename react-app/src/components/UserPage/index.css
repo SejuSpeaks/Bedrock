@@ -11,6 +11,11 @@
     color: blue;
 }
 
+#user-bio-user-page {
+    font-weight: 400;
+    font-size: 16px;
+}
+
 .user-profile-tabs-container {
     display: flex;
     justify-content: space-around;
@@ -24,6 +29,11 @@
     margin-left: 30px;
 }
 
+.username-bio-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .profile-header {
     background-color: blue;
     height: 150px;
@@ -31,7 +41,7 @@
 
 .user-profile-image-name-container {
     display: flex;
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 30px;
     gap: 10px;
 }

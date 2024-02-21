@@ -13,6 +13,7 @@ const Feed = ({ followsArtist }) => {
     const [postDeleted, setPostDeleted] = useState(false)
 
     const posts = useSelector(state => state.posts)
+    const user = useSelector(state => state.session.user)
 
     const dispatch = useDispatch();
 
@@ -33,13 +34,15 @@ const Feed = ({ followsArtist }) => {
         );
     })
 
+    const userValid = followsArtist || user && user.id === Number(artistid);
+    console.log(userValid, 'uservalid')
 
     return (
         <div>
 
             {/* <p className="all-posts-feed-heading">Feed</p> */}
             <div className="all-posts-container">
-                {followsArtist ? (
+                {userValid ? (
                     <>
                         <div>
                             {isLoaded && (

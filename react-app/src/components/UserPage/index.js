@@ -35,8 +35,10 @@ const UserPage = ({ isLoaded }) => {
                     </div>
                     <div className="user-profile-image-name-container">
                         <img className="user-profile-profile-picture" src={user.profile_picture} alt='user profile' />
-                        <p>{user.username}</p>
-                        <p>{user.bio}</p>
+                        <div className="username-bio-container">
+                            <p>{user.username}</p>
+                            <p id="user-bio-user-page">{user.bio}</p>
+                        </div>
                     </div>
                     <div className="user-profile-tabs-container">
                         <p className={tab === 'likes' ? 'tabactive' : ''} onClick={() => setTab('likes')}>Likes</p>

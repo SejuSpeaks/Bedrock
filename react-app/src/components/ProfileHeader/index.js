@@ -42,7 +42,7 @@ const ProfileHeader = ({ followArtist, followsArtist }) => {
     }) : "no albums"
 
     const followButtonClass = followsArtist ? 'profile-header-follow-button-active' : 'profile-header-follow-button'
-
+    const userIsOwner = user && user.id === Number(artistid)
 
     return (
         <div className='profile-header-container-whole'>
@@ -51,7 +51,12 @@ const ProfileHeader = ({ followArtist, followsArtist }) => {
                     <div style={{ display: "flex", flexDirection: 'column' }}>
                         <img className="profile-header-image" src={artist.profile_picture} alt="profilepicture" />
                         <p>{artist.artist_name}</p>
-                        <button onClick={() => followArtist(artist.id)} className={followButtonClass}>{followsArtist ? "Following" : "Follow"}</button>
+                        {!userIsOwner && (
+                            <button onClick={() => followArtist(artist.id)} className={followButtonClass}>{followsArtist ? "Following" : "Follow"}</button>
+                        )}
+                        {userIsOwner && (
+                            <button className={followButtonClass}>{'Owner'}</button>
+                        )}
                     </div>
                     {artist.bio && (<>
                         <div>

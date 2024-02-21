@@ -17,7 +17,7 @@ function Navigation({ isLoaded }) {
 					<img src={Earbuds} onClick={() => history.push('/')} />
 					<p className='nav-logo-name'>BedRock</p>
 				</div>
-				<div className='search-container'>
+				{/* <div className='search-container'>
 					<input className='search-bar' type='text' placeholder='Search and discover music' />
 					<div className='search-icon'>
 						<svg
@@ -35,21 +35,19 @@ function Navigation({ isLoaded }) {
 							<line x1='21' y1='21' x2='16.65' y2='16.65'></line>
 						</svg>
 					</div>
-				</div>
+				</div> */}
 
 			</div>
 
-			<div>
+			<div className='nav-right'>
 
 				<ul>
 
 					{!sessionUser && (
-						<>
-							<li>
-								<NavLink to='/login'>Log in</NavLink>
-							</li>
-							<li>Sign up</li>
-						</>
+						<div className='sign-up-buttons'>
+							<NavLink className='navlink' to='/login'>Log in</NavLink>
+							<NavLink className='navlink' to='/signup'>Sign up</NavLink>
+						</div>
 					)}
 
 					{isLoaded && sessionUser && (

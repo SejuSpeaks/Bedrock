@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 import './index.css'
 
-const Albums = ({ selectedtab }) => {
+const Albums = ({ selectedtab, setSelectedAlbum, selectedAlbum }) => {
     const [isLoaded, setIsLoaded] = useState(false)
     const history = useHistory();
     const albums = useSelector(state => state.albums)
@@ -15,14 +15,13 @@ const Albums = ({ selectedtab }) => {
     useEffect(() => {
 
         if (selectedtab == 'all genres') {
-            dispatch(fetchAllAlbums()).then(() => setIsLoaded(true))
+            dispatch(fetchAllAlbums()).then((res) => setSelectedAlbum(Object.values(res)[0])).then(() => setIsLoaded(true))
         }
         else {
-            dispatch(fetchAlbumsByTag(selectedtab))
-                .then(() => setIsLoaded(true))
+            dispatch(fetchAlbumsByTag(selectedtab)).then((res) => setSelectedAlbum(Object.values(res)[0])).then(() => setIsLoaded(true))
         }
 
-    }, [selectedtab])
+    }, [selectedtab, selectedAlbum])
 
     const albumClicked = (artist_id, album_id) => {
         history.push(`artists/${artist_id}/albums/${album_id}`)
@@ -31,9 +30,17 @@ const Albums = ({ selectedtab }) => {
     const allAlbums = Object.values(albums).map(album => {
         return (
             <div className="landing-page-album-container" key={album.id} onClick={() => albumClicked(album.artist_id, album.id)}>
-                <img className="landing-page-album-img" src={album.cover} />
-                <p>{album.title} <br /> by {album.artist_username}</p>
-
+                <div className="image-and-play-button">
+                    <img className="landing-page-album-img" src={album.cover} />
+                    <button onClick={(e) => {
+                        e.stopPropagation()
+                        setSelectedAlbum({ ...album })
+                    }}
+                        className="landing-page-album-img-buttons">
+                        <i class="fa-solid fa-play"></i>
+                    </button>
+                </div>
+                <p className="landing-page-album-title">{album.title} <br /> by {album.artist_username}</p>
             </div>
         );
     })

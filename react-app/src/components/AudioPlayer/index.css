@@ -1,0 +1,24 @@
+.play-button-audio-player {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    padding: 20px 20px;
+}
+
+.play-button-audio-player:hover {
+    background-color: rgba(0, 0, 0, 0.10);
+}
+
+
+.button-album-details-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.audio-waveform-audio-componenet {
+    position: relative;
+    bottom: 20px;
+}

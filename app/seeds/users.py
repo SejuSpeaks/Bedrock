@@ -12,13 +12,13 @@ def seed_users():
         username='bobbie', email='bobbie@aa.io', password='password', artist_account=False, profile_picture='https://upload.wikimedia.org/wikipedia/commons/9/9d/MIKE_-_Bruiser_Thanksgiving%2C_2022.jpg')
 
     musician1 = User(
-        username='musician1', email='kingkrule@aa.com', password='password', artist_account=True, artist_name='King Krule', profile_picture='https://source.unsplash.com/random/200x200')
+        username='musician1', email='kingkrule@aa.com', password='password', artist_account=True, artist_name='King Krule', profile_picture='https://charts-static.billboard.com/img/2013/09/king-krule-5cf-344x344.jpg')
     musician2 = User(
         username='musician2', email='mike@aa.com', password='password', artist_account=True, artist_name='Mike', profile_picture='https://source.unsplash.com/random/200x200')
     musician3 = User(
-        username='musician3', email='wiki@aa.com', password='password', artist_account=True, artist_name='Wiki', profile_picture='https://source.unsplash.com/random/200x200')
+        username='musician3', email='wiki@aa.com', password='password', artist_account=True, artist_name='Wiki', profile_picture='https://thefader-res.cloudinary.com/private_images/w_760,c_limit,f_auto,q_auto:best/unnamed_3_b5e0da/wiki-oofie-stream.jpg')
     musician4 = User(
-        username='musician4', email='maxo@aa.com', password='password', artist_account=True, artist_name='Maxo', profile_picture='https://source.unsplash.com/random/200x200')
+        username='musician4', email='maxo@aa.com', password='password', artist_account=True, artist_name='Maxo', profile_picture='https://thefader-res.cloudinary.com/private_images/w_760,c_limit,f_auto,q_auto:best/DSC_5281_copy_e48384_gbi55y/maxo-shares-new-album-even-god-has-a-sense-of-humor.jpg')
 
     db.session.add(demo)
     db.session.add(marnie)

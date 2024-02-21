@@ -4,11 +4,10 @@ import { fetchAlbumsByTag, fetchAllAlbums } from '../../../store/albums'
 import { useHistory } from "react-router-dom";
 
 import './index.css'
-const HotAlbum = ({ selectedtab }) => {
+import AudioPlayer from "../../AudioPlayer/AudioPlayer";
+const HotAlbum = ({ selectedtab, selectedAlbum }) => {
     const [isLoaded, setIsLoaded] = useState(false)
-    const [song, setSong] = useState('')
     const history = useHistory();
-    const albums = useSelector(state => state.albums)
     const dispatch = useDispatch()
     const scrollRef = useRef(null)
 
@@ -25,14 +24,9 @@ const HotAlbum = ({ selectedtab }) => {
     }, [selectedtab])
 
 
-    const hotAlbum = Object.values(albums).reduce((prevAlbum, currAlbum) => {
-        return (currAlbum.likes > prevAlbum.likes) ? currAlbum : prevAlbum;
-    }, Object.values(albums)[0])
-
     const handleWheel = (event) => {
         const { current } = scrollRef;
 
-        // If the user scrolls up (negative deltaY), scroll the content down
         if (current && event.deltaY > 0) {
             current.scrollBy(0, 10);
 
@@ -46,13 +40,14 @@ const HotAlbum = ({ selectedtab }) => {
             {isLoaded && (
                 <>
                     <div className='hot-album-container' ref={scrollRef} onWheel={(e) => handleWheel(e)}>
-                        <img className="hot-album-album-cover" src={hotAlbum?.cover} />
+                        <img className="hot-album-album-cover" src={selectedAlbum?.cover} />
                         <div>
-                            <audio controls src={hotAlbum?.songs[0].url}></audio>
+                            <AudioPlayer album={selectedAlbum} />
+                            {/* <audio controls src={hotAlbum?.songs[0].url}></audio> */}
                         </div>
 
                         <div className="hot-albums-buttons-container">
-                            <button id="go-to-album-button">Go to album</button>
+                            <button onClick={() => history.push(`/artists/${selectedAlbum.artist_id}/albums/${selectedAlbum.id}`)} id="go-to-album-button">Go to album</button>
                             <button className="hot-album-wishlist-button" type="button">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +67,7 @@ const HotAlbum = ({ selectedtab }) => {
                         </div>
 
                         <div>
-                            <p>{hotAlbum?.artist_username}</p>
+
                         </div>
                     </div>
                     <div className="space-under-hot-album">

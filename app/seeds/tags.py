@@ -44,17 +44,34 @@ def seed_tags():
     db.session.commit()
 
     album_tag1 = album_tags.insert().values(album_id=1, tag_id=2)
-    album_tag1_half = album_tags.insert().values(album_id=1, tag_id=3)
+    album_tag1_half = album_tags.insert().values(album_id=1, tag_id=7)
     album_tag2 = album_tags.insert().values(album_id=2, tag_id=2)
     album_tag3 = album_tags.insert().values(album_id=3, tag_id=2)
     album_tag4 = album_tags.insert().values(album_id=9, tag_id=5)
     album_tag5 = album_tags.insert().values(album_id=7, tag_id=2)
+    album_tag6 = album_tags.insert().values(album_id=2, tag_id=4)
+    album_tag7 = album_tags.insert().values(album_id=2, tag_id=4)
+    album_tag8 = album_tags.insert().values(album_id=10, tag_id=4)
+    album_tag9 = album_tags.insert().values(album_id=6, tag_id=7)
+    album_tag10 = album_tags.insert().values(album_id=5, tag_id=3)
+    album_tag11 = album_tags.insert().values(album_id=9, tag_id=3)
+    album_tag12 = album_tags.insert().values(album_id=9, tag_id=6)
 
 
     db.session.execute(album_tag1)
     db.session.execute(album_tag1_half)
     db.session.execute(album_tag2)
     db.session.execute(album_tag3)
+    db.session.execute(album_tag4)
+    db.session.execute(album_tag5)
+    db.session.execute(album_tag6)
+    db.session.execute(album_tag7)
+    db.session.execute(album_tag8)
+    db.session.execute(album_tag9)
+    db.session.execute(album_tag10)
+    db.session.execute(album_tag11)
+    db.session.execute(album_tag12)
+
     db.session.commit()
 
 

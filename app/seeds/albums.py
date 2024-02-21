@@ -27,7 +27,7 @@ def seed_albums():
     )
 
     album7 = Album(
-        title='The OOZ', cover='https://media.pitchfork.com/photos/59d6ab987855fa6c9a16f2f1/master/pass/the%20ooz_king%20krule.jpg', genre='Alternative', artist_id = 6, release_date = datetime.datetime(2016,6,12), description='oozing to meet you'
+        title='The OOZ', cover='https://media.pitchfork.com/photos/59d6ab987855fa6c9a16f2f1/master/pass/the%20ooz_king%20krule.jpg', genre='Alternative', artist_id = 4, release_date = datetime.datetime(2016,6,12), description='oozing to meet you'
     )
 
     album8 = Album(

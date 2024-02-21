@@ -31,7 +31,6 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin: 0px 20px;
 }
 
 .user-profile-picture {
@@ -65,9 +64,19 @@
   margin: 0px 50px 0px 0px;
 }
 
+.sign-up-buttons {
+  display: flex;
+  gap: 10px;
+}
+
 .nav-left {
   display: flex;
   align-items: center;
+  margin-left: 20px;
+}
+
+.nav-right {
+  margin-right: 20px;
 }
 
 .upload-album-container {
