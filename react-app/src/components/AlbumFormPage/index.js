@@ -64,7 +64,8 @@ const AlbumForm = () => {
 
         //check all files are ok
         for (let file of fileArr) {
-            if (file.type !== 'audio/mp3' && file.type !== 'audio/wav') {
+            console.log(file.type === 'audio/mpeg')
+            if (file.type !== 'audio/mpeg' && file.type !== 'audio/wav' && file.type !== 'audio/mp3') {
                 setErrors({ ...errors, "FileTypeError": "Upload Correct file type mp3/wav" })
                 return
             }
