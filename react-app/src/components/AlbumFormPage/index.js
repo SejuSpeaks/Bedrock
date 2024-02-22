@@ -60,6 +60,16 @@ const AlbumForm = () => {
     const onSubmit = async (e) => {
         e.preventDefault()
 
+        if (!fileArr.length) return setErrors({ ...errors, "Error": "Album needs at least 1 song" })
+
+        //check all files are ok
+        for (let file of fileArr) {
+            if (file.type !== 'audio/mp3' && file.type !== 'audio/wav') {
+                setErrors({ ...errors, "FileTypeError": "Upload Correct file type mp3/wav" })
+                return
+            }
+        }
+
         const album = {
             "title": title,
             "cover": cover,
@@ -72,14 +82,12 @@ const AlbumForm = () => {
 
         if (createdAlbum.Errors) return setErrors({ ...errors, ...createdAlbum.Errors })
 
-        const addOtherImage = await fetchAddSecondImage(createdAlbum, secondaryImage)
-
-        if (addOtherImage.Errors) return setErrors({ ...errors, ...createdAlbum.Errors })
 
         if (fileArr.length) {
 
             //for every file in file Arr await disptach create song thunk
             for (let i = 0; i <= fileArr.length - 1; i++) {
+
                 //create song object
                 const formData = new FormData()
                 formData.append('name', songNames[i])
@@ -88,7 +96,7 @@ const AlbumForm = () => {
 
 
                 //dispatch song to the id of the album plus name of song
-                await dispatch(fetchCreateSong(createdAlbum.album.id, formData))
+                const song = await dispatch(fetchCreateSong(createdAlbum.album.id, formData))
             }
         }
 
@@ -113,11 +121,11 @@ const AlbumForm = () => {
 
                         <div className='create-album-image-container'>
                             <img className='album-form-image' src={cover ? cover : 'https://garden.spoonflower.com/c/2808368/p/f/m/wz4MJ0j3cdHpOHkTN5qdj7tovQRD_FFQl_DuHWO3th-bkCbrFGzA704q/Solid%20Mid%20Grey.jpg'} alt='cover of album' />
-                            <input placeholder='Album cover' value={cover} onChange={(e) => setCover(e.target.value)}></input>
+                            <input className='form-input' placeholder='Album cover' value={cover} onChange={(e) => setCover(e.target.value)}></input>
                         </div>
 
                         <div className='create-album-title-container'>
-                            <p>{title ? title : "Untitled Album"}</p>
+                            <p className='album-form-album-title'>{title ? title : "Untitled Album"}</p>
                             <p>by: {user.artist_name ? user.artist_name : "noNamer"}</p>
                         </div>
 
@@ -126,8 +134,9 @@ const AlbumForm = () => {
                     <div className='create-album-form-header-right'>
 
                         <div className='create-album-right-header-container'>
-                            <input id='album-title' value={title} placeholder='Title' onChange={(e) => setTitle(e.target.value)}></input>
-                            <input placeholder='Release date' type='date' value={date} onChange={(e) => setDate(e.target.value)}></input>
+                            <input className='form-input' id='album-title' value={title} placeholder='Title' onChange={(e) => setTitle(e.target.value)}></input>
+                            <input className='form-input' placeholder='Release date' type='date' value={date} onChange={(e) => setDate(e.target.value)}></input>
+
                         </div>
 
                     </div>
@@ -154,14 +163,15 @@ const AlbumForm = () => {
                         <label for='genre'>genre:</label>
                         <input value={genre} onChange={(e) => setGenre(e.target.value)} id='genre'></input>
 
-                        <label for='secondary-images'>Seconary Images: </label>
-                        <input value={secondaryImage} onChange={(e) => setSecondaryImage(e.target.value)} id='secondary-images'></input>
-
-                        <img src={secondaryImage} alt='secondary ' />
+                        {/* <label for='secondary-images'>Seconary Images: </label>
+                        <input value={secondaryImage} onChange={(e) => setSecondaryImage(e.target.value)} id='secondary-images'></input> */}
                     </div>
                 </div>
 
-                <button>Submit Album</button>
+                <div className='album-form-submit-container'>
+                    <button>Submit Album</button>
+                </div>
+
             </form>
         </div>
     );

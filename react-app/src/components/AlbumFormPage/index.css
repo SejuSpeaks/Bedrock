@@ -1,16 +1,63 @@
 .create-album-form-header {
+    margin: 40px 20px;
     display: flex;
+    justify-content: space-around;
+    border-bottom: 1px lightgrey solid;
+
+}
+
+.form-input {
+    padding: 8px 20px;
+    font-family: Inter;
+    /* Body */
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    background: #FFFFFFFF;
+    /* white */
+    border-radius: 4px;
+    /* border-m */
+    border-width: 1px;
+    border-color: #9095A0FF;
+    /* neutral-500 */
+    outline: none;
+    margin-bottom: 20px;
 }
 
 .create-album-form-header-left {
     display: flex;
+    gap: 20px;
     /* border: solid black 1px; */
+}
+
+.album-form-submit-container {
+    display: flex;
+    justify-content: center;
+}
+
+.album-form-submit-container>button {
+    padding: 10px 20px;
+    border: 1px solid;
+    border-radius: 7px;
+    background-color: white;
+    border-color: rgb(76, 114, 231);
+    ;
+}
+
+.create-album-form-bottomn-left-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.album-form-album-title {
+    font-weight: bold;
+    font-size: 25px;
 }
 
 .create-album-title-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .create-album-form-header-right {
@@ -26,13 +73,15 @@
 
 
 .create-album-image-container {
+    width: 153px;
     display: flex;
+    gap: 10px;
     flex-direction: column;
 }
 
 .album-form-image {
-    height: 120px;
-    width: 120px;
+    height: 153px;
+    width: 153px;
 }
 
 
@@ -40,6 +89,8 @@
 
 .create-album-form-bottomn-container {
     display: flex;
+    justify-content: space-around;
+    margin: 40px 20px;
 }
 
 .create-album-form-bottomn-right-container {
@@ -53,8 +104,8 @@ input[type="file"] {
 }
 
 .custom-file-upload {
-    border: 1px solid #ccc;
+    text-decoration: underline;
+    color: rgb(76, 114, 231);
     display: inline-block;
-    padding: 6px 12px;
     cursor: pointer;
 }

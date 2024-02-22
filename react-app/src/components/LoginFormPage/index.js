@@ -21,6 +21,20 @@ function LoginFormPage() {
     }
   };
 
+  const demoUserArtist = async (e) => {
+    const data = await dispatch(login('demo@aa.io', 'password'));
+    if (data) {
+      setErrors(data);
+    }
+  }
+
+  const demoUser = async (e) => {
+    const data = await dispatch(login('bobbie@aa.io', 'password'));
+    if (data) {
+      setErrors(data);
+    }
+  }
+
   return (
     <>
       <h1>Log In</h1>
@@ -50,6 +64,8 @@ function LoginFormPage() {
         </label>
         <button type="submit">Log In</button>
       </form>
+      <button onClick={(e) => demoUserArtist(e)}>DEMO ARTIST</button>
+      <button onClick={(e) => demoUser(e)}>DEMO USER</button>
     </>
   );
 }
