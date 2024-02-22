@@ -25,7 +25,7 @@ const Likes = () => {
 
     const allAlbums = isLoaded && Object.values(likes).map(like => {
         return (
-            <div key={like.id}>
+            <div onClick={() => history.push(`/artists/${like.artist_id}/albums/${like.id}`)} key={like.id}>
                 <img className="album-image" src={like.cover} />
                 <p>{like.title}</p>
             </div>

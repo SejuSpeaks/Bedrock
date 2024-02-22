@@ -32,6 +32,22 @@ def seed_songs():
         album_id=6, name='Jennahs Interlude', url='https://d137d42ac0f4ae-songs.s3.amazonaws.com/y2mate.is+-+Jennah+s+Interlude-fwtBilr944Q-192k-1708496037.mp3'
     )
 
+    song8 = Song(
+        album_id=7, name='BoldyJames', url='https://d137d42ac0f4ae-songs.s3.amazonaws.com/in+th+e+bak.wav'
+    )
+
+    song9 = Song(
+        album_id=8, name='everybody', url='https://d137d42ac0f4ae-songs.s3.amazonaws.com/netcat+-+-etc+-+12+everybody.wav'
+    )
+
+    song10 = Song(
+        album_id=9, name='sweeti', url='https://d137d42ac0f4ae-songs.s3.amazonaws.com/sweetii.m4a'
+    )
+
+    song11 = Song(
+        album_id=10, name='Yes i know the site already has this song', url='https://d137d42ac0f4ae-songs.s3.amazonaws.com/netcat+-+-etc+-+12+everybody.wav'
+    )
+
 
 
     db.session.add(song1)
@@ -40,6 +56,10 @@ def seed_songs():
     db.session.add(song4)
     db.session.add(song6)
     db.session.add(song7)
+    db.session.add(song8)
+    db.session.add(song9)
+    db.session.add(song10)
+    db.session.add(song11)
     db.session.commit()
 
 

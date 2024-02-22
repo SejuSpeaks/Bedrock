@@ -90,7 +90,7 @@ const Post = ({ post, setPostDeleted }) => {
                                                     />
                                                 </svg>
 
-                                                <div className="comments-container-post-details">
+                                                <div onClick={() => postClicked()} className="comments-container-post-details">
                                                     <i class="fa-regular fa-message"></i>
 
 

@@ -52,7 +52,7 @@ const PostBox = ({ submitPost, followsArtist }) => {
                         <button className='post-button-post-text-box'>Post</button>
                     </div>
                 </form>
-            ) : "Sign up for Use"}
+            ) : "Follow Artist to post to Community"}
 
         </div>
     )

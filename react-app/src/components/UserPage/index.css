@@ -1,9 +1,10 @@
 .user-profile-profile-picture {
-    height: 210px;
-    width: 210px;
+    height: 188px;
+    /* image-orientation: none; */
+    width: 195px;
     position: relative;
     bottom: 70px;
-    margin-left: 70px;
+    margin-left: 52px;
 }
 
 .tabactive {
@@ -41,7 +42,7 @@
 }
 
 .profile-header {
-    background-color: blue;
+    background-image: url('https://i.pinimg.com/originals/7b/77/ee/7b77ee521e81659fbfffedee7d5ce04e.jpg');
     height: 150px;
 }
 

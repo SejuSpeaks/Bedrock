@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 import './index.css'
 
-const Albums = ({ selectedtab, setSelectedAlbum, selectedAlbum }) => {
+const Albums = ({ selectedtab, setSelectedAlbum, selectedAlbum, setIsPlaying }) => {
     const [isLoaded, setIsLoaded] = useState(false)
     const history = useHistory();
     const albums = useSelector(state => state.albums)
@@ -35,6 +35,7 @@ const Albums = ({ selectedtab, setSelectedAlbum, selectedAlbum }) => {
                     <button onClick={(e) => {
                         e.stopPropagation()
                         setSelectedAlbum({ ...album })
+                        setIsPlaying(false)
                     }}
                         className="landing-page-album-img-buttons">
                         <i class="fa-solid fa-play"></i>

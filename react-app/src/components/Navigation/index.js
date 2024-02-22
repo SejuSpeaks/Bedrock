@@ -15,7 +15,7 @@ function Navigation({ isLoaded }) {
 			<div className='nav-left'>
 				<div className='nav-logo-container'>
 					<img className='site-logo-img' src={logo2} onClick={() => history.push('/')} />
-					<p className='nav-logo-name'>BedRock</p>
+					<p onClick={() => history.push('/')} className='nav-logo-name'>BedRock</p>
 				</div>
 				{/* <div className='search-container'>
 					<input className='search-bar' type='text' placeholder='Search and discover music' />

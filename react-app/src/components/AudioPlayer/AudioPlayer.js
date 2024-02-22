@@ -4,11 +4,10 @@ import WaveSurfer from 'wavesurfer.js'
 
 import './index.css'
 
-const AudioPlayer = ({ album }) => {
-    const [isPlaying, setIsPlaying] = useState(false)
+const AudioPlayer = ({ album, isPlaying, setIsPlaying }) => {
     const [isLoaded, setIsLoaded] = useState(false)
     const containerRef = useRef()
-
+    console.log(isPlaying, 'IS ALBUM PLAYING')
     const audio = album ? album.songs[0] : "nothing"
     console.log(audio)
 

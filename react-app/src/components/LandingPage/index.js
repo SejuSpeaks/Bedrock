@@ -14,6 +14,7 @@ import HotAlbum from "./hotAlbum";
 const LandingPage = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [selectedTab, setSelectedTab] = useState('all genres');
+    const [isPlaying, setIsPlaying] = useState(false);
     const [selectedAlbum, setSelectedAlbum] = useState({})
     const tags = useSelector(state => state.tags)
     const dispatch = useDispatch();
@@ -33,11 +34,11 @@ const LandingPage = () => {
                     <div className="landing-page-albums-container">
 
                         <div>
-                            <Albums selectedtab={selectedTab} setSelectedAlbum={setSelectedAlbum} />
+                            <Albums selectedtab={selectedTab} setIsPlaying={setIsPlaying} setSelectedAlbum={setSelectedAlbum} />
                         </div>
 
                         <div className="hot-album-component-container">
-                            <HotAlbum selectedtab={selectedTab} selectedAlbum={selectedAlbum} />
+                            <HotAlbum selectedtab={selectedTab} isPlaying={isPlaying} setIsPlaying={setIsPlaying} selectedAlbum={selectedAlbum} />
                         </div>
                     </div>
                 </div>
