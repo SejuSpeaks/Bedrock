@@ -11,8 +11,8 @@ const Albums = ({ selectedtab, setSelectedAlbum, selectedAlbum, setIsPlaying }) 
     const albums = useSelector(state => state.albums)
     const dispatch = useDispatch()
     const scrollRef = useRef(null)
-
     useEffect(() => {
+        // console.log(selectedtab)
 
         if (selectedtab == 'all genres') {
             dispatch(fetchAllAlbums()).then((res) => setSelectedAlbum(Object.values(res)[0])).then(() => setIsLoaded(true))
@@ -21,7 +21,7 @@ const Albums = ({ selectedtab, setSelectedAlbum, selectedAlbum, setIsPlaying }) 
             dispatch(fetchAlbumsByTag(selectedtab)).then((res) => setSelectedAlbum(Object.values(res)[0])).then(() => setIsLoaded(true))
         }
 
-    }, [selectedtab, selectedAlbum])
+    }, [selectedtab])
 
     const albumClicked = (artist_id, album_id) => {
         history.push(`artists/${artist_id}/albums/${album_id}`)

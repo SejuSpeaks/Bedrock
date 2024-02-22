@@ -22,7 +22,7 @@ const LandingPage = () => {
     useEffect(() => {
         dispatch(fetchGetTags())
             .then(() => setIsLoaded(true))
-    }, [])
+    }, [dispatch])
 
     return (
         <>
@@ -34,7 +34,7 @@ const LandingPage = () => {
                     <div className="landing-page-albums-container">
 
                         <div>
-                            <Albums selectedtab={selectedTab} setIsPlaying={setIsPlaying} setSelectedAlbum={setSelectedAlbum} />
+                            <Albums selectedtab={selectedTab} setSelectedAlbum={setSelectedAlbum} selectedAlbum={selectedAlbum} setIsPlaying={setIsPlaying} />
                         </div>
 
                         <div className="hot-album-component-container">

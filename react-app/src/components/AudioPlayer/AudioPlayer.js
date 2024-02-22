@@ -7,9 +7,7 @@ import './index.css'
 const AudioPlayer = ({ album, isPlaying, setIsPlaying }) => {
     const [isLoaded, setIsLoaded] = useState(false)
     const containerRef = useRef()
-    console.log(isPlaying, 'IS ALBUM PLAYING')
     const audio = album ? album.songs[0] : "nothing"
-    console.log(audio)
 
     const waveSurferRef = useRef({
         isPlaying: () => false,
