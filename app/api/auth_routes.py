@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, db
+from app.models import User, db, Community
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -23,14 +23,16 @@ def authenticate():
     """
     Authenticates a user.
     """
+
+    user_community = current_user.community[0].id if current_user.community else "no community"
+
     if current_user.is_authenticated:
-        print(current_user.community)
         user = {
             "id": current_user.id,
             "artist_account": current_user.artist_account,
             "artist_name": current_user.artist_name,
             "bio": current_user.bio,
-            "community_id": current_user.community[0].id,
+            "community_id": user_community,
             "email": current_user.email,
             "profile_picture": current_user.profile_picture,
             "username": current_user.username,
@@ -74,8 +76,11 @@ def sign_up():
     """
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print('FOOOOOOOOOOOOOOORM', form.data)
+
     if form.validate_on_submit():
+        artist_name = None
+        if form['artist_name'].data : artist_name = form['artist_name'].data
+
         user = User(
             username=form['username'].data,
             email=form['email'].data,
@@ -83,10 +88,20 @@ def sign_up():
             profile_picture=form['profile_picture'].data,
             bio=form['bio'].data,
             artist_account=form['artist_account'].data,
-            artist_name=form['artist_name'].data
+            artist_name=artist_name
         )
+
+
         db.session.add(user)
         db.session.commit()
+
+        community = None
+
+        if form['artist_account'].data :
+            community = Community(artist_id=user.id)
+            db.session.add(community)
+            db.session.commit()
+
         login_user(user)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

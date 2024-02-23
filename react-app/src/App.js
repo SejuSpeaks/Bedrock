@@ -8,7 +8,6 @@ import Navigation from "./components/Navigation";
 import AlbumForm from "./components/AlbumFormPage";
 import AlbumDetails from "./components/AlbumDetailsPage";
 import LandingPage from "./components/LandingPage";
-import CommunityTab from "./components/CommunityTab";
 import AllPosts from "./components/AllPosts";
 import PostDetails from "./components/PostDetails";
 import MusicTab from "./components/MusicTab";
@@ -51,10 +50,6 @@ function App() {
 
             <Route path='/artists/:artistid/albums'>
               <MusicTab />
-            </Route>
-
-            <Route path='/artists/:artistid'>
-              <CommunityTab />
             </Route>
 
             <Route path='/albums/new'>

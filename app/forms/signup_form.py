@@ -36,5 +36,5 @@ class SignUpForm(FlaskForm):
     artist_account = BooleanField('artist_account')
     bio = StringField('bio')
     profile_picture = StringField('prof_pic', validators=[DataRequired()])
-    artist_name = StringField('artist_name', validators=[DataRequired(), is_artist_account])
+    artist_name = StringField('artist_name', validators=[is_artist_account])
     password = StringField('password', validators=[DataRequired()])

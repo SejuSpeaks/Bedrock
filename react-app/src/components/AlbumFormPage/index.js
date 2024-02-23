@@ -100,7 +100,7 @@ const AlbumForm = () => {
                 const song = await dispatch(fetchCreateSong(createdAlbum.album.id, formData))
             }
         }
-
+        setErrors({})
         history.push(`/artists/${user.id}/albums/${createdAlbum.album.id}`)
 
     }
