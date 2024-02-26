@@ -7,6 +7,7 @@ import './index.css'
 import { useHistory, Redirect } from 'react-router-dom'
 
 const AlbumForm = () => {
+    const [loading, setLoading] = useState(false)
     const [songNames, setSongNames] = useState([])
     const [fileArr, setFileArr] = useState([])
     const [title, setTitle] = useState('')
@@ -59,15 +60,14 @@ const AlbumForm = () => {
     //WHEN SUBMIT BUTTON PRESSED
     const onSubmit = async (e) => {
         e.preventDefault()
-
-        if (!fileArr.length) return setErrors({ ...errors, "Error": "Album needs at least 1 song" })
+        let submitErrors = {};
+        if (!fileArr.length) submitErrors = { ...submitErrors, 'Songs': "Album needs at least 1 song" }
 
         //check all files are ok
         for (let file of fileArr) {
             console.log(file.type === 'audio/mpeg')
             if (file.type !== 'audio/mpeg' && file.type !== 'audio/wav' && file.type !== 'audio/mp3') {
-                setErrors({ ...errors, "FileTypeError": "Upload Correct file type mp3/wav" })
-                return
+                submitErrors = { ...submitErrors, "FileTypeError": "Upload Correct file type mp3/wav" }
             }
         }
 
@@ -81,11 +81,11 @@ const AlbumForm = () => {
         //thunk for creating album
         const createdAlbum = await dispatch(fetchCreateAlbum(album))
 
-        if (createdAlbum.Errors) return setErrors({ ...errors, ...createdAlbum.Errors })
+        if (createdAlbum.Errors) submitErrors = { ...submitErrors, ...createdAlbum.Errors }
 
 
-        if (fileArr.length) {
-
+        if (fileArr.length && !createdAlbum.Errors && !submitErrors.FileTypeError) {
+            setLoading(true)
             //for every file in file Arr await disptach create song thunk
             for (let i = 0; i <= fileArr.length - 1; i++) {
 
@@ -98,9 +98,19 @@ const AlbumForm = () => {
 
                 //dispatch song to the id of the album plus name of song
                 const song = await dispatch(fetchCreateSong(createdAlbum.album.id, formData))
+                console.log(song);
             }
         }
-        setErrors({})
+        // setErrors({})
+        console.log('SUBMIT ERRORS', submitErrors)
+        if (Object.values(submitErrors).length) {
+            setErrors(submitErrors)
+            setLoading(false)
+            return
+        }
+
+        setLoading(false)
+        console.log(submitErrors, "SUBSUBSUBSU")
         history.push(`/artists/${user.id}/albums/${createdAlbum.album.id}`)
 
     }
@@ -171,6 +181,7 @@ const AlbumForm = () => {
 
                 <div className='album-form-submit-container'>
                     <button>Submit Album</button>
+                    {loading && (<><p>Loading ...</p></>)}
                 </div>
 
             </form>
