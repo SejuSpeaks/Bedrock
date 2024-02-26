@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCreateAlbum } from '../../store/albums'
 import { fetchCreateSong } from '../../store/songs'
+import { useEffect } from 'react'
 import { fetchAddSecondImage } from './addSecondImage'
 import './index.css'
 import { useHistory, Redirect } from 'react-router-dom'
@@ -21,6 +22,11 @@ const AlbumForm = () => {
     const dispatch = useDispatch()
     const history = useHistory()
 
+
+    useEffect(() => {
+        console.log(fileArr)
+    }, [fileArr])
+
     if (!user || !user.artist_account) {
         return <Redirect path='/' />
     }
@@ -35,9 +41,15 @@ const AlbumForm = () => {
     const deleteTrack = (e, index) => {
         e.preventDefault()
         const updatedTrackList = [...fileArr]
+        const updatedSongNames = [...songNames];
+
         updatedTrackList.splice(index, 1);
+        updatedSongNames.splice(index, 1);
         setFileArr(updatedTrackList)
+        setSongNames(updatedSongNames);
     }
+
+
 
     //CHANGING SONGS NAME
     const handleNameChange = (index, name) => {
@@ -60,6 +72,7 @@ const AlbumForm = () => {
     //WHEN SUBMIT BUTTON PRESSED
     const onSubmit = async (e) => {
         e.preventDefault()
+        console.log('SUBMIT FILE', fileArr)
         let submitErrors = {};
         if (!fileArr.length) submitErrors = { ...submitErrors, 'Songs': "Album needs at least 1 song" }
 
@@ -68,6 +81,8 @@ const AlbumForm = () => {
             console.log(file.type === 'audio/mpeg')
             if (file.type !== 'audio/mpeg' && file.type !== 'audio/wav' && file.type !== 'audio/mp3') {
                 submitErrors = { ...submitErrors, "FileTypeError": "Upload Correct file type mp3/wav" }
+                setErrors(submitErrors)
+                return
             }
         }
 
@@ -87,7 +102,7 @@ const AlbumForm = () => {
         if (fileArr.length && !createdAlbum.Errors && !submitErrors.FileTypeError) {
             setLoading(true)
             //for every file in file Arr await disptach create song thunk
-            for (let i = 0; i <= fileArr.length - 1; i++) {
+            for (let i = 0; i < fileArr.length; i++) {
 
                 //create song object
                 const formData = new FormData()
