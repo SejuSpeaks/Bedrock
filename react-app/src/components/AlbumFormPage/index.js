@@ -6,6 +6,9 @@ import { useEffect } from 'react'
 import { fetchAddSecondImage } from './addSecondImage'
 import './index.css'
 import { useHistory, Redirect } from 'react-router-dom'
+import { createAlbum } from './createAlbum'
+import { validateFileTypes } from './validateFiles'
+import { addSongs } from './addSongs'
 
 const AlbumForm = () => {
     const [loading, setLoading] = useState(false)
@@ -13,7 +16,7 @@ const AlbumForm = () => {
     const [fileArr, setFileArr] = useState([])
     const [title, setTitle] = useState('')
     const [cover, setCover] = useState('')
-    const [secondaryImage, setSecondaryImage] = useState('')
+    // const [secondaryImage, setSecondaryImage] = useState('')
     const [date, setDate] = useState('')
     const [genre, setGenre] = useState('')
     const [errors, setErrors] = useState({})
@@ -24,7 +27,7 @@ const AlbumForm = () => {
 
 
     useEffect(() => {
-        console.log(fileArr)
+
     }, [fileArr])
 
     if (!user || !user.artist_account) {
@@ -69,64 +72,42 @@ const AlbumForm = () => {
         );
     })
 
-    //WHEN SUBMIT BUTTON PRESSED
     const onSubmit = async (e) => {
         e.preventDefault()
-        console.log('SUBMIT FILE', fileArr)
+
         let submitErrors = {};
-        if (!fileArr.length) submitErrors = { ...submitErrors, 'Songs': "Album needs at least 1 song" }
 
-        //check all files are ok
-        for (let file of fileArr) {
-            console.log(file.type === 'audio/mpeg')
-            if (file.type !== 'audio/mpeg' && file.type !== 'audio/wav' && file.type !== 'audio/mp3') {
-                submitErrors = { ...submitErrors, "FileTypeError": "Upload Correct file type mp3/wav" }
-                setErrors(submitErrors)
-                return
-            }
-        }
-
-        const album = {
-            "title": title,
-            "cover": cover,
-            "genre": genre,
-            "description": description,
-            "release_date": date
-        }
-        //thunk for creating album
-        const createdAlbum = await dispatch(fetchCreateAlbum(album))
-
-        if (createdAlbum.Errors) submitErrors = { ...submitErrors, ...createdAlbum.Errors }
-
-
-        if (fileArr.length && !createdAlbum.Errors && !submitErrors.FileTypeError) {
-            setLoading(true)
-            //for every file in file Arr await disptach create song thunk
-            for (let i = 0; i < fileArr.length; i++) {
-
-                //create song object
-                const formData = new FormData()
-                formData.append('name', songNames[i])
-                formData.append('song_file', fileArr[i])
-
-
-
-                //dispatch song to the id of the album plus name of song
-                const song = await dispatch(fetchCreateSong(createdAlbum.album.id, formData))
-                console.log(song);
-            }
-        }
-        // setErrors({})
-        console.log('SUBMIT ERRORS', submitErrors)
-        if (Object.values(submitErrors).length) {
+        //chcek files are uploaded
+        if (!fileArr.length) {
+            submitErrors = { ...submitErrors, 'Songs': "Album needs at least 1 song" }
             setErrors(submitErrors)
-            setLoading(false)
             return
         }
 
-        setLoading(false)
-        console.log(submitErrors, "SUBSUBSUBSU")
-        history.push(`/artists/${user.id}/albums/${createdAlbum.album.id}`)
+        //check all files are ok
+        const validateFiles = await validateFileTypes(fileArr)
+
+        //error is present while looping through files
+        if (validateFiles.FileTypeError) {
+            submitErrors = { ...submitErrors, 'fileError': validateFiles.FileTypeError }
+            setErrors(submitErrors)
+            return
+        }
+
+        const createNewAlbum = await createAlbum(dispatch, title, cover, genre, description, date)
+
+        //if there are errors while creating album
+        if (createNewAlbum.Errors) {
+            submitErrors = { ...submitErrors, ...createNewAlbum.Errors }
+            setErrors(submitErrors)
+            return
+        }
+
+        // setLoading(true)
+        await addSongs(dispatch, createNewAlbum, fileArr, songNames, setLoading, FormData)
+        // setLoading(false)
+
+        history.push(`/artists/${user.id}/albums/${createNewAlbum.album.id}`)
 
     }
 
