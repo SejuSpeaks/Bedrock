@@ -6,7 +6,7 @@ import './index.css'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import OpenModalButton from '../OpenModalButton'
-import ArtistPageNav from '../ArtistPageNav'
+import ArtistPageNav from '../Navs/ArtistPageNav'
 
 const ProfileHeader = ({ followArtist, followsArtist }) => {
     const { artistid } = useParams()

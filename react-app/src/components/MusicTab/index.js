@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 
 import ProfileHeader from "../ProfileHeader";
-import ArtistPageNav from "../ArtistPageNav";
+import ArtistPageNav from "../Navs/ArtistPageNav";
 import AllAlbums from "./AllAlbums";
 
 import './index.css'

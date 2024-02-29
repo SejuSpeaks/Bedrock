@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import OpenModalButton from '../../OpenModalButton'
-import UpdateAlbum from "../../UpdateAlbum";
+import UpdateAlbum from "../../Modals/UpdateAlbum";
 
 import './index.css';
 import { useEffect, useState } from "react";
 import { authenticate } from "../../../store/session";
 import { useHistory } from "react-router-dom";
-import DeleteAlbum from "../../DeleteAlbum";
+import DeleteAlbum from "../../Modals/DeleteAlbum";
 
 const UserAlbums = () => {
     const [updateAlbumList, setUpdateAlbumList] = useState('thing')

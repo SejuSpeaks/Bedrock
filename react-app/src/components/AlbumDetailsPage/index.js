@@ -9,7 +9,7 @@ import { likeAlbum } from "./likeAlbum";
 
 import './index.css'
 import ProfileHeader from "../ProfileHeader";
-import ArtistPageNav from "../ArtistPageNav";
+import ArtistPageNav from "../Navs/ArtistPageNav";
 
 const AlbumDetails = () => {
     const user = useSelector(state => state.session.user)

@@ -4,12 +4,12 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
-import Navigation from "./components/Navigation";
+import Navigation from "./components/Navs/Navigation";
 import AlbumForm from "./components/AlbumFormPage";
 import AlbumDetails from "./components/AlbumDetailsPage";
 import LandingPage from "./components/LandingPage";
-import AllPosts from "./components/AllPosts";
-import PostDetails from "./components/PostDetails";
+import AllPosts from './components/Community/AllPosts'
+import PostDetails from "./components/Community/PostDetails";
 import MusicTab from "./components/MusicTab";
 import UserPage from "./components/UserPage";
 import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
