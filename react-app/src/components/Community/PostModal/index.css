@@ -1,0 +1,32 @@
+.post-modal-whole {
+    border-radius: 20px;
+    border: 1px solid lightgrey;
+    padding: 10px 12px;
+    /* width: 600px;
+    height: 300px; */
+}
+
+.post-input {
+    border: none;
+    font-size: 20px;
+    background-color: #F7F7F7;
+}
+
+.post-input:focus {
+    border: none;
+}
+
+
+.post-action-buttons-2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post-button {
+    padding: 5px 12px;
+    background-color: #4C72E7;
+    border: none;
+    border-radius: 20px;
+    color: white;
+}

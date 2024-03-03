@@ -1,0 +1,22 @@
+.community-page-whole {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: rgba(211, 211, 211, 0.175);
+    height: 100vh;
+}
+
+/* .post-button {
+    position: fixed;
+    bottom: 40%;
+    left: 0;
+    padding: 10px 12px;
+    background-color: #0b5eec;
+    border: none;
+    font-weight: bold;
+    color: white;
+    margin-left: 10px;
+    height: 70px;
+    width: 70px;
+    border-radius: 100%;
+} */

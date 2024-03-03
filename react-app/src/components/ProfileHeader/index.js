@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom'
 import OpenModalButton from '../OpenModalButton'
 import ArtistPageNav from '../Navs/ArtistPageNav'
 
-const ProfileHeader = ({ followArtist, followsArtist }) => {
+const ProfileHeader = ({ followArtist, followsArtist, setIsFollowing }) => {
     const { artistid } = useParams()
     const dispatch = useDispatch()
 
@@ -52,7 +52,7 @@ const ProfileHeader = ({ followArtist, followsArtist }) => {
                         <img className="profile-header-image" src={artist.profile_picture} alt="profilepicture" />
                         <p>{artist.artist_name}</p>
                         {!userIsOwner && (
-                            <button onClick={() => followArtist(artist.id)} className={followButtonClass}>{followsArtist ? "Following" : "Follow"}</button>
+                            <button onClick={() => followArtist(followsArtist, setIsFollowing, artist.id)} className={followButtonClass}>{followsArtist ? "Following" : "Follow"}</button>
                         )}
                         {userIsOwner && (
                             <button className={followButtonClass}>{'Owner'}</button>

@@ -12,6 +12,7 @@ import AllPosts from './components/Community/AllPosts'
 import PostDetails from "./components/Community/PostDetails";
 import MusicTab from "./components/MusicTab";
 import UserPage from "./components/UserPage";
+import Community from "./components/Community";
 import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
 
 function App() {
@@ -32,6 +33,10 @@ function App() {
               <LandingPage />
             </Route>
 
+            <Route exact path='/community'>
+              {/* <Community /> */}
+            </Route>
+
             <Route path='/audioplayertest'>
               <AudioPlayer />
             </Route>
@@ -41,7 +46,7 @@ function App() {
             </Route>
 
             <Route path='/artists/:artistid/community'>
-              <AllPosts />
+              <Community />
             </Route>
 
             <Route path='/artists/:artistid/albums/:albumid'>
