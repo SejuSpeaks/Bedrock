@@ -26,4 +26,5 @@ class Post(db.Model):
             'likes': len(self.likes),
             'post_owner': self.user_id,
             'text': self.text,
+            'post_images': [image.to_dict() for image in self.post_images]
         }

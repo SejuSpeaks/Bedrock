@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 
 import './index.css';
 
-const CommunityPosts = ({ isFollowing }) => {
+const CommunityPosts = ({ isFollowing, posted }) => {
     const { artistid } = useParams()
     const [isLoaded, setIsLoaded] = useState(false)
     const dispatch = useDispatch();
@@ -17,10 +17,15 @@ const CommunityPosts = ({ isFollowing }) => {
         dispatch(fetchGetArtist(artistid))
             .then((artist) => dispatch(fetchAllPosts(artist.community_id)))
             .then(() => setIsLoaded(true))
-    }, [dispatch])
+    }, [dispatch, posted])
 
 
     const allPosts = Object.values(posts).map(post => {
+        let images;
+        if (post.post_images.length) {
+            images = post.post_images
+        }
+
         return (
             <div className="post-box" key={post.id}>
 
@@ -34,6 +39,9 @@ const CommunityPosts = ({ isFollowing }) => {
                         <p>March 16</p>
                     </div>
                     <p>{post.text}</p>
+                    <div>
+                        <img src={images ? post.post_images[0].url : ""} />
+                    </div>
 
                     <div className="post-action-buttons">
                         <svg

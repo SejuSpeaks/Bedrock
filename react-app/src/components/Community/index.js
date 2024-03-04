@@ -15,6 +15,7 @@ import { useSelector } from "react-redux";
 
 const Community = () => {
     const { artistid } = useParams()
+    const [posted, setIsPosted] = useState(false)
     const [isLoaded, setIsLoaded] = useState(false)
     const [isFollowing, setIsFollowing] = useState(false)
 
@@ -24,7 +25,7 @@ const Community = () => {
         checkFollow(setIsFollowing, artistid)
             .then(() => fetchGetArtist(artistid))
             .then(() => setIsLoaded(true))
-    }, [isFollowing])
+    }, [isFollowing, posted])
 
     return (
         <div >
@@ -35,8 +36,8 @@ const Community = () => {
 
                     <div>
                         {!isFollowing && <FollowWall />}
-                        <PostModal artist={artist} />
-                        <CommunityPosts isFollowing={isFollowing} />
+                        <PostModal artist={artist} setIsPosted={setIsPosted} />
+                        <CommunityPosts posted={posted} isFollowing={isFollowing} />
                     </div>
 
                     <div>

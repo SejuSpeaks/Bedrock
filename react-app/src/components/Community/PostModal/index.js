@@ -9,9 +9,10 @@ import { useParams } from "react-router-dom";
 
 import { post, postImage } from "./post-utils";
 
-const PostModal = ({ artist }) => {
+const PostModal = ({ artist, setIsPosted }) => {
     const { artistid } = useParams()
     const [imageUrl, setImageUrl] = useState('')
+    const [isLoaded, setIsLoaded] = useState(false);
     const [text, setText] = useState('')
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
@@ -28,34 +29,46 @@ const PostModal = ({ artist }) => {
             "user_id": user.id
         }
 
-        await post(dispatch, postMade, communityId)
         setText('')
-        if (imageUrl) {
 
-        }
+        post(dispatch, postMade, communityId)
+            .then((res) => {
+                if (imageUrl) {
 
-        console.log(post)
+                    const image = {
+                        url: imageUrl
+                    }
+
+                    postImage(communityId, res.id, image)
+                }
+
+            })
+            .then(() => setImageUrl(''))
+            .then(() => setIsPosted(true))
+
     }
 
     return (
         <div className="post-modal-whole">
-            <div>
-                <img className="post-profile-picture" src={user.profile_picture} />
-            </div>
+            {user && (<>
+                <div>
+                    <img className="post-profile-picture" src={user.profile_picture} />
+                </div>
 
-            <div>
-                <input value={text} onChange={(e) => setText(e.target.value)} className="post-input" placeholder="What is happening?!"></input>
-            </div>
+                <div>
+                    <input value={text} onChange={(e) => setText(e.target.value)} className="post-input" placeholder="What is happening?!"></input>
+                </div>
 
-            <div>
-                <img src={imageUrl} />
-            </div>
+                <div>
+                    <img src={imageUrl} />
+                </div>
 
-            <div className="post-action-buttons-2">
-                <OpenImageButton modalComponent={<ImageForm setImageUrl={setImageUrl} />} />
-                <button onClick={(e) => submitPost()} className="post-button">Post</button>
-            </div>
+                <div className="post-action-buttons-2">
+                    <OpenImageButton modalComponent={<ImageForm setImageUrl={setImageUrl} />} />
+                    <button onClick={(e) => submitPost()} className="post-button">Post</button>
+                </div>
 
+            </>)}
         </div>
     );
 }
