@@ -4,12 +4,13 @@
     padding: 10px 12px;
     /* width: 600px;
     height: 300px; */
+    margin-bottom: 20px;
 }
 
 .post-input {
     border: none;
     font-size: 20px;
-    background-color: #F7F7F7;
+    background-color: white;
 }
 
 .post-input:focus {

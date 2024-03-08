@@ -2,7 +2,16 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    background-color: rgba(211, 211, 211, 0.175);
+    /* background-color: rgba(211, 211, 211, 0.175); */
+    height: 100vh;
+}
+
+.community-page-whole-fr {
+    height: 100vh;
+}
+
+.post-modal-community-posts-container {
+    overflow-y: auto;
     height: 100vh;
 }
 

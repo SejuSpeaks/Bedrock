@@ -40,7 +40,7 @@ const CommunityPosts = ({ isFollowing, posted }) => {
                     </div>
                     <p>{post.text}</p>
                     <div>
-                        <img src={images ? post.post_images[0].url : ""} />
+                        <img className="post-image" src={images ? post.post_images[0].url : ""} />
                     </div>
 
                     <div className="post-action-buttons">
@@ -72,7 +72,7 @@ const CommunityPosts = ({ isFollowing, posted }) => {
     })
 
     return (
-        <div >
+        <div className="all-posts-container-whole-page">
             {isLoaded && isFollowing && (<>
                 <div className="all-posts-container">
                     {allPosts}

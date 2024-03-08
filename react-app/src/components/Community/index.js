@@ -28,13 +28,13 @@ const Community = () => {
     }, [isFollowing, posted])
 
     return (
-        <div >
+        <div className="community-page-whole-fr" >
             {isLoaded && (<>
                 <ArtistPageNav />
 
                 <div className="community-page-whole">
 
-                    <div>
+                    <div className="post-modal-community-posts-container">
                         {!isFollowing && <FollowWall />}
                         <PostModal artist={artist} setIsPosted={setIsPosted} />
                         <CommunityPosts posted={posted} isFollowing={isFollowing} />
