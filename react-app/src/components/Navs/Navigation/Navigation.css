@@ -24,6 +24,8 @@
 
 .nav-container {
   position: sticky;
+  max-height: 50px;
+  margin-bottom: 3px;
   top: 0;
   z-index: 2;
   background-color: white;
