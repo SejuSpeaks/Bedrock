@@ -2,13 +2,29 @@
   list-style: none;
   position: absolute;
   padding: 10px 12px;
-  right: -20px;
+  right: 0px;
+  /* box-sizing: border-box; */
+  max-width: fit-content;
+  min-height: 100px;
   top: 70px;
   background-color: white;
+  border-radius: 10px;
+}
+
+.dropdown-container {
+  border-radius: 10px;
 }
 
 .hidden {
   display: none;
+}
+
+.profile-buttons {
+  padding: 3px 12px;
+  background-color: #2267DF;
+  border: none;
+  border-radius: 5px;
+  color: white;
 }
 
 .search-bar {
@@ -119,6 +135,7 @@
 .profile-buttons-profile-dropdown {
   display: flex;
   flex-direction: column;
+  gap: 5px;
 }
 
 .search-container {

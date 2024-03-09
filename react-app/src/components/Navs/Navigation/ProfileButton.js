@@ -47,14 +47,14 @@ function ProfileButton({ isLoaded, user }) {
         <div className={ulClassName} ref={ulRef}>
           {user && (
             <>
-              <div>
+              <div className="dropdown-container">
                 <li>Hello {user.username}</li>
                 <li>{user.email}</li>
 
                 <div className="profile-buttons-profile-dropdown">
-                  <button onClick={() => history.push('/current')}>Profile</button>
-                  {user.artist_account && (<button onClick={() => history.push(`/artists/${user.id}/community`)}>Community</button>)}
-                  <button onClick={handleLogout}>Log Out</button>
+                  <button className="profile-buttons" onClick={() => history.push('/current')}>Profile</button>
+                  {user.artist_account && (<button className="profile-buttons" onClick={() => history.push(`/artists/${user.id}/community`)}>Community</button>)}
+                  <button className="profile-buttons" onClick={handleLogout}>Log Out</button>
                 </div>
 
               </div>
