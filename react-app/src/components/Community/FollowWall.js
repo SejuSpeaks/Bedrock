@@ -3,6 +3,7 @@ import { fetchGetArtist } from "../../store/artist";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
+import './index.css';
 
 const FollowWall = () => {
     const { artistid } = useParams()
@@ -17,7 +18,7 @@ const FollowWall = () => {
     }, [dispatch])
 
     return (
-        <div>
+        <div className="follow-wall">
             {isLoaded && (<>
                 <p>
                     Follow {artist.artist_name} to join the conversation.<br />
