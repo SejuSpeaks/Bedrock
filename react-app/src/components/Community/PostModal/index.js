@@ -53,25 +53,28 @@ const PostModal = ({ artist, setIsPosted, isFollowing }) => {
     }
 
     return (
-        <div className="post-modal-whole">
+        <div>
             {user && userValidation() && (<>
-                <div>
-                    <img className="post-profile-picture" src={user.profile_picture} />
-                </div>
+                <div className="post-modal-whole">
 
-                <div>
-                    <input value={text} onChange={(e) => setText(e.target.value)} className="post-input" placeholder="What is happening?!"></input>
-                </div>
+                    <div>
+                        <img className="post-profile-picture" src={user.profile_picture} />
+                    </div>
 
-                <div>
-                    <img src={imageUrl} />
-                </div>
+                    <div>
+                        <input value={text} onChange={(e) => setText(e.target.value)} className="post-input" placeholder="What is happening?!"></input>
+                    </div>
 
-                <div className="post-action-buttons-2">
-                    <OpenImageButton modalComponent={<ImageForm setImageUrl={setImageUrl} />} />
-                    <button onClick={(e) => submitPost()} className="post-button">Post</button>
-                </div>
+                    <div>
+                        <img src={imageUrl} />
+                    </div>
 
+                    <div className="post-action-buttons-2">
+                        <OpenImageButton modalComponent={<ImageForm setImageUrl={setImageUrl} />} />
+                        <button onClick={(e) => submitPost()} className="post-button">Post</button>
+                    </div>
+
+                </div>
             </>)}
         </div>
     );

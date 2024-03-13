@@ -15,6 +15,13 @@
     height: 100vh;
 }
 
+.follow-wall {
+    background-color: #F8F8F8;
+    padding: 12px 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
 /* .post-button {
     position: fixed;
     bottom: 40%;
