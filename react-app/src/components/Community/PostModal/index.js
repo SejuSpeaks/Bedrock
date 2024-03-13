@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 
 import { post, postImage } from "./post-utils";
 
-const PostModal = ({ artist, setIsPosted }) => {
+const PostModal = ({ artist, setIsPosted, isFollowing }) => {
     const { artistid } = useParams()
     const [imageUrl, setImageUrl] = useState('')
     const [isLoaded, setIsLoaded] = useState(false);
@@ -19,7 +19,11 @@ const PostModal = ({ artist, setIsPosted }) => {
     const communityId = artist.community_id
 
 
-
+    const userValidation = () => {
+        if (!user) return false;
+        if (artist.community_id === user.community_id || isFollowing) return true
+        else return false;
+    }
 
     const submitPost = async () => {
 
@@ -50,7 +54,7 @@ const PostModal = ({ artist, setIsPosted }) => {
 
     return (
         <div className="post-modal-whole">
-            {user && (<>
+            {user && userValidation() && (<>
                 <div>
                     <img className="post-profile-picture" src={user.profile_picture} />
                 </div>

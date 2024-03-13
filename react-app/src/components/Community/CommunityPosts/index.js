@@ -12,6 +12,8 @@ const CommunityPosts = ({ isFollowing, posted }) => {
     const dispatch = useDispatch();
 
     const posts = useSelector(state => state.posts)
+    const artist = useSelector(state => state.artist)
+    const user = useSelector(state => state.session.user)
 
     useEffect(() => {
         dispatch(fetchGetArtist(artistid))
@@ -19,6 +21,11 @@ const CommunityPosts = ({ isFollowing, posted }) => {
             .then(() => setIsLoaded(true))
     }, [dispatch, posted])
 
+    const userValidation = () => {
+        if (!user) return false
+        if (artist.community_id === user.community_id || isFollowing) return true
+        else return false;
+    }
 
     const allPosts = Object.values(posts).map(post => {
         let images;
@@ -73,7 +80,7 @@ const CommunityPosts = ({ isFollowing, posted }) => {
 
     return (
         <div className="all-posts-container-whole-page">
-            {isLoaded && isFollowing && (<>
+            {isLoaded && userValidation() && (<>
                 <div className="all-posts-container">
                     {allPosts}
                 </div>

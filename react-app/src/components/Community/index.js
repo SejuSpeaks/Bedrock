@@ -20,6 +20,13 @@ const Community = () => {
     const [isFollowing, setIsFollowing] = useState(false)
 
     const artist = useSelector(state => state.artist)
+    const user = useSelector(state => state.session.user)
+
+    const validateUser = () => {
+        if (!user) return false
+        if (artist.community_id === user.community_id || isFollowing) return true
+        else return false;
+    }
 
     useEffect(() => {
         checkFollow(setIsFollowing, artistid)
@@ -35,8 +42,8 @@ const Community = () => {
                 <div className="community-page-whole">
 
                     <div className="post-modal-community-posts-container">
-                        {!isFollowing && <FollowWall />}
-                        <PostModal artist={artist} setIsPosted={setIsPosted} />
+                        {!isFollowing && !validateUser() && <FollowWall />}
+                        <PostModal artist={artist} setIsPosted={setIsPosted} isFollowing={isFollowing} />
                         <CommunityPosts posted={posted} isFollowing={isFollowing} />
                     </div>
 
