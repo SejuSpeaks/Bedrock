@@ -5,23 +5,41 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_post_images():
     image1 = PostImage(
-        url = 'example.com',
+        url = 'https://f4.bcbits.com/img/a0435376613_10.jpg',
         post_id = 1
     )
 
     image2 = PostImage(
-        url='example.com',
-        post_id = 1
+        url='https://content.imageresizer.com/images/memes/Shrugging-Rat-meme-9.jpg',
+        post_id = 3
     )
 
     image3 = PostImage(
-        url='example.com',
+        url='https://www.brooklynvegan.com/wp-content/uploads/2023/04/20/attachment-MIKE-Young-World-festival-2023.jpeg',
         post_id = 2
+    )
+
+    image5 = PostImage(
+        url='https://sheshreds.com/wp-content/uploads/2019/01/synth-pt2-featured-web.png',
+        post_id = 4
+    )
+
+    image6 = PostImage(
+        url='https://media.wired.com/photos/6595c546f6145f9ca1309145/master/pass/_BC-wired_selmasabanovic_kaylareeferphoto-127.jpg',
+        post_id = 5
+    )
+
+    image7 = PostImage(
+        url='https://media4.manhattan-institute.org/wp-content/uploads/no-nyc-subways-still-arent-safe.jpg',
+        post_id = 6
     )
 
     db.session.add(image1)
     db.session.add(image2)
     db.session.add(image3)
+    db.session.add(image5)
+    db.session.add(image6)
+    db.session.add(image7)
     db.session.commit()
 
 
