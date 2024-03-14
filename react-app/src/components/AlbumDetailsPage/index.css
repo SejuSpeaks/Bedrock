@@ -9,6 +9,15 @@
     padding: 0px 5px;
 }
 
+.play-pause-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.151);
+    min-width: 17px;
+    min-height: 16px;
+}
+
 .play-button-container:hover {
     cursor: pointer;
 }
@@ -27,14 +36,18 @@
 
 .album-details-song-container {
     display: flex;
+    gap: 10px;
+    align-items: center;
     padding: 8px 8px;
     border-top: 1px solid lightgrey;
     border-bottom: 1px solid lightgrey;
 }
 
 .album-details-album-title {
-    font-weight: 20;
+    font-weight: 400;
+    font-family: Inter;
     font-size: 30px;
+
 }
 
 .album-details-wishlist-container {
@@ -50,7 +63,10 @@
 }
 
 .album-title-and-owner-container {
-    grid-area: title;
+    display: flex;
+    margin-bottom: 10px;
+    align-items: stretch;
+    flex-direction: column;
 }
 
 .album-images-container {

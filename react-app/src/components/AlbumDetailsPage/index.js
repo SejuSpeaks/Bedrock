@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { fetchGetAlbum } from "../../store/albums";
@@ -8,6 +8,7 @@ import { findLike } from "./findLike";
 import { likeAlbum } from "./likeAlbum";
 
 import './index.css'
+import AudioComponent from "./AudioComponent";
 import ProfileHeader from "../ProfileHeader";
 import ArtistPageNav from "../Navs/ArtistPageNav";
 
@@ -51,16 +52,18 @@ const AlbumDetails = () => {
     }
 
 
-    const [isLoaded, setIsLoaded] = useState(false)
-    const [songPlaying, setSongPlaying] = useState('')
-    const [liked, setLiked] = useState(false)
     const { albumid } = useParams()
     const dispatch = useDispatch()
     const history = useHistory()
+    const [isLoaded, setIsLoaded] = useState(false)
+    const [isPlaying, setIsPlaying] = useState(false)
+    const [liked, setLiked] = useState(false)
     const album = useSelector(state => state.albums)
+    const [songPlaying, setSongPlaying] = useState('')
     const artist = useSelector(state => state.albums.artist)
     let artistId;
-
+    let firstSong;
+    const audioRef = React.createRef()
     //get album by id
     //if album not found push to 404
     useEffect(() => {
@@ -69,6 +72,8 @@ const AlbumDetails = () => {
             .then(res => {
                 if (res.Errors) return history.push('/404')
                 artistId = (res.album.artist.id)
+                firstSong = res.album.songs[0]
+                setSongPlaying(firstSong)
             })
 
             .then(() => checkUserFollowingStatus(artistId))
@@ -79,16 +84,29 @@ const AlbumDetails = () => {
 
     }, [liked])
 
+    // useEffect(() => {
+
+    // }, [])
+
+
+    const play = (song) => {
+        setSongPlaying(song)
+        setIsPlaying(true)
+    }
+
+
 
     //every song on album
-    const allSongs = isLoaded && album?.songs.map(song => {
+    const allSongs = isLoaded && album?.songs.map((song, index) => {
+        const songNumber = index + 1;
         return (
             <div key={song.id} className="album-details-song-container">
-                <div className="play-button-container">
-                    <i onClick={() => setSongPlaying(song.url)} class="fa-solid fa-play"></i>
+                <div className="play-button-container-song">
+                    {!isPlaying && (<div className="play-pause-box"><i onClick={() => play(song)} class="fa-solid fa-play fa-2xs"></i></div>)}
+                    {isPlaying && (<div className="play-pause-box"><i onClick={() => setIsPlaying(false)} class="fa-solid fa-pause fa-2xs"></i></div>)}
                 </div>
                 {/* <button >Play</button> */}
-                <p>{song.name}</p>
+                <p>{songNumber}. {song.name}</p>
             </div>
         );
     })
@@ -99,9 +117,9 @@ const AlbumDetails = () => {
 
     return (
         <div className="album-details-page-container">
-            <ArtistPageNav />
             {isLoaded &&
                 <>
+                    <ArtistPageNav />
                     <div className="album-details-content-container">
 
 
@@ -141,8 +159,11 @@ const AlbumDetails = () => {
                                         <p className="album-details-album-title">{album.details.title}</p>
                                         <p>by {artist.artist_name}</p>
                                     </div>
-                                    {/* <img className="album-secondary-image" src={album.images.length ? album.images[0].url : "https://media.newyorker.com/photos/641b2438c7a56c8e6b95a36d/master/pass/Gopnik-We-Love-NYC.jpg"} alt="album visual" /> */}
-                                    <audio controls src={songPlaying} />
+                                    {/* <audio ref={audioRef} controls src={songPlaying} /> */}
+                                    <div>
+
+                                    </div>
+                                    <AudioComponent songPlaying={songPlaying} isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
                                     <div className="all-songs-container">
                                         {allSongs}
                                     </div>
