@@ -1,0 +1,73 @@
+.inner-audio-component {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+
+.play-button-container {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    cursor: pointer;
+    min-height: 50px;
+    min-width: 54px;
+
+}
+
+.progress {
+    display: flex;
+    flex-direction: column;
+}
+
+.time-stamps-songs {
+    display: flex;
+    font-size: 12px;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    cursor: pointer;
+    --range-progress: 50%;
+
+    width: 200px;
+}
+
+input[type="range"]::-webkit-slider-runnable-track::before {
+    width: var(--range-progress);
+    background-color: #dd1010;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 0;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    background-color: #FFFFFF;
+    border: 1px solid #BFBFBF;
+    height: 12px;
+    width: fit-content;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 12px;
+    width: 24px;
+    border: 1px solid black;
+    border-radius: 2px;
+    z-index: 1;
+    position: relative;
+}
+
+/* input[type="range"]::before {
+    width: var(--range-progress);
+    background-color: orange;
+    color: orange;
+    background: orange;
+} */

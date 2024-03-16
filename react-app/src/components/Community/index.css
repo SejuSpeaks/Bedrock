@@ -1,0 +1,39 @@
+.community-page-whole {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: rgba(211, 211, 211, 0.175);
+    height: 100vh;
+}
+
+.community-page-whole-fr {
+    height: 100vh;
+}
+
+.post-modal-community-posts-container {
+    overflow-y: auto;
+    height: 100vh;
+    background-color: white;
+}
+
+.follow-wall {
+    background-color: #F8F8F8;
+    padding: 12px 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+/* .post-button {
+    position: fixed;
+    bottom: 40%;
+    left: 0;
+    padding: 10px 12px;
+    background-color: #0b5eec;
+    border: none;
+    font-weight: bold;
+    color: white;
+    margin-left: 10px;
+    height: 70px;
+    width: 70px;
+    border-radius: 100%;
+} */

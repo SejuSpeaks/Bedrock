@@ -12,7 +12,7 @@ import UserAlbums from "./albums";
 const UserPage = ({ isLoaded }) => {
     const [tab, setTab] = useState('likes')
     const user = useSelector(state => state.session.user)
-
+    const header = user.header;
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -30,14 +30,18 @@ const UserPage = ({ isLoaded }) => {
             {isLoaded && (
                 <>
 
-                    <div className="profile-header">
+                    <div className="profile-header" style={{ backgroundImage: `url('${header}')` }}>
 
                     </div>
                     <div className="user-profile-image-name-container">
-                        <img className="user-profile-profile-picture" src={user.profile_picture} alt='user profile' />
+
+                        <div className="image-container-user-profile">
+                            <img className="user-profile-profile-picture" src={user.profile_picture} alt='user profile' />
+                        </div>
+
                         <div className="username-bio-container">
-                            <p>{user.username}</p>
-                            <p id="user-bio-user-page">{user.bio}</p>
+                            <p style={{ fontWeight: "bold" }}>{user.username}</p>
+                            <button className="edit-profile-button">Edit Profile</button>
                         </div>
                     </div>
                     <div className="user-profile-tabs-container">

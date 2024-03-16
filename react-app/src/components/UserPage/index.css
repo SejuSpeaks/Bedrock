@@ -1,21 +1,27 @@
 .user-profile-profile-picture {
-    height: 188px;
+    max-height: 210px;
+    width: 210px;
+    margin: -30px 38px 0 0;
     /* image-orientation: none; */
-    width: 195px;
-    position: relative;
-    bottom: 70px;
-    margin-left: 52px;
+    /* position: relative;
+    bottom: 80px; */
 }
 
 .tabactive {
-    text-decoration: underline blue;
-    color: blue;
+    padding: 8px 22px;
     cursor: pointer;
+    color: #333;
+}
+
+.tab {
+    color: #4C72E7;
+    padding: 8px 22px;
+
 }
 
 .tab:hover {
     cursor: pointer;
-    color: blue;
+    color: #333;
 }
 
 #user-bio-user-page {
@@ -25,29 +31,53 @@
 
 .user-profile-tabs-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     border-bottom: 1px solid lightgrey;
     margin-bottom: 19px;
+    margin-left: 30px;
 }
 
 .tab-inside-container {
     display: flex;
     justify-content: flex-start;
     margin-left: 30px;
+    margin-top: 50px;
+}
+
+/* .image-container-user-profile {
+    position: relative;
+    bottom: 80px;
+
+} */
+
+.edit-profile-button {
+    padding: 3px 6px;
+    background-color: white;
+    border: solid grey 1px;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 150px;
 }
 
 .username-bio-container {
     display: flex;
-    flex-direction: column;
+    margin: 16px 18px;
+    gap: 10px;
+    /* color: white; */
+    /* flex-direction: column; */
 }
 
 .profile-header {
-    background-image: url('https://i.pinimg.com/originals/7b/77/ee/7b77ee521e81659fbfffedee7d5ce04e.jpg');
     height: 150px;
+    width: 100%;
 }
 
 .user-profile-image-name-container {
     display: flex;
+    align-items: flex-start;
+    padding-bottom: 20px;
+    max-height: 240px;
+    margin-left: 30px;
     /* font-weight: bold; */
     font-size: 30px;
     gap: 10px;

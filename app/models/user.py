@@ -12,6 +12,9 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
+    at = db.Column(db.String(50), nullable=False, unique=True)
+    header = db.Column(db.String)
+    city = db.Column(db.String(255))
     hashed_password = db.Column(db.String(255), nullable=False)
     artist_account = db.Column(db.BOOLEAN, default=False)
     artist_name = db.Column(db.String(255), unique=True)
@@ -52,6 +55,7 @@ class User(db.Model, UserMixin):
             'community_id': community_id,
             'artist_name': self.artist_name,
             'bio': self.bio,
+            'city':self.city,
             'profile_picture':self.profile_picture,
             'albums': [album.to_dict() for album in self.albums]
         }

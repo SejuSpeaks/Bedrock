@@ -13,10 +13,26 @@ def seed_posts():
     post3 = Post(
         user_id = 2, community_id=1 ,text='We love a good album'
     )
+    post4 = Post(
+        user_id = 2, community_id=1 ,text='I really wanna make it out there for the new show lets see'
+    )
+    post5 = Post(
+        user_id = 3, community_id=1 ,text='I see the platoform keeps imporving wow this is amazing more more more'
+    )
+    post6 = Post(
+        user_id = 3, community_id=1 ,text='That new Pinball project kinda ehh replay value had been aight'
+    )
+    post7 = Post(
+        user_id = 3, community_id=1 ,text='This is the post of all post the post that will save this community and put us on the map'
+    )
 
     db.session.add(post1)
     db.session.add(post2)
     db.session.add(post3)
+    db.session.add(post4)
+    db.session.add(post5)
+    db.session.add(post6)
+    db.session.add(post7)
     db.session.commit()
 
 

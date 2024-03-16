@@ -22,8 +22,10 @@ class Post(db.Model):
         return {
             'id': self.id,
             'owner_username': self.owner.username,
+            'owner_at':self.owner.at,
             'owner_profile_picture': self.owner.profile_picture,
             'likes': len(self.likes),
             'post_owner': self.user_id,
             'text': self.text,
+            'post_images': [image.to_dict() for image in self.post_images]
         }

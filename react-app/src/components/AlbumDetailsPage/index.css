@@ -1,12 +1,29 @@
-.album-details-page-container {
+.inner-album-details {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: #F8F8F8;
+}
 
+.page-container-album-details {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    flex-wrap: wrap;
+    background-color: #F8F8F8;
 }
 
 .play-button-container {
     padding: 0px 5px;
+}
+
+.play-pause-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.151);
+    min-width: 17px;
+    min-height: 16px;
 }
 
 .play-button-container:hover {
@@ -14,27 +31,46 @@
 }
 
 .album-details-container {
-    grid-area: album;
+    margin: 0 26px 30px 0;
+}
+
+.background-color-container {
+    background-color: white;
+}
+
+.left-side-album-details {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.most-inner-container-album-details {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    background-color: rgba(92, 78, 78, 0.368);
 }
 
 .album-details-content-container {
-    margin-top: 45px;
     display: flex;
-    gap: 58px;
-    flex-direction: row-reverse;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-around;
 }
+
 
 .album-details-song-container {
     display: flex;
+    gap: 10px;
+    align-items: center;
     padding: 8px 8px;
     border-top: 1px solid lightgrey;
     border-bottom: 1px solid lightgrey;
 }
 
 .album-details-album-title {
-    font-weight: 20;
+    font-weight: 400;
+    font-family: Inter;
     font-size: 30px;
+
 }
 
 .album-details-wishlist-container {
@@ -50,7 +86,10 @@
 }
 
 .album-title-and-owner-container {
-    grid-area: title;
+    display: flex;
+    margin-bottom: 10px;
+    align-items: stretch;
+    flex-direction: column;
 }
 
 .album-images-container {
@@ -75,9 +114,4 @@
     margin-top: 20px;
     height: 220px;
     width: 340px;
-}
-
-.content-container-album-details {
-    display: flex;
-    flex-direction: row-reverse;
 }

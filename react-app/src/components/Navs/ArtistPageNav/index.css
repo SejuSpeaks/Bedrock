@@ -1,0 +1,24 @@
+.nav-links-container-artist {
+    background-color: #E6E6E6;
+    text-decoration: none;
+    padding: 8px 2px;
+    border-bottom: lightgrey solid 1px;
+    text-decoration: none;
+    list-style: none;
+}
+
+.inner-nav-links {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+    margin-left: 20px;
+}
+
+.nav-link-container-nav {
+    padding: 2px 15px 0px;
+}
+
+.navlinks {
+    text-decoration: none;
+    color: black;
+}

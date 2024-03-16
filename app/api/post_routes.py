@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import Post, Comment, Community,Like, Following, community_users, db
+from app.models import Post, Comment, Community,Like, PostImage ,Following, community_users, db
 from flask_login import current_user, login_required
 from ..forms.create_post import Post_Form
+from ..forms.post_image import PostImageForm
 from ..forms.comment_form import CommentForm
 from .auth_routes import validation_errors_to_error_messages
 
@@ -192,6 +193,37 @@ def post_post(community_id):
         return {'post': post.to_dict()}
 
     return{'Errors': validation_errors_to_error_messages(form.errors)}
+
+#ADD Image To POST
+@posts_routes.route('/<int:community_id>/<int:post_id>/images', methods=['POST'])
+@login_required
+def add_image_to_post(community_id, post_id):
+
+    community = Community.query.get(community_id)
+    post = Post.query.get(post_id)
+    user_id = current_user.id
+
+    if post.user_id != user_id: return {"Errors": "Post dosent belong to you"}
+    if not community : return { "Errors": "Community dosent exist"}
+    if len(post.post_images) >= 4 : return {"Errors":"Post already has 4 images"}
+
+    form = PostImageForm()
+
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+
+        post_image = PostImage(
+            url = form.url.data,
+            post_id = post_id
+        )
+
+        db.session.add(post_image)
+        db.session.commit()
+        return {"post_image":post_image.to_dict()}
+
+    return{'Errors': validation_errors_to_error_messages(form.errors)}
+
 
 
 

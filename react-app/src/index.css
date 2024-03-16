@@ -10,6 +10,9 @@
 }
 
 
+*:focus {
+    outline: 0 !important;
+}
 
 #root {
     height: 100vh;
@@ -24,5 +27,5 @@
 
 .navlink {
     text-decoration: none;
-    color: black;
+    color: white;
 }
