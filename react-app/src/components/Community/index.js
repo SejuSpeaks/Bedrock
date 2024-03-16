@@ -37,20 +37,20 @@ const Community = () => {
     return (
         <div className="community-page-whole-fr" >
             {isLoaded && (<>
-                <ArtistPageNav />
 
                 <div className="community-page-whole">
 
                     <div className="post-modal-community-posts-container">
+                        <ArtistPageNav />
                         {!isFollowing && !validateUser() && <FollowWall />}
                         <PostModal artist={artist} setIsPosted={setIsPosted} isFollowing={isFollowing} />
                         <CommunityPosts posted={posted} isFollowing={isFollowing} />
                     </div>
 
-                    <div>
+                    {/* <div>
                         <ProfileHeader followArtist={followArtist} followsArtist={isFollowing} setIsFollowing={setIsFollowing} />
-                        {/* <CommunityHeader isFollowing={isFollowing} setIsFollowing={setIsFollowing} followArtist={followArtist} /> */}
-                    </div>
+                    </div> */}
+
                 </div>
 
                 {/* <OpenModalButton modalComponent={<PostModal />} buttonText={"Post"} className={"post-button"}></OpenModalButton> */}

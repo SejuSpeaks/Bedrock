@@ -7,11 +7,15 @@
 }
 
 .genre-tab {
-    border: 1px solid grey;
+    border: 1px solid rgba(128, 128, 128, 0.272);
     border-radius: 10px;
     padding: 8px 60px;
     background-color: white;
 
+}
+
+.genre-tab:hover {
+    border: 1px solid black;
 }
 
 .tabs-container-landing-page {

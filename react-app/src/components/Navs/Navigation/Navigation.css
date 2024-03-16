@@ -1,11 +1,11 @@
 .profile-dropdown {
   list-style: none;
   position: absolute;
-  padding: 10px 12px;
+  /* padding: 10px 12px; */
   right: 0px;
   /* box-sizing: border-box; */
   max-width: fit-content;
-  min-height: 100px;
+  /* min-height: 270px; */
   top: 70px;
   background-color: white;
   border-radius: 10px;
@@ -13,6 +13,7 @@
 
 .dropdown-container {
   border-radius: 10px;
+  border: 1px lightgrey solid;
 }
 
 .hidden {
@@ -20,11 +21,23 @@
 }
 
 .profile-buttons {
-  padding: 3px 12px;
-  background-color: #2267DF;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   border: none;
+  min-height: 40px;
   border-radius: 5px;
-  color: white;
+  padding: 0px 20px;
+  color: black;
+}
+
+.profile-buttons-none {
+  display: none;
+}
+
+.profile-buttons:hover {
+  cursor: pointer;
+  background-color: #b8b8b856;
 }
 
 .search-bar {
@@ -41,10 +54,9 @@
 .nav-container {
   position: sticky;
   max-height: 50px;
-  margin-bottom: 3px;
   top: 0;
   z-index: 2;
-  background-color: white;
+  background-color: #250e53e0;
   border-bottom: 1px solid rgba(164, 163, 163, 0.416);
   align-items: center;
   display: flex;
@@ -80,7 +92,9 @@
   align-items: center;
   gap: 10px;
   padding: 15px 0px;
+  font-weight: 600;
   margin: 0px 50px 0px 0px;
+  color: white;
 }
 
 .nav-logo-container:hover {

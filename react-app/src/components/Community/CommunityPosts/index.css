@@ -36,11 +36,20 @@
 
 .post-box-header-info {
     display: flex;
-    gap: 10px;
+    gap: 5px;
 }
 
 .all-posts-container {
     display: flex;
     flex-direction: column;
     /* gap: 10px; */
+}
+
+.user_at {
+    color: rgb(146, 143, 143);
+
+}
+
+.user_username {
+    font-weight: 600;
 }
