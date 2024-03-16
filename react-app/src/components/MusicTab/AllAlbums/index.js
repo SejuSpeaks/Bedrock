@@ -23,7 +23,9 @@ const AllAlbums = () => {
     const allAlbums = isLoaded && Object.values(albums).map(album => {
         return (
             <div key={album.id} onClick={() => history.push(`/artists/${artistid}/albums/${album.id}`)} className="music-tab-album-info-container">
-                <img className="music-tab-album-display" src={album.cover} />
+                <div className="album-cover-wrapper-all-albums">
+                    <img className="music-tab-album-display" src={album.cover} />
+                </div>
                 <p>{album.title}</p>
             </div>
         );
@@ -33,7 +35,7 @@ const AllAlbums = () => {
 
         <div>
             {isLoaded && (
-                <div className="music-tab-page-container">
+                <div className="all-albums-container">
                     {allAlbums}
                 </div>
             )}

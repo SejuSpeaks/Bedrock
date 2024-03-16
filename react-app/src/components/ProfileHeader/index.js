@@ -48,9 +48,14 @@ const ProfileHeader = ({ followArtist, followsArtist, setIsFollowing }) => {
         <div className='profile-header-container-whole'>
             {isLoaded && (
                 <>
-                    <div style={{ display: "flex", flexDirection: 'column' }}>
-                        <img className="profile-header-image" src={artist.profile_picture} alt="profilepicture" />
-                        <p>{artist.artist_name}</p>
+
+                    <div className='bio-container'>
+                        <div className='profile-header-image-container'>
+                            <img className="profile-header-image" src={artist.profile_picture} alt="profilepicture" />
+                        </div>
+                        <p id='artist-name-header'>{artist.artist_name}</p>
+                        <p>{artist.city}</p>
+
                         {!userIsOwner && (
                             <button onClick={() => followArtist(followsArtist, setIsFollowing, artist.id)} className={followButtonClass}>{followsArtist ? "Following" : "Follow"}</button>
                         )}
@@ -58,8 +63,9 @@ const ProfileHeader = ({ followArtist, followsArtist, setIsFollowing }) => {
                             <button className={followButtonClass}>{'Owner'}</button>
                         )}
                     </div>
+
                     {artist.bio && (<>
-                        <div>
+                        <div className='artist-bio-header'>
                             <p className={isOpen ? 'artist-bio-profile-headers-open' : "artist-bio-profile-headers"}>{artist.bio}</p>
                             <p onClick={() => setIsOpen(!isOpen)} className={'artist-bio-profile-headers-more'}>{isOpen ? "see less" : "see more"}</p>
                         </div>

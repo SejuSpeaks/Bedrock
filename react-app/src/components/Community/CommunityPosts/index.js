@@ -3,11 +3,14 @@ import { fetchGetArtist } from "../../../store/artist";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import './index.css';
 
+
 const CommunityPosts = ({ isFollowing, posted }) => {
     const { artistid } = useParams()
+    const history = useHistory()
     const [isLoaded, setIsLoaded] = useState(false)
     const dispatch = useDispatch();
 
@@ -27,14 +30,18 @@ const CommunityPosts = ({ isFollowing, posted }) => {
         else return false;
     }
 
+    const redirect = (post) => {
+        return history.push(`/artists/${artist.id}/community/${post.id}`)
+    }
+
     const allPosts = Object.values(posts).map(post => {
         let images;
-        if (post.post_images.length) {
+        if (post.post_images && post.post_images.length) {
             images = post.post_images
         }
 
         return (
-            <div className="post-box" key={post.id}>
+            <div className="post-box" key={post.id} onClick={() => redirect(post)}>
 
                 <div>
                     <img className="post-profile-picture" src={post.owner_profile_picture} />
@@ -42,9 +49,11 @@ const CommunityPosts = ({ isFollowing, posted }) => {
 
                 <div className="post-box-content">
                     <div className="post-box-header-info">
-                        <p>{post.owner_username}</p>
-                        <p>March 16</p>
+                        {/* <p className="user_username">{post.owner_username}</p> */}
+                        <p className="user_at">@{post.owner_at}</p>
+                        {/* <p>March 16</p> */}
                     </div>
+
                     <p>{post.text}</p>
                     <div>
                         <img className="post-image" src={images ? post.post_images[0].url : ""} />

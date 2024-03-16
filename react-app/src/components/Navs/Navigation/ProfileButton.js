@@ -35,6 +35,7 @@ function ProfileButton({ isLoaded, user }) {
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+  const communityClass = "profile-buttons" + (user.artist_account ? "" : "none")
   const closeMenu = () => setShowMenu(false);
 
   return (
@@ -48,13 +49,23 @@ function ProfileButton({ isLoaded, user }) {
           {user && (
             <>
               <div className="dropdown-container">
-                <li>Hello {user.username}</li>
-                <li>{user.email}</li>
+                {/* <li>Hello {user.username}</li>
+                <li>{user.email}</li> */}
 
                 <div className="profile-buttons-profile-dropdown">
-                  <button className="profile-buttons" onClick={() => history.push('/current')}>Profile</button>
-                  {user.artist_account && (<button className="profile-buttons" onClick={() => history.push(`/artists/${user.id}/community`)}>Community</button>)}
-                  <button className="profile-buttons" onClick={handleLogout}>Log Out</button>
+
+                  <div className="profile-buttons">
+                    <p onClick={() => history.push('/current')}>Profile</p>
+                  </div>
+
+                  <div className={communityClass}>
+                    {user.artist_account && (<p onClick={() => history.push(`/artists/${user.id}/community`)}>Community</p>)}
+                  </div>
+
+                  <div className="profile-buttons">
+                    <p onClick={handleLogout}>Log Out</p>
+                  </div>
+
                 </div>
 
               </div>

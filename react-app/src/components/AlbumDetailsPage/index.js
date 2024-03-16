@@ -6,6 +6,7 @@ import { fetchGetAlbum } from "../../store/albums";
 import { useParams } from "react-router-dom";
 import { findLike } from "./findLike";
 import { likeAlbum } from "./likeAlbum";
+import { followArtist, checkFollow } from '../Community/followArtist'
 
 import './index.css'
 import AudioComponent from "./AudioComponent";
@@ -15,41 +16,41 @@ import ArtistPageNav from "../Navs/ArtistPageNav";
 const AlbumDetails = () => {
     const user = useSelector(state => state.session.user)
     //HEADER SUBSCRIBER FUNCTIONS
-    const [followsArtist, setFollowsArtist] = useState(false)
+    const [isFollowing, setIsFollowing] = useState(false)
 
-    const checkUserFollowingStatus = async id => {
-        const response = await fetch(`/api/current/following/${id}`)
+    // const checkUserFollowingStatus = async id => {
+    //     const response = await fetch(`/api/current/following/${id}`)
 
-        if (response.ok) {
-            const data = await response.json()
-            setFollowsArtist(true)
-            return data
-        }
-        else {
-            const data = await response.json()
-        }
-    }
+    //     if (response.ok) {
+    //         const data = await response.json()
+    //         setIsFollowing(true)
+    //         return data
+    //     }
+    //     else {
+    //         const data = await response.json()
+    //     }
+    // }
 
-    //FOLLOW AN ARTIST FUNCTION
-    const followArtist = async (id) => {
-        if (!user) return
+    // //FOLLOW AN ARTIST FUNCTION
+    // const followArtist = async (id) => {
+    //     if (!user) return
 
-        const response = await fetch(`/api/current/following/${id}`, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
+    //     const response = await fetch(`/api/current/following/${id}`, {
+    //         method: 'POST',
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         }
+    //     })
 
-        if (response.ok) {
-            const data = await response.json()
-            setFollowsArtist(!followsArtist)
-            return data
-        }
-        else {
-            const data = await response.json()
-        }
-    }
+    //     if (response.ok) {
+    //         const data = await response.json()
+    //         setFollowsArtist(!followsArtist)
+    //         return data
+    //     }
+    //     else {
+    //         const data = await response.json()
+    //     }
+    // }
 
 
     const { albumid } = useParams()
@@ -76,7 +77,7 @@ const AlbumDetails = () => {
                 setSongPlaying(firstSong)
             })
 
-            .then(() => checkUserFollowingStatus(artistId))
+            .then(() => checkFollow(setIsFollowing, artistId))
             .then(() => findLike(albumid, setLiked))
 
             .then(() => setIsLoaded(true))
@@ -116,23 +117,17 @@ const AlbumDetails = () => {
     const heartStroke = liked ? "none" : "black"
 
     return (
-        <div className="album-details-page-container">
+        <div>
             {isLoaded &&
                 <>
-                    <ArtistPageNav />
-                    <div className="album-details-content-container">
+                    <div className="page-container-album-details" >
+                        <ArtistPageNav />
+                        <div className="content-container-album-details">
 
 
-                        <div className="artist-profile-header-container">
-                            <ProfileHeader followsArtist={followsArtist} followArtist={followArtist} />
-                        </div>
+                            <div className="left-side-album-details">
 
-
-
-                        <div className="album-details-container">
-                            <div className="content-container-album-details">
                                 <div className="album-container-album-details">
-
                                     <img className='album-details-image' src={album.details.cover} alt="album cover" />
                                     {user && (
 
@@ -154,6 +149,7 @@ const AlbumDetails = () => {
                                         </div>
                                     )}
                                 </div>
+
                                 <div className="album-images-container">
                                     <div className="album-title-and-owner-container">
                                         <p className="album-details-album-title">{album.details.title}</p>
@@ -168,14 +164,20 @@ const AlbumDetails = () => {
                                         {allSongs}
                                     </div>
                                 </div>
-                            </div>
 
+                            </div>
+                            <ProfileHeader followArtist={followArtist} followsArtist={isFollowing} setIsFollowing={setIsFollowing} />
 
 
                         </div>
+
                     </div>
+
+
+
                 </>
             }
+
         </div>
     );
 

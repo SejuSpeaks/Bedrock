@@ -55,6 +55,7 @@ class User(db.Model, UserMixin):
             'community_id': community_id,
             'artist_name': self.artist_name,
             'bio': self.bio,
+            'city':self.city,
             'profile_picture':self.profile_picture,
             'albums': [album.to_dict() for album in self.albums]
         }
