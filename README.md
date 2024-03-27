@@ -2,7 +2,7 @@
 - [Website-link](#website-link)
 - [Features](#features)
 - [Tech-Used](#tech-used)
-- [Contant](#contact)
+- [Contact](#contact)
 
 
 ## Description
@@ -95,4 +95,4 @@ Bedrock is a social media music site. Curated for artists to have their own comm
 [Link to Site](https://bedrock.onrender.com/)
 
 ## Contact
- [LinkedIn](www.linkedin.com/in/elvis-bueno-1b943325a)
+ [LinkedIn](https://www.linkedin.com/in/elvis-bueno-1b943325a/)
