@@ -5,3 +5,8 @@
     text-align: left;
     align-content: flex-start;
 }
+
+.signup-input {
+    display: flex;
+    flex-direction: column;
+}
