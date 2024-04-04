@@ -51,6 +51,7 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'artist_account': self.artist_account,
             'username': self.username,
+            'at':self.at,
             'email': self.email,
             'community_id': community_id,
             'artist_name': self.artist_name,

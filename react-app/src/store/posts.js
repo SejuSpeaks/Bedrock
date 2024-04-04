@@ -178,6 +178,7 @@ const posts = (state = {}, action) => {
             return newState
 
         case UPDATE_POST:
+            console.log('too')
             newState = { ...state }
             newState[action.post.id] = action.post
             return newState
