@@ -3,19 +3,25 @@ import { useModal } from "../../../context/Modal";
 
 
 
-const ConfirmDelete = ({ comment_id, deleteComment }) => {
+const ConfirmDelete = ({ comment, deleteComment }) => {
     const { closeModal } = useModal()
 
     const deletion = () => {
-        deleteComment(comment_id)
+        deleteComment(comment.id)
         closeModal()
     }
 
     return (
-        <div>
-            confirm deletion
-            <button onClick={() => deletion()}>Yes</button>
-            <button onClick={closeModal}>No</button>
+        <div className="update-post-modal-container">
+            <div className="delete-post-heading-container">
+                <p>Delete Comment</p>
+            </div>
+
+            <div className="delete-post-buttons-container">
+                <button className="delete-post-buttons-delete" onClick={(e) => deletion(e)}>Yes Delete</button>
+                <button className="delete-post-buttons-keep" onClick={closeModal}>No Keep</button>
+            </div>
+
         </div>
     );
 }
