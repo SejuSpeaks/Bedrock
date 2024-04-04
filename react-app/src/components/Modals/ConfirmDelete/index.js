@@ -12,10 +12,16 @@ const ConfirmDelete = ({ comment, deleteComment }) => {
     }
 
     return (
-        <div>
-            confirm deletion
-            <button onClick={() => deletion()}>Yes</button>
-            <button onClick={closeModal}>No</button>
+        <div className="update-post-modal-container">
+            <div className="delete-post-heading-container">
+                <p>Delete Comment</p>
+            </div>
+
+            <div className="delete-post-buttons-container">
+                <button className="delete-post-buttons-delete" onClick={(e) => deletion(e)}>Yes Delete</button>
+                <button className="delete-post-buttons-keep" onClick={closeModal}>No Keep</button>
+            </div>
+
         </div>
     );
 }

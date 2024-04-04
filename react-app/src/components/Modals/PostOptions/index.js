@@ -57,11 +57,11 @@ function PostOptions({ comment, updateComment, deleteComment }) {
 
                         <div className="profile-buttons-profile-dropdown">
 
-                            <div className="post-options-option">
+                            <div className="post-options-option" onClick={closeMenu}>
                                 <SvgModalUpdate className={"post-options-option"} modalComponent={<EditComment comment={comment} updateComment={updateComment} />} />
                             </div>
 
-                            <div className="post-options-option">
+                            <div className="post-options-option" onClick={closeMenu}>
                                 <TrashSvg className={"post-options-option"} modalComponent={<ConfirmDelete comment={comment} deleteComment={deleteComment} />} />
                             </div>
 

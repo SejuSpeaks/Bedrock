@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ProfileHeader from "../../ProfileHeader";
 import ArtistPageNav from "../../Navs/ArtistPageNav";
 import { useEffect, useState } from "react";
+import UpdateDeletePost from "./UpdateDeletePost";
 import { fetchGetAPost } from "../../../store/posts";
 import { useParams } from "react-router-dom";
 import { fetchGetArtist } from "../../../store/artist";
@@ -11,6 +12,7 @@ import Comments from "../Comments";
 
 const PostDetails = ({ posts }) => {
     const { artistid, postid } = useParams()
+    const [changed, setChanged] = useState(false);
     const dispatch = useDispatch()
 
     const [isLoaded, setIsLoaded] = useState(false)
@@ -23,7 +25,7 @@ const PostDetails = ({ posts }) => {
         dispatch(fetchGetArtist(artistid))
             .then((res) => dispatch(fetchGetAPost(res.community_id, postid)))
             .then(() => setIsLoaded(true))
-    }, [])
+    }, [changed])
 
 
     return (
@@ -46,9 +48,11 @@ const PostDetails = ({ posts }) => {
                                     </div>
                                 </div>
 
-                                <div className="menu-button">
+                                {/* <div className="menu-button">
                                     <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" height={20} width={20} stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m16.5 11.995c0-1.242 1.008-2.25 2.25-2.25s2.25 1.008 2.25 2.25-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25zm-6.75 0c0-1.242 1.008-2.25 2.25-2.25s2.25 1.008 2.25 2.25-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25zm-6.75 0c0-1.242 1.008-2.25 2.25-2.25s2.25 1.008 2.25 2.25-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25z" /></svg>
-                                </div>
+                                </div> */}
+
+                                <UpdateDeletePost post={post} setChanged={setChanged} />
 
                             </div>
                             <div className="post-details-content">
