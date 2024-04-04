@@ -3,11 +3,11 @@ import { useModal } from "../../../context/Modal";
 
 
 
-const ConfirmDelete = ({ comment_id, deleteComment }) => {
+const ConfirmDelete = ({ comment, deleteComment }) => {
     const { closeModal } = useModal()
 
     const deletion = () => {
-        deleteComment(comment_id)
+        deleteComment(comment.id)
         closeModal()
     }
 

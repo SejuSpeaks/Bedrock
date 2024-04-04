@@ -20,6 +20,7 @@ class Comment(db.Model):
             'id': self.id,
             'text':self.text,
             'profile_picture': self.user.profile_picture,
+            'at':self.user.at,
             'username': self.user.username,
             'post_id': self.post_id,
             'user_id': self.user_id
