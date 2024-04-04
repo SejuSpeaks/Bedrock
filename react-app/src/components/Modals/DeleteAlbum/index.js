@@ -16,9 +16,16 @@ const DeleteAlbum = ({ album_id, setUpdateAlbumList }) => {
     }
 
     return (
-        <div>
-            <button onClick={(e) => deleteAlbum(e)}>Yes Delete Album</button>
-            <button>No Keep Album</button>
+        <div className="update-post-modal-container">
+            <div className="delete-post-heading-container">
+                <p>Delete Album</p>
+            </div>
+
+            <div className="delete-post-buttons-container">
+                <button className="delete-post-buttons-delete" onClick={(e) => deleteAlbum(e)}>Yes Delete</button>
+                <button className="delete-post-buttons-keep" onClick={closeModal}>No Keep</button>
+            </div>
+
         </div>
     );
 }

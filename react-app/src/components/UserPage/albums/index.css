@@ -8,7 +8,39 @@
     flex-direction: column;
 }
 
+.album-container-user-page:hover {
+    cursor: pointer;
+}
+
 .image-album-user-page {
     height: 220px;
     width: 220px;
+}
+
+.update-album-buttons {
+    margin-top: 10px;
+    padding: 6px 12px;
+    border: none;
+    width: 100%;
+
+}
+
+.update-album-buttons:hover {
+    cursor: pointer;
+}
+
+.update-album-buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.update-button:hover {
+    background-color: #6a47ac80;
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: rgba(255, 0, 0, 0.615);
+    color: white;
 }
