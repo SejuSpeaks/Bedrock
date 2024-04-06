@@ -57,6 +57,7 @@
         display: none;
     }
 
+
     .landing-page-albums-container {
         /* grid-template-columns: auto; */
         display: flex;
@@ -73,5 +74,24 @@
         overflow-y: auto; */
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width:830px) {
+    .landing-page-album-list-container {
+        grid-template-columns: 1fr 1fr 1fr;
+        border: none;
+    }
+}
+
+@media screen and (max-width:630px) {
+    .landing-page-album-list-container {
+        grid-template-columns: 1fr 1fr;
+        border: none;
+    }
+
+    .landing-page-album-img {
+        height: 150px;
+        width: 150px;
     }
 }
