@@ -48,17 +48,6 @@
 }
 
 
-.landing-page-album-list-container {
-    display: grid;
-    height: 90vh;
-    /* grid-template-columns: 220px 220px 220px 220px 220px; */
-    grid-template-columns: 1fr 1fr 1fr;
-    width: fit-content;
-    border-right: 1px solid grey;
-    overflow-y: auto;
-
-}
-
 ::-webkit-scrollbar {
     display: none;
 }

@@ -33,30 +33,32 @@ function SignupFormPage() {
 
   return (
     <>
-      <h1>Sign Up</h1>
       <form className="signup-form-container" onSubmit={handleSubmit}>
+        <h1 className="login-heading">Sign Up</h1>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
-        <label>
+        <label className="signup-input">
           Email
           <input
+            className='input-field'
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </label>
-        <label>
+        <label className="signup-input">
           Username
           <input
+            className='input-field'
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
         </label>
-        <label>
+        <label className="signup-input">
           Artist Account
           <input
             type="checkbox"
@@ -64,49 +66,54 @@ function SignupFormPage() {
             onChange={(e) => setArtistAccount(e.target.checked)}
           />
         </label>
-        <label>
+        <label className="signup-input">
           Artist Name
           <input
+            className='input-field'
             type="text"
             value={artistName}
             onChange={(e) => setArtistName(e.target.value)}
           />
         </label>
-        <label>
+        <label className="signup-input">
           Profile Picture
           <input
+            className='input-field'
             type="text"
             value={img}
             onChange={(e) => setImg(e.target.value)}
           />
         </label>
-        <label>
+        <label className="signup-input">
           Bio
           <input
+            className='input-field'
             type="text"
             value={bio}
             onChange={(e) => setBio(e.target.value)}
           />
         </label>
-        <label>
+        <label className="signup-input">
           Password
           <input
+            className='input-field'
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </label>
-        <label>
+        <label className="signup-input">
           Confirm Password
           <input
+            className='input-field'
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
         </label>
-        <button type="submit">Sign Up</button>
+        <button className="login-button" type="submit">Sign Up</button>
       </form>
     </>
   );

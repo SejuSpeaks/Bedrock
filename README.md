@@ -2,7 +2,7 @@
 - [Website-link](#website-link)
 - [Features](#features)
 - [Tech-Used](#tech-used)
-- [Contact](#contact)
+- [Contant](#contact)
 
 
 ## Description

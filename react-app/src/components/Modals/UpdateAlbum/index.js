@@ -33,22 +33,22 @@ const UpdateAlbum = ({ album, setUpdateAlbumList }) => {
     }
     return (
         <div>
-            <form onSubmit={(e) => updateAlbum(e)}>
+            <form className='update-album-form' onSubmit={(e) => updateAlbum(e)}>
 
                 <label for='title' >Title: </label>
-                <input id="title" value={title} onChange={(e) => setTitle(e.target.value)}></input>
+                <input className='input-field' id="title" value={title} onChange={(e) => setTitle(e.target.value)}></input>
 
                 <label for='cover'>cover: </label>
-                <input id="cover" value={cover} onChange={(e) => setCover(e.target.value)} ></input>
+                <input className='input-field' id="cover" value={cover} onChange={(e) => setCover(e.target.value)} ></input>
                 <img className="update-album-image" src={cover} />
 
                 <label for='genre'>Genre: </label>
-                <input id='genre' value={genre} onChange={(e) => setGenre(e.target.value)} ></input>
+                <input className='input-field' id='genre' value={genre} onChange={(e) => setGenre(e.target.value)} ></input>
 
                 <label for='description' >Description: </label>
-                <input id="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+                <input className='input-field' id="description" value={description} onChange={(e) => setDescription(e.target.value)} />
 
-                <button>Update Album</button>
+                <button className='update-album-button'>Update Album</button>
             </form>
         </div>
     );

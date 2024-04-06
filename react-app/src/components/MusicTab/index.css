@@ -20,8 +20,11 @@
 }
 
 .music-tab-album-info-container {
-
     margin: 0 26px 30px 0;
+}
+
+.music-tab-album-info-container:hover {
+    cursor: pointer;
 }
 
 .inner-music-tab {

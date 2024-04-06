@@ -1,0 +1,25 @@
+.update-post-modal-container {
+    padding: 20px 40px;
+}
+
+.update-post-form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.update-post-button {
+    padding: 5px 12px;
+    border: none;
+
+}
+
+#modal-content {
+    border-radius: 7px;
+}
+
+.update-post-button:hover {
+    background-color: black;
+    cursor: pointer;
+    color: white;
+}

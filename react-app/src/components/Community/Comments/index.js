@@ -3,12 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchDeleteComment, fetchGetComments, fetchPostComment, fetchUpdateComment } from "../../../store/comments";
 import SvgModalUpdate from "./svgModalButtonUpdate";
+import OptionsModal from "../../Modals/PostOptions/OptionsModal";
 import TrashSvg from "./TrashSvg";
+import PostOptions from "../../Modals/PostOptions";
 import EditComment from "../EditCommentModal";
 import ConfirmDelete from '../../Modals/ConfirmDelete'
 
 
 import './index.css'
+
 
 const Comments = ({ artist }) => {
     const { postid } = useParams()
@@ -28,6 +31,7 @@ const Comments = ({ artist }) => {
             .then(() => setIsLoaded(true))
     }, [commentPosted, dispatch, postid])
 
+    //make helper function
     const updateComment = (comment_id, text) => {
 
         const comment = {
@@ -68,38 +72,56 @@ const Comments = ({ artist }) => {
     const comments = Object.values(commentsState).map(comment => {
         return (
             <div className="post-details-comment-container" key={comment.id}>
-                <div className="user-img-username-container">
-                    <img className="post-profile-picture" src={comment.profile_picture} />
-                    <p>{comment.username}</p>
+
+                <div className="post-details-post-container-header">
+
+                    <div className="picture-and-at-container">
+
+                        <div className="post-details-profile-picture-container">
+                            <img className="post-profile-picture" src={comment.profile_picture} />
+                        </div>
+
+                        <div>
+                            <p className="user_at">@{comment.at}</p>
+                            <p>{comment.username}</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <PostOptions comment={comment} updateComment={updateComment} deleteComment={deleteComment} />
+                    </div>
+
                 </div>
 
                 <p>{comment.text}</p>
-                {user.id === comment.user_id && (
+
+                {/* {user.id === comment.user_id && (
                     <div>
                         <SvgModalUpdate modalComponent={<EditComment comment={comment} updateComment={updateComment} />} />
                         <TrashSvg modalComponent={<ConfirmDelete comment_id={comment.id} deleteComment={deleteComment} />} />
                     </div>
-                )}
+                )} */}
+
             </div>
         );
     })
 
 
     return (
-        <div>
+        <div className="comments-post-details-whole">
             {isLoaded && (
                 <>
                     <div className="comment-input-container">
-                        <div>
-                            <i class="fa-regular fa-message fa-lg"></i>
-                        </div>
-                        <div>
-                            <form className="post-comment-form" onSubmit={(e) => submitComment(e)}>
-                                <input className="post-comment-form-input" value={commentText} onChange={(e) => setCommentText(e.target.value)} placeholder="post a comment" />
-                            </form>
-                        </div>
+                        <form className="post-comment-form" onSubmit={(e) => submitComment(e)}>
+
+                            <img className="comment-input-profile-picture" src={user.profile_picture} />
+                            <input className="post-comment-form-input" value={commentText} onChange={(e) => setCommentText(e.target.value)} placeholder="post a comment" />
+                            <button className="post-button">Post</button>
+
+                        </form>
                     </div>
-                    <div>
+
+                    <div className="all-comments-container">
                         {comments}
                     </div>
                 </>

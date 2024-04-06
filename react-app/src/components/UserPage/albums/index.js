@@ -24,9 +24,9 @@ const UserAlbums = () => {
             <div key={album.id} className="album-container-user-page">
                 <img onClick={() => history.push(`/artists/${album.artist_id}/albums/${album.id}`)} className="image-album-user-page" src={album.cover} alt="album cover" />
 
-                <div>
-                    <OpenModalButton buttonText={'Update'} modalComponent={<UpdateAlbum album={album} setUpdateAlbumList={setUpdateAlbumList} />}></OpenModalButton>
-                    <OpenModalButton buttonText={'Delete'} modalComponent={<DeleteAlbum album_id={album.id} setUpdateAlbumList={setUpdateAlbumList} />} ></OpenModalButton>
+                <div className="update-album-buttons-container">
+                    <OpenModalButton className={'update-album-buttons update-button'} buttonText={'Update'} modalComponent={<UpdateAlbum album={album} setUpdateAlbumList={setUpdateAlbumList} />}></OpenModalButton>
+                    <OpenModalButton className={'update-album-buttons delete-button'} buttonText={'Delete'} modalComponent={<DeleteAlbum album_id={album.id} setUpdateAlbumList={setUpdateAlbumList} />} ></OpenModalButton>
                 </div>
 
             </div>

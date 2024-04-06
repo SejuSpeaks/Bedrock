@@ -36,37 +36,51 @@ function LoginFormPage() {
   }
 
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="login-page-whole">
+      <form onSubmit={handleSubmit} className="login-form">
+        <div className="login-text-container">
+          <h1 className="login-heading">Log In</h1>
+        </div>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label>
-          Email
+
+        <div className="input-login-form">
+          <div className="input-inner">
+            <p>Email</p>
+          </div>
           <input
+            className="input-field"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Password
+        </div>
+
+        <div className="input-login-form">
+          <div>
+            password
+          </div>
           <input
+            className="input-field"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </label>
-        <button type="submit">Log In</button>
+
+        </div>
+
+        <button type="submit" className="login-button">Log In</button>
       </form>
-      <button onClick={(e) => demoUserArtist(e)}>DEMO ARTIST</button>
-      <button onClick={(e) => demoUser(e)}>DEMO USER</button>
-    </>
+      <div className="demo-buttons-container">
+        <button onClick={(e) => demoUserArtist(e)}>DEMO ARTIST</button>
+        <button onClick={(e) => demoUser(e)}>DEMO USER</button>
+      </div>
+    </div>
   );
 }
 
