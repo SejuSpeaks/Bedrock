@@ -55,6 +55,10 @@ function ProfileButton({ isLoaded, user }) {
                 <div className="profile-buttons-profile-dropdown">
 
                   <div className="profile-buttons">
+                    <a href="https://github.com/SejuSpeaks">Meet the Dev</a>
+                  </div>
+
+                  <div className="profile-buttons">
                     <p onClick={() => history.push('/current')}>Profile</p>
                   </div>
 
