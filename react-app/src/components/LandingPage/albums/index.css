@@ -20,7 +20,7 @@
     border: none;
     bottom: 45px;
     left: 5px;
-    background-color: rgba(177, 177, 177, 0.72);
+    background-color: rgba(18, 18, 18, 0.887);
     border-radius: 20px;
     padding: 10px 12px;
 }
@@ -69,4 +69,28 @@
 .landing-page-hot-album {
     height: 350px;
     width: 350px;
+}
+
+
+@media screen and (max-width:1000px) {
+    .landing-page-album-img {
+        height: 200px;
+        width: 200px;
+    }
+
+    .image-and-play-button:hover {
+        display: none;
+    }
+
+    .landing-page-album-title {
+        bottom: 0;
+    }
+}
+
+@media screen and (max-width:630px) and (min-width:200px) {
+
+    .landing-page-album-img {
+        height: 150px;
+        width: 150px;
+    }
 }

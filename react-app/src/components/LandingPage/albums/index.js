@@ -38,10 +38,12 @@ const Albums = ({ selectedtab, setSelectedAlbum, selectedAlbum, setIsPlaying }) 
                         setIsPlaying(false)
                     }}
                         className="landing-page-album-img-buttons">
-                        <i class="fa-solid fa-play"></i>
+                        <i class="fa-solid fa-play" style={{ color: '#ffffff' }}></i>
                     </button>
                 </div>
-                <p className="landing-page-album-title">{album.title} <br /> by {album.artist_username}</p>
+                <div>
+                    <p className="landing-page-album-title">{album.title} <br /> by {album.artist_username}</p>
+                </div>
             </div>
         );
     })
