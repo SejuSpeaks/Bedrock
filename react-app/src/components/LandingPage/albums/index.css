@@ -86,3 +86,11 @@
         bottom: 0;
     }
 }
+
+@media screen and (max-width:630px) and (min-width:200px) {
+
+    .landing-page-album-img {
+        height: 150px;
+        width: 150px;
+    }
+}

@@ -166,7 +166,9 @@ const AlbumDetails = () => {
                                 </div>
 
                             </div>
-                            <ProfileHeader followArtist={followArtist} followsArtist={isFollowing} setIsFollowing={setIsFollowing} />
+                            <div className="profile-header-container-details">
+                                <ProfileHeader followArtist={followArtist} followsArtist={isFollowing} setIsFollowing={setIsFollowing} />
+                            </div>
 
 
                         </div>

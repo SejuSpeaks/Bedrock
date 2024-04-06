@@ -56,6 +56,12 @@
     justify-content: space-around;
 }
 
+.content-container-album-details {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    padding: 30px 30px;
+}
 
 .album-details-song-container {
     display: flex;
@@ -114,4 +120,25 @@
     margin-top: 20px;
     height: 220px;
     width: 340px;
+}
+
+@media screen and (max-width:600px) {
+    .left-side-album-details {
+        flex-direction: column;
+    }
+
+    .album-details-image {
+        height: 100%;
+        width: 100%;
+    }
+
+    .content-container-album-details {
+        flex-direction: column;
+    }
+
+    .profile-header-container-details {
+        display: flex;
+        justify-content: center;
+    }
+
 }
