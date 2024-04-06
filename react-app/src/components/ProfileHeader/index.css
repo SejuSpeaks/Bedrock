@@ -16,8 +16,8 @@
 }
 
 .profile-header-image-container {
-    min-height: 97px;
-    max-height: 120px;
+    /* min-height: 97px;
+    max-height: 120px; */
     width: 120px;
     overflow: hidden;
     position: relative;
@@ -51,12 +51,6 @@
     margin: 0px 30px;
 }
 
-.content-container-album-details {
-    display: flex;
-    justify-content: center;
-    background-color: white;
-    padding: 30px 30px;
-}
 
 .profile-header-follow-button-active {
     width: 100%;
@@ -103,4 +97,26 @@
 #artist-name-header {
     font-weight: 600;
     color: black;
+}
+
+
+@media screen and (max-width:600px) {
+    .profile-header-image-container {
+        width: auto;
+    }
+
+    .profile-header-image {
+        height: 100%;
+        max-height: fit-content;
+        width: 250px;
+    }
+
+    .profile-header-container-whole {
+        width: auto;
+    }
+
+    .profile-header-album-cover {
+        height: 250px;
+        width: 250px;
+    }
 }

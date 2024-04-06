@@ -84,14 +84,10 @@
     }
 }
 
-@media screen and (max-width:630px) {
+@media screen and (max-width:630px) and (min-width:200px) {
     .landing-page-album-list-container {
         grid-template-columns: 1fr 1fr;
         border: none;
     }
 
-    .landing-page-album-img {
-        height: 150px;
-        width: 150px;
-    }
 }
