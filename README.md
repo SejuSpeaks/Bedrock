@@ -86,11 +86,13 @@ Bedrock is a social media music site. Curated for artists to have their own comm
 
 <br>
 
-![Landing Page](https://github.com/SejuSpeaks/Bedrock/assets/80376392/c1851b4d-4241-458e-9866-e6b3f835b3f0)
+![Screenshot 2024-03-27 191548](https://github.com/SejuSpeaks/Bedrock/assets/80376392/100e9965-676f-4479-bb99-0afedc3416fa)
+![Screenshot 2024-03-27 191608](https://github.com/SejuSpeaks/Bedrock/assets/80376392/e0b4d44d-ed40-45fe-b120-7e1a1b7b0634)
+![Screenshot 2024-03-27 191641](https://github.com/SejuSpeaks/Bedrock/assets/80376392/96edc6a4-340c-4d00-b7d6-982910830cff)
 
 
 ## Website Link
 [Link to Site](https://bedrock.onrender.com/)
 
 ## Contact
- [LinkedIn](www.linkedin.com/in/elvis-bueno-1b943325a)
+ [LinkedIn](https://www.linkedin.com/in/elvis-bueno-1b943325a/)
