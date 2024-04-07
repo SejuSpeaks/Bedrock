@@ -81,6 +81,7 @@
     .landing-page-album-list-container {
         grid-template-columns: 1fr 1fr 1fr;
         border: none;
+        height: auto;
     }
 }
 
@@ -88,6 +89,7 @@
     .landing-page-album-list-container {
         grid-template-columns: 1fr 1fr;
         border: none;
+        height: auto;
     }
 
 }

@@ -90,7 +90,11 @@
 @media screen and (max-width:630px) and (min-width:200px) {
 
     .landing-page-album-img {
-        height: 150px;
-        width: 150px;
+        height: 175px;
+        width: 175px;
+    }
+
+    .image-and-play-button:hover {
+        display: none;
     }
 }
