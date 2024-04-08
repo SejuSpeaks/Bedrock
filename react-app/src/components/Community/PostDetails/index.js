@@ -31,13 +31,14 @@ const PostDetails = ({ posts }) => {
     return (
         <div className="post-details-page">
 
-            <div className="post-details-nav-bar-div">
-                <ArtistPageNav />
-            </div>
 
             {isLoaded && (
 
                 <div className="post-details-continaer">
+
+                    <div className="post-details-nav-bar-div">
+                        <ArtistPageNav />
+                    </div>
 
                     <div className="post-details-post-container">
 
@@ -53,11 +54,13 @@ const PostDetails = ({ posts }) => {
                                         <p className="user_at">@{post.owner_at}</p>
                                     </div>
                                 </div>
+
                                 <UpdateDeletePost post={post} setChanged={setChanged} />
+
                             </div>
 
                             <div className="post-details-content">
-                                <p>{post.text}</p>
+                                <p className="post-text">{post.text}</p>
                                 <img className="post-details-image" src={post.post_images.length ? post.post_images[0].url : ""} />
                             </div>
 
