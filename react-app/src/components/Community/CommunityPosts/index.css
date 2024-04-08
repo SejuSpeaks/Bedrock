@@ -53,3 +53,14 @@
 .user_username {
     font-weight: 600;
 }
+
+
+@media screen and (max-width:600px) {
+    .post-box {
+        width: auto;
+    }
+
+    .post-image {
+        min-width: 200px;
+    }
+}
