@@ -13,3 +13,14 @@
     grid-template-columns: repeat(6, 1fr);
     gap: 20px;
 }
+
+@media screen and (max-width:600px) {
+    .follower-tab-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .follower-image {
+        height: 50px;
+        width: 50px;
+    }
+}

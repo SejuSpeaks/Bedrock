@@ -44,3 +44,16 @@
     background-color: rgba(255, 0, 0, 0.615);
     color: white;
 }
+
+
+@media screen and (max-width:600px) {
+    .image-album-user-page {
+        height: 150px;
+        width: 150px;
+    }
+
+    .all-user-albums-user-page-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}

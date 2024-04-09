@@ -106,6 +106,7 @@
     }
 
     .profile-header-image {
+        border-radius: 5px;
         height: 100%;
         max-height: fit-content;
         width: 250px;
@@ -115,6 +116,9 @@
         width: auto;
     }
 
+    .all-albums-profile-header {
+        display: none;
+    }
 
     .profile-header-album-cover {
         height: 150px;

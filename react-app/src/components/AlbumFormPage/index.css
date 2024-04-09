@@ -109,3 +109,10 @@ input[type="file"] {
     display: inline-block;
     cursor: pointer;
 }
+
+
+@media screen and (max-width:600px) {
+    .create-album-form-header {
+        flex-direction: column;
+    }
+}
