@@ -51,6 +51,7 @@
 } */
 
 .edit-profile-button {
+    display: none;
     padding: 3px 6px;
     background-color: white;
     border: solid grey 1px;
@@ -81,4 +82,20 @@
     /* font-weight: bold; */
     font-size: 30px;
     gap: 10px;
+}
+
+@media screen and (max-width:600px) {
+    .user-profile-profile-picture {
+        width: 157px;
+        border-radius: 10px;
+    }
+
+    .tab-inside-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .user-profile-image-name-container {
+        margin-left: 20px;
+    }
 }

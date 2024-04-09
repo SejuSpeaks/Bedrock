@@ -38,3 +38,15 @@
     min-width: fit-content;
     padding: 30px 30px;
 }
+
+
+@media screen and (max-width:600px) {
+    .all-albums-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .profile-header-container-music-tab {
+        display: none;
+    }
+}
