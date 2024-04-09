@@ -48,8 +48,10 @@
 .post-details-image {
     max-width: 600px;
     border-radius: 24px;
+    <<<<<<< HEAD
     /* min-width: 400px; */
-    height: auto;
+    =======min-width: 400px;
+    >>>>>>>main height: auto;
     padding: 10px;
 }
 
@@ -88,19 +90,10 @@
 }
 
 
-
-.post-text {
-    padding: 0px 0px 10px 10px;
-}
-
 @media screen and (max-width:600px) {
 
     .post-details-inner {
-        width: 100%;
-    }
-
-    .post-details-post-container-header {
-        padding: 0px 10px 10px 10px;
+        width: auto;
     }
 
     .post-details-image {

@@ -31,14 +31,13 @@ const PostDetails = ({ posts }) => {
     return (
         <div className="post-details-page">
 
+            <div className="post-details-nav-bar-div">
+                <ArtistPageNav />
+            </div>
 
             {isLoaded && (
 
                 <div className="post-details-continaer">
-
-                    <div className="post-details-nav-bar-div">
-                        <ArtistPageNav />
-                    </div>
 
                     <div className="post-details-post-container">
 
@@ -66,9 +65,7 @@ const PostDetails = ({ posts }) => {
 
                     </div>
 
-                    <div className="comments-container-post-details">
-                        <Comments artist={artist} />
-                    </div>
+                    <Comments artist={artist} />
 
                 </div>
             )}
