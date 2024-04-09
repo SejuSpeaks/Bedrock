@@ -68,7 +68,9 @@ const PostDetails = ({ posts }) => {
 
                     </div>
 
-                    <Comments artist={artist} />
+                    <div className="comments-container-post-details">
+                        <Comments artist={artist} />
+                    </div>
 
                 </div>
             )}
