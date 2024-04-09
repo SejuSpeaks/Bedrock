@@ -87,13 +87,16 @@ const Comments = ({ artist }) => {
                         </div>
                     </div>
 
-                    <div>
+                    <div className="options-container">
                         <PostOptions comment={comment} updateComment={updateComment} deleteComment={deleteComment} />
                     </div>
 
+
                 </div>
 
-                <p>{comment.text}</p>
+                <div className="comment-content">
+                    <p>{comment.text}</p>
+                </div>
 
                 {/* {user.id === comment.user_id && (
                     <div>

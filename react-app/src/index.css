@@ -17,6 +17,7 @@
 #root {
     height: 100vh;
     width: 100%;
+    overflow-x: hidden;
     /* overflow-y: hidden; */
 }
 
@@ -28,4 +29,12 @@
 .navlink {
     color: black;
     text-decoration: none;
+}
+
+
+@media screen and (max-width:600px) {
+    .album-image {
+        height: 150px;
+        width: 150px;
+    }
 }

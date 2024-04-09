@@ -106,6 +106,7 @@
     }
 
     .profile-header-image {
+        border-radius: 5px;
         height: 100%;
         max-height: fit-content;
         width: 250px;

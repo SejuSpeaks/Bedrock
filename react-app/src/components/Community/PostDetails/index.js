@@ -57,7 +57,7 @@ const PostDetails = ({ posts }) => {
                             </div>
 
                             <div className="post-details-content">
-                                <p>{post.text}</p>
+                                <p className="post-text">{post.text}</p>
                                 <img className="post-details-image" src={post.post_images.length ? post.post_images[0].url : ""} />
                             </div>
 

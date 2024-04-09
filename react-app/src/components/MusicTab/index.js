@@ -42,7 +42,9 @@ const MusicTab = () => {
                 <ArtistPageNav />
                 <div className="header-and-all-albums-container">
                     <AllAlbums />
-                    <ProfileHeader followArtist={followArtist} followsArtist={isFollowing} setIsFollowing={setIsFollowing} />
+                    <div className="profile-header-container-music-tab">
+                        <ProfileHeader followArtist={followArtist} followsArtist={isFollowing} setIsFollowing={setIsFollowing} />
+                    </div>
                 </div>
 
             </div>

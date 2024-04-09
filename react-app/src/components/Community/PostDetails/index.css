@@ -30,21 +30,28 @@
     display: flex;
 }
 
+.comments-container-post-details {
+    max-width: 700px;
+    width: 100%;
+}
+
 .post-details-inner {
-    min-width: 620px;
+    /* min-width: 620px; */
     background-color: white;
     padding: 24px;
 }
 
 .post-details-nav-bar-div {
-    width: 700px;
+    width: 100%;
 }
 
 .post-details-image {
     max-width: 600px;
     border-radius: 24px;
-    min-width: 400px;
-    height: auto;
+    <<<<<<< HEAD
+    /* min-width: 400px; */
+    =======min-width: 400px;
+    >>>>>>>main height: auto;
     padding: 10px;
 }
 
@@ -60,7 +67,8 @@
 }
 
 .post-details-continaer {
-    min-width: 700px;
+    /* min-width: 700px; */
+    width: 100%;
     background-color: #FFFF;
     display: flex;
     flex-direction: column;
