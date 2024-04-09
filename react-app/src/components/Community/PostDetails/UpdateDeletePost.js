@@ -34,8 +34,8 @@ const UpdateDeletePost = ({ post, setChanged }) => {
     }, [showMenu])
 
     return (
-        <div>
-            {user.id === post.post_owner && (<>
+        <div className="options-menu-popup-outer">
+            {user.id === post.post_owner && !showMenu && (<>
 
                 <div className="menu-button" >
                     <svg className="post-options-svg" onClick={() => toggleMenu()} clipRule="evenodd" fillRule="evenodd" strokeLinejoin="round" height={20} width={20} strokeMiterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

@@ -31,13 +31,14 @@ const PostDetails = ({ posts }) => {
     return (
         <div className="post-details-page">
 
-            <div className="post-details-nav-bar-div">
-                <ArtistPageNav />
-            </div>
 
             {isLoaded && (
 
                 <div className="post-details-continaer">
+
+                    <div className="post-details-nav-bar-div">
+                        <ArtistPageNav />
+                    </div>
 
                     <div className="post-details-post-container">
 
@@ -57,7 +58,7 @@ const PostDetails = ({ posts }) => {
                             </div>
 
                             <div className="post-details-content">
-                                <p>{post.text}</p>
+                                <p className="post-text">{post.text}</p>
                                 <img className="post-details-image" src={post.post_images.length ? post.post_images[0].url : ""} />
                             </div>
 
@@ -65,7 +66,9 @@ const PostDetails = ({ posts }) => {
 
                     </div>
 
-                    <Comments artist={artist} />
+                    <div className="comments-container-post-details">
+                        <Comments artist={artist} />
+                    </div>
 
                 </div>
             )}
