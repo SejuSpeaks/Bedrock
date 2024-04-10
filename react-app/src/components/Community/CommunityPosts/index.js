@@ -1,6 +1,6 @@
 import { fetchAllPosts } from "../../../store/posts";
 import { fetchGetArtist } from "../../../store/artist";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
@@ -13,6 +13,7 @@ const CommunityPosts = ({ isFollowing, posted }) => {
     const history = useHistory()
     const [isLoaded, setIsLoaded] = useState(false)
     const dispatch = useDispatch();
+    const bodyRef = useRef();
 
     const posts = useSelector(state => state.posts)
     const artist = useSelector(state => state.artist)
@@ -31,6 +32,11 @@ const CommunityPosts = ({ isFollowing, posted }) => {
     }
 
     const redirect = (post) => {
+        const positionOfElement = bodyRef.current.getBoundingClientRect()
+        const { y } = positionOfElement
+        //replace with session storage
+        document.cookie = `y=${y}`
+        console.log(y)
         return history.push(`/artists/${artist.id}/community/${post.id}`)
     }
 
@@ -55,6 +61,7 @@ const CommunityPosts = ({ isFollowing, posted }) => {
                     </div>
 
                     <p>{post.text}</p>
+
                     <div>
                         <img className="post-image" src={images ? post.post_images[0].url : ""} />
                     </div>
@@ -70,7 +77,7 @@ const CommunityPosts = ({ isFollowing, posted }) => {
                         >
                             <path
                                 d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                                stroke-width="2" // Adjust the stroke width as needed
+                                stroke-width="2"
                             />
                         </svg>
 
@@ -90,7 +97,7 @@ const CommunityPosts = ({ isFollowing, posted }) => {
     return (
         <div className="all-posts-container-whole-page">
             {isLoaded && userValidation() && (<>
-                <div className="all-posts-container">
+                <div ref={bodyRef} className="all-posts-container">
                     {allPosts}
                 </div>
             </>)}
