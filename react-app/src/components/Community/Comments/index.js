@@ -116,8 +116,9 @@ const Comments = ({ artist }) => {
                 <>
                     <div className="comment-input-container">
                         <form className="post-comment-form" onSubmit={(e) => submitComment(e)}>
-
-                            <img className="comment-input-profile-picture" src={user.profile_picture} />
+                            <div className="image-container-post-comment">
+                                <img className="comment-input-profile-picture" src={user.profile_picture} />
+                            </div>
                             <input className="post-comment-form-input" value={commentText} onChange={(e) => setCommentText(e.target.value)} placeholder="post a comment" />
                             <button className="post-button">Post</button>
 

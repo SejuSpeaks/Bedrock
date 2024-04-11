@@ -46,6 +46,10 @@
         flex-direction: column;
     }
 
+    .music-tab-page-container {
+        background-color: white;
+    }
+
     .profile-header-container-music-tab {
         display: none;
     }
