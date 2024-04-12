@@ -7,20 +7,22 @@ export const post = async (dispatch, post, communityid) => {
 }
 
 
-export const postImage = async (community_id, post_id, payload) => {
+export const postImage = async (community_id, post_id, payload, stateChange) => {
+
+
+    const formData = new FormData()
+    formData.append('file', payload.file)
+
     const res = await fetch(`http://localhost:3000/api/posts/${community_id}/${post_id}/images`, {
         method: 'POST',
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
+        body: formData
     })
 
-    console.log('resRES', res)
 
     if (res.ok) {
         const data = await res.json()
-
+        console.log('fetch for image in post', data)
+        stateChange(true)
         if (data.Errors) {
             console.log(data.Errors)
             return data.Errors

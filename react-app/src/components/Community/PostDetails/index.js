@@ -9,11 +9,13 @@ import { fetchGetArtist } from "../../../store/artist";
 
 import './index.css'
 import Comments from "../Comments";
+import { useHistory } from "react-router-dom";
 
 const PostDetails = ({ posts }) => {
     const { artistid, postid } = useParams()
     const [changed, setChanged] = useState(false);
     const dispatch = useDispatch()
+    const history = useHistory();
 
     const [isLoaded, setIsLoaded] = useState(false)
 
@@ -26,6 +28,10 @@ const PostDetails = ({ posts }) => {
             .then((res) => dispatch(fetchGetAPost(res.community_id, postid)))
             .then(() => setIsLoaded(true))
     }, [changed])
+
+    const backButtonPressed = () => {
+
+    }
 
 
     return (
@@ -42,7 +48,17 @@ const PostDetails = ({ posts }) => {
 
                     <div className="post-details-post-container">
 
+
                         <div className="post-details-inner">
+                            {/* post header */}
+                            <div className="post-header-back-button">
+                                <div className="post-header-inner">
+                                    <div className="back-arrow-container-post">
+                                        <svg onClick={() => history.push(`/artists/${artist.id}/community`)} width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M2.117 12l7.527 6.235-.644.765-9-7.521 9-7.479.645.764-7.529 6.236h21.884v1h-21.883z" /></svg>
+                                    </div>
+                                    <p className="post-header-heading">Post</p>
+                                </div>
+                            </div>
 
                             <div className="post-details-post-container-header">
                                 <div className="picture-and-at-container">

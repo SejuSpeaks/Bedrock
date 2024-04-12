@@ -13,6 +13,7 @@
 .post-modal-community-posts-container {
     overflow-y: auto;
     height: 100vh;
+    width: 50%;
     background-color: white;
 }
 
@@ -37,3 +38,9 @@
     width: 70px;
     border-radius: 100%;
 } */
+
+@media screen and (max-width:600px) {
+    .post-modal-community-posts-container {
+        width: 100%;
+    }
+}
