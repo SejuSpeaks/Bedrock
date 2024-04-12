@@ -20,6 +20,7 @@ const CommunityPosts = ({ isFollowing, posted }) => {
     const user = useSelector(state => state.session.user)
 
     useEffect(() => {
+        console.log('refreshed')
         dispatch(fetchGetArtist(artistid))
             .then((artist) => dispatch(fetchAllPosts(artist.community_id)))
             .then(() => setIsLoaded(true))

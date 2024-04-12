@@ -4,6 +4,7 @@ from flask_login import current_user, login_required
 from ..forms.create_post import Post_Form
 from ..forms.post_image import PostImageForm
 from ..forms.comment_form import CommentForm
+from .aws_s3 import upload_image_file_to_s3, remove_file_from_s3, get_unique_filename
 from .auth_routes import validation_errors_to_error_messages
 
 posts_routes = Blueprint('posts', __name__)
@@ -212,9 +213,14 @@ def add_image_to_post(community_id, post_id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
+        file = form.file.data
+        file.filename = get_unique_filename(file.filename)
+        upload = upload_image_file_to_s3(file)
+
+        url = upload["url"]
 
         post_image = PostImage(
-            url = form.url.data,
+            url = url,
             post_id = post_id
         )
 
