@@ -50,6 +50,30 @@
     border-radius: 20px;
 }
 
+.outer-container-for-x-button:hover {
+    cursor: pointer;
+}
+
+.image-upload-container {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+}
+
+.image-upload-container:hover {
+    transition-duration: 300ms;
+    transition-property: background-color;
+    background-color: #4c73e731;
+}
+
+.upload-image-svg:hover {
+    cursor: pointer;
+}
+
 .delete-image {
     display: none;
 }
@@ -79,4 +103,8 @@
     border: none;
     border-radius: 30px;
     color: white;
+}
+
+.post-button:hover {
+    cursor: pointer;
 }
