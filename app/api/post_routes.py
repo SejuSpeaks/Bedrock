@@ -1,9 +1,11 @@
+import asyncio
 from flask import Blueprint, jsonify, session, request
 from app.models import Post, Comment, Community,Like, PostImage ,Following, community_users, db
 from flask_login import current_user, login_required
 from ..forms.create_post import Post_Form
 from ..forms.post_image import PostImageForm
 from ..forms.comment_form import CommentForm
+from .aws_s3 import upload_image_file_to_s3, remove_image_file_from_s3, get_unique_filename
 from .auth_routes import validation_errors_to_error_messages
 
 posts_routes = Blueprint('posts', __name__)
@@ -212,9 +214,14 @@ def add_image_to_post(community_id, post_id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
+        file = form.file.data
+        file.filename = get_unique_filename(file.filename)
+        upload = upload_image_file_to_s3(file)
+
+        url = upload["url"]
 
         post_image = PostImage(
-            url = form.url.data,
+            url = url,
             post_id = post_id
         )
 
@@ -257,8 +264,15 @@ def update_post(community_id, post_id):
 def delete_post(community_id, post_id):
     user_id = current_user.id
     post = Post.query.filter(Post.community_id == community_id, Post.id == post_id).one_or_none()
+    post_image = PostImage.query.filter(PostImage.post_id == post_id).one_or_none()
 
     if user_id != post.user_id : return {"Errors": "Current post does not belong to user"}
+    print(post_image.url, 'THIS IS POST')
+
+    if post_image:
+        remove_image_file_from_s3(post_image.url)
+        db.session.delete(post_image)
+
 
     db.session.delete(post)
     db.session.commit()
