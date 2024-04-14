@@ -70,6 +70,7 @@ const PostModal = ({ artist, setIsPosted, isFollowing }) => {
 
             })
             .then(() => setImageUrl(''))
+            .then(() => setImageFile(null))
 
     }
 
@@ -106,8 +107,10 @@ const PostModal = ({ artist, setIsPosted, isFollowing }) => {
                     </div>
 
                     <div className="post-action-buttons-2">
-                        <label for="image" > <i class="fa-regular fa-image" /> </label>
-                        <input id="image" type="file" accept="png/*" onChange={(e) => imageProcess(e)} />
+                        <div className="image-upload-container">
+                            <label className="upload-image-svg" for="image" > <i class="fa-regular fa-image" style={{ color: "#4c72e7" }}></i> </label>
+                            <input id="image" type="file" accept="png/*" onChange={(e) => imageProcess(e)} />
+                        </div>
                         {/* <OpenImageButton modalComponent={<ImageForm setImageUrl={setImageUrl} />} /> */}
                         <button onClick={(e) => submitPost()} className="post-button">Post</button>
                     </div>
