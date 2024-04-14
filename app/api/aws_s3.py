@@ -74,7 +74,7 @@ def upload_image_file_to_s3(file, acl="public-read"):
     return {'url': f"{S3_IMAGE_LOCATION}{file.filename}"}
 
 
-def remove_file_from_s3(file):
+def remove_image_file_from_s3(file):
     key = file.rsplit("/", 1)[1]
     try:
         s3.delete_object(

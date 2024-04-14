@@ -17,6 +17,54 @@
 }
 
 
+.image-preview {
+    width: 100%;
+    height: inherit;
+    max-height: 300px;
+    border-radius: 15px;
+}
+
+.image-preview-container {
+    position: relative;
+    max-width: 500px;
+    max-height: 300px;
+}
+
+.outer-container-for-x-button {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    z-index: 1;
+}
+
+.inner-container-for-x-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    background-color: #1C2026;
+    box-shadow: rgba(128, 128, 128, 0.393) 0px 0px 1px 1px;
+    border-radius: 20px;
+}
+
+.delete-image {
+    display: none;
+}
+
+.inner-container-for-x-button:hover {
+    transition-duration: 500ms;
+    transition-property: box-shadow;
+    box-shadow: none;
+}
+
+.delete-imageactive {
+    position: absolute;
+    right: 100;
+}
+
 .post-action-buttons-2 {
     display: flex;
     align-items: center;

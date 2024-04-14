@@ -38,6 +38,12 @@ const PostModal = ({ artist, setIsPosted, isFollowing }) => {
         reader.readAsDataURL(file)
     }
 
+    const deleteImage = () => {
+        setImageFile(null)
+        setImageUrl("")
+        return
+    }
+
     const submitPost = async () => {
 
         const postMade = {
@@ -67,6 +73,8 @@ const PostModal = ({ artist, setIsPosted, isFollowing }) => {
 
     }
 
+    const showImageDelete = `delete-image` + (imageFile ? "active" : "")
+
     return (
         <div>
             {user && userValidation() && (<>
@@ -80,8 +88,21 @@ const PostModal = ({ artist, setIsPosted, isFollowing }) => {
                         <input value={text} onChange={(e) => setText(e.target.value)} className="post-input" placeholder="What is happening?!"></input>
                     </div>
 
-                    <div>
+                    <div className="image-preview-container">
+
+                        <div className={`outer-container-for-x-button`} onClick={() => deleteImage()}>
+
+                            <div className={`${showImageDelete} inner-container-for-x-button`}>
+                                <i className={`fa-solid fa-x`} style={{ color: "#ffffff" }}></i>
+                            </div>
+
+                        </div>
+
                         <img className="image-preview" src={imageUrl} />
+
+
+
+
                     </div>
 
                     <div className="post-action-buttons-2">
