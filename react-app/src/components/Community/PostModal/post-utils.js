@@ -13,7 +13,7 @@ export const postImage = async (community_id, post_id, payload, stateChange) => 
     const formData = new FormData()
     formData.append('file', payload.file)
 
-    const res = await fetch(`http://localhost:3000/api/posts/${community_id}/${post_id}/images`, {
+    const res = await fetch(`/api/posts/${community_id}/${post_id}/images`, {
         method: 'POST',
         body: formData
     })
