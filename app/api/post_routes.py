@@ -267,7 +267,7 @@ def delete_post(community_id, post_id):
     post_image = PostImage.query.filter(PostImage.post_id == post_id).one_or_none()
 
     if user_id != post.user_id : return {"Errors": "Current post does not belong to user"}
-    print(post_image.url, 'THIS IS POST')
+    print(post_image, 'THIS IS POST now')
 
     if post_image:
         print('post_image', post_image)
