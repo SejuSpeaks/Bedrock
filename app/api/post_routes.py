@@ -270,6 +270,7 @@ def delete_post(community_id, post_id):
     print(post_image.url, 'THIS IS POST')
 
     if post_image:
+        print('post_image', post_image)
         remove_image_file_from_s3(post_image.url)
         db.session.delete(post_image)
 

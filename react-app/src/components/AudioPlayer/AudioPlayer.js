@@ -28,6 +28,7 @@ const AudioPlayer = ({ album, isPlaying, setIsPlaying }) => {
         //     setIsLoaded(false)
         // })
 
+        waveSurferRef.current = waveSurfer;
 
         waveSurfer.load(audio.url)
             .catch(error => {
@@ -35,6 +36,7 @@ const AudioPlayer = ({ album, isPlaying, setIsPlaying }) => {
                 setIsLoaded(false)
             })
             .then(() => {
+                console.log('good')
                 setIsLoaded(true)
             })
 
