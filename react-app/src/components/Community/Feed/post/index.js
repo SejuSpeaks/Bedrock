@@ -62,7 +62,7 @@ const Post = ({ post, images }) => {
                         </div>
                         <div className="post-box-content">
                             <p className="post-text">{post.text}</p>
-                            <div className="post-image-container">
+                            <div className={images ? "post-image-container" : 'no-image'}>
                                 <img className="post-image" src={images ? post.post_images[0].url : ""} />
                             </div>
                         </div>

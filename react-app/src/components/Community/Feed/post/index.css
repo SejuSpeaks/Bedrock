@@ -9,9 +9,12 @@
     gap: 10px;
 }
 
+.no-image {
+    display: none;
+}
+
 .post-image-container {
     max-width: 517px;
-    max-height: 517px;
 }
 
 .post-header {
