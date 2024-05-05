@@ -70,6 +70,13 @@
     background-color: #4c73e731;
 }
 
+.post-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+}
+
 .upload-image-svg:hover {
     cursor: pointer;
 }
@@ -93,6 +100,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.no-post-button {
+    padding: 5px 12px;
+    width: 90px;
+    height: 37px;
+    background-color: #4c73e74e;
+    border: none;
+    border-radius: 30px;
+    color: white;
 }
 
 .post-button {

@@ -9,12 +9,50 @@
     gap: 10px;
 }
 
+.post-image-container {
+    max-width: 517px;
+    max-height: 517px;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    gap: 10px;
+}
+
+.post-text {
+    width: 500px;
+}
+
+
+.heart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    width: 30px;
+    height: 25px;
+}
+
+.heart-container:hover {
+    background-color: rgba(255, 0, 0, 0.213);
+}
+
+.inner-likes-comments {
+    display: flex;
+    gap: 5px;
+}
+
+
+
 .likes-likescounter-container {
     display: flex;
     margin-top: 10px;
     gap: 15px;
     flex-direction: column;
 }
+
 
 .like-comment-container-post-details {
     display: flex;
@@ -60,8 +98,11 @@
     display: flex;
     align-items: center;
     gap: 5px;
+    border-radius: 5px;
+    padding: 0px 3px;
 }
 
 .comments-container-post-details:hover {
     cursor: pointer;
+    background-color: rgba(76, 115, 231, 0.129);
 }

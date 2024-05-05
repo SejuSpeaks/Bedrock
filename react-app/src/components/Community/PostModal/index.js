@@ -14,6 +14,7 @@ const PostModal = ({ artist, setIsPosted, isFollowing }) => {
     const [imageUrl, setImageUrl] = useState('')
     const [imageFile, setImageFile] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false);
+    const [canPost, setCanPost] = useState(false);
     const [text, setText] = useState('')
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
@@ -21,6 +22,16 @@ const PostModal = ({ artist, setIsPosted, isFollowing }) => {
     const reader = new FileReader();
     let imagePreview;
 
+
+    useEffect(() => {
+        if (text.length > 0) {
+            setCanPost(true)
+        }
+        else {
+            setCanPost(false)
+        }
+
+    }, [text])
     const userValidation = () => {
         if (!user) return false;
         if (artist.community_id === user.community_id || isFollowing) return true
@@ -80,13 +91,14 @@ const PostModal = ({ artist, setIsPosted, isFollowing }) => {
         <div>
             {user && userValidation() && (<>
                 <div className="post-modal-whole">
+                    <div className="post-modal-header">
+                        <div>
+                            <img className="post-profile-picture" src={user.profile_picture} />
+                        </div>
 
-                    <div>
-                        <img className="post-profile-picture" src={user.profile_picture} />
-                    </div>
-
-                    <div>
-                        <input value={text} onChange={(e) => setText(e.target.value)} className="post-input" placeholder="What is happening?!"></input>
+                        <div>
+                            <input value={text} onChange={(e) => setText(e.target.value)} className="post-input" placeholder="What is happening?!"></input>
+                        </div>
                     </div>
 
                     <div className="image-preview-container">
@@ -112,7 +124,7 @@ const PostModal = ({ artist, setIsPosted, isFollowing }) => {
                             <input id="image" type="file" accept="png/*" onChange={(e) => imageProcess(e)} />
                         </div>
                         {/* <OpenImageButton modalComponent={<ImageForm setImageUrl={setImageUrl} />} /> */}
-                        <button onClick={(e) => submitPost()} className="post-button">Post</button>
+                        <button onClick={(e) => submitPost()} className={!canPost ? "no-post-button" : "post-button"}>Post</button>
                     </div>
 
                 </div>

@@ -1,17 +1,19 @@
 import { fetchAllPosts } from "../../../store/posts";
 import { fetchGetArtist } from "../../../store/artist";
 import { useEffect, useRef, useState } from "react";
+import { findLike, pressedHeart } from "../PostModal/post-utils";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 import './index.css';
+import Post from "../Feed/post";
 
 
 const CommunityPosts = ({ isFollowing, posted }) => {
     const { artistid } = useParams()
-    const history = useHistory()
     const [isLoaded, setIsLoaded] = useState(false)
+    const [isLoading, setIsLoading] = useState(true);
     const dispatch = useDispatch();
     const bodyRef = useRef();
 
@@ -24,21 +26,13 @@ const CommunityPosts = ({ isFollowing, posted }) => {
         dispatch(fetchGetArtist(artistid))
             .then((artist) => dispatch(fetchAllPosts(artist.community_id)))
             .then(() => setIsLoaded(true))
+            .then(() => setIsLoading(false))
     }, [dispatch, posted])
 
     const userValidation = () => {
         if (!user) return false
         if (artist.community_id === user.community_id || isFollowing) return true
         else return false;
-    }
-
-    const redirect = (post) => {
-        const positionOfElement = bodyRef.current.getBoundingClientRect()
-        const { y } = positionOfElement
-        //replace with session storage
-        document.cookie = `y=${y}`
-        console.log(y)
-        return history.push(`/artists/${artist.id}/community/${post.id}`)
     }
 
     const allPosts = Object.values(posts).map(post => {
@@ -48,55 +42,16 @@ const CommunityPosts = ({ isFollowing, posted }) => {
         }
 
         return (
-            <div className="post-box" key={post.id} onClick={() => redirect(post)}>
-
-                <div>
-                    <img className="post-profile-picture" src={post.owner_profile_picture} />
-                </div>
-
-                <div className="post-box-content">
-                    <div className="post-box-header-info">
-                        {/* <p className="user_username">{post.owner_username}</p> */}
-                        <p className="user_at">@{post.owner_at}</p>
-                        {/* <p>March 16</p> */}
-                    </div>
-
-                    <p>{post.text}</p>
-
-                    <div>
-                        <img className="post-image" src={images ? post.post_images[0].url : ""} />
-                    </div>
-
-                    <div className="post-action-buttons">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            width="18"
-                            height="18"
-                            stroke={'red'}
-                            fill={'red'}
-                        >
-                            <path
-                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                                stroke-width="2"
-                            />
-                        </svg>
-
-                        <div className="comments-container-post-details">
-                            <i class="fa-regular fa-message"></i>
-
-
-                            <p>Comments</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+            <Post post={post} images={images} />
         )
     })
 
     return (
         <div className="all-posts-container-whole-page">
+            {isLoading && <>
+                <div className="loader"></div>
+
+            </>}
             {isLoaded && userValidation() && (<>
                 <div ref={bodyRef} className="all-posts-container">
                     {allPosts}
