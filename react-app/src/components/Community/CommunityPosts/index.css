@@ -7,7 +7,25 @@
     width: 600px;
 }
 
+.loader {
+    margin: auto;
+    height: 20px;
+    width: 20px;
+    animation: spinner 4s linear infinite;
+    border: 20px solid grey;
+    border-radius: 50%;
+    border-top: 20px solid black;
+}
 
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
 
 .post-box:hover {
     transition-duration: 500ms;
@@ -26,8 +44,8 @@
 .post-image {
     border-radius: 10px;
     max-width: 100%;
-    min-width: 500px;
-    height: auto;
+    height: 100%;
+    min-width: 300px;
 }
 
 .post-action-buttons {
@@ -52,7 +70,7 @@
 }
 
 .user_username {
-    font-weight: 600;
+    font-weight: 500;
 }
 
 

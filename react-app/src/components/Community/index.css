@@ -13,7 +13,6 @@
 .post-modal-community-posts-container {
     overflow-y: auto;
     height: 100vh;
-    width: 50%;
     background-color: white;
 }
 
