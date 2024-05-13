@@ -107,5 +107,5 @@
 
 .comments-container-post-details:hover {
     cursor: pointer;
-    background-color: rgba(76, 115, 231, 0.129);
+    /* background-color: rgba(76, 115, 231, 0.129); */
 }

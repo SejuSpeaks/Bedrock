@@ -81,9 +81,9 @@ const Comments = ({ artist }) => {
                             <img className="post-profile-picture" src={comment.profile_picture} />
                         </div>
 
-                        <div>
-                            <p className="user_at">@{comment.at}</p>
+                        <div className='user-handles-container-comments'>
                             <p>{comment.username}</p>
+                            <p className="user_at">@{comment.at}</p>
                         </div>
                     </div>
 
