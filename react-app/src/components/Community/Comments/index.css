@@ -5,18 +5,33 @@
     justify-content: center;
 }
 
+.comment-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-container-header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .post-details-comment-container {
+    display: flex;
     border: #ccc solid 1px;
     padding: 10px;
 }
 
-.post-details-comment-container:hover{
-    background-color: rgba(44, 51, 57, 0.086);;
+.post-details-comment-container:hover {
+    background-color: rgba(44, 51, 57, 0.086);
+    ;
 }
 
-.user-handles-container-comments{
-    display:flex;
-    gap:10px;
+.user-handles-container-comments {
+    display: flex;
+    gap: 10px;
 }
 
 .all-comments-container {

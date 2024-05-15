@@ -73,30 +73,30 @@ const Comments = ({ artist }) => {
         return (
             <div className="post-details-comment-container" key={comment.id}>
 
-                <div className="post-details-post-container-header">
+                <div className="post-details-profile-picture-container">
+                    <img className="post-profile-picture" src={comment.profile_picture} />
+                </div>
 
-                    <div className="picture-and-at-container">
-
-                        <div className="post-details-profile-picture-container">
-                            <img className="post-profile-picture" src={comment.profile_picture} />
-                        </div>
+                <div className="comment-container">
+                    <div className="comment-container-header">
 
                         <div className='user-handles-container-comments'>
                             <p>{comment.username}</p>
                             <p className="user_at">@{comment.at}</p>
                         </div>
+
+                        <div className="options-container">
+                            <PostOptions comment={comment} updateComment={updateComment} deleteComment={deleteComment} />
+                        </div>
                     </div>
 
-                    <div className="options-container">
-                        <PostOptions comment={comment} updateComment={updateComment} deleteComment={deleteComment} />
+                    <div className="comment-content">
+                        <p>{comment.text}</p>
                     </div>
 
 
                 </div>
 
-                <div className="comment-content">
-                    <p>{comment.text}</p>
-                </div>
 
                 {/* {user.id === comment.user_id && (
                     <div>
