@@ -77,11 +77,12 @@
 @media screen and (max-width:600px) {
     .post-box {
         width: auto;
+        padding: 10px;
     }
 
-    .post-image {
+    /* .post-image {
         min-width: 200px;
-    }
+    } */
 
 
 }
