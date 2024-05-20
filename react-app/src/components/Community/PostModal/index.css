@@ -3,7 +3,6 @@
     padding: 10px 12px;
     /* width: 600px;
     height: 300px; */
-    margin-bottom: 20px;
 }
 
 .post-input {
@@ -28,6 +27,10 @@
     position: relative;
     max-width: 500px;
     max-height: 300px;
+}
+
+.image-preview-containerdisabled {
+    display: none;
 }
 
 .outer-container-for-x-button {
