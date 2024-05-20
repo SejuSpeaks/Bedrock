@@ -42,12 +42,12 @@ const PostDetails = ({ posts }) => {
 
                 <div className="post-details-continaer">
 
-                    <div className="post-details-nav-bar-div">
-                        <ArtistPageNav />
-                    </div>
 
                     <div className="post-details-post-container">
 
+                        <div className="post-details-nav-bar-div">
+                            <ArtistPageNav />
+                        </div>
 
                         <div className="post-details-inner">
                             {/* post header */}

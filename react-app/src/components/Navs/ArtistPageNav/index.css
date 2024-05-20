@@ -1,21 +1,32 @@
 .nav-links-container-artist {
-    background-color: #E6E6E6;
+    background-color: #e6e6e656;
     text-decoration: none;
-    padding: 8px 2px;
     border-bottom: lightgrey solid 1px;
     text-decoration: none;
     list-style: none;
 }
 
 .inner-nav-links {
+    background-color: #f7f7f7;
     display: flex;
     gap: 10px;
-    justify-content: flex-start;
-    margin-left: 20px;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.inner-navlink-container {
+    height: 100%;
+    width: 100%;
 }
 
 .nav-link-container-nav {
-    padding: 2px 15px 0px;
+    /* padding: 2px 15px 0px; */
+    padding: 10px 60px;
+}
+
+.nav-link-container-nav:hover {
+    background-color: #e6e6e656;
+
 }
 
 .navlinks {

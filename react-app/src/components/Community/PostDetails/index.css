@@ -59,6 +59,7 @@
 .post-details-continaer {
     /* border: solid 1px black; */
     height: min-content;
+    overflow: hidden;
 }
 
 .picture-and-at-container {
@@ -141,5 +142,9 @@
 
     .post-details-image {
         max-width: fit-content;
+    }
+
+    .post-details-content {
+        padding: 10px;
     }
 }

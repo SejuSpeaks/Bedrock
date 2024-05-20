@@ -4,16 +4,22 @@
     align-items: flex-start;
     background-color: rgba(211, 211, 211, 0.175);
     height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .community-page-whole-fr {
     height: 100vh;
+    overflow-x: hidden;
 }
 
 .post-modal-community-posts-container {
-    overflow-y: auto;
-    height: 100vh;
     background-color: white;
+}
+
+.nav-container-posts {
+    position: sticky;
+    top: 0;
 }
 
 .follow-wall {
