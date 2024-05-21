@@ -109,6 +109,7 @@ const Comments = ({ artist }) => {
         );
     })
 
+    const postCommentButtonCss = 'post-button' + (commentText ? "" : "-disabled")
 
     return (
         <div className="comments-post-details-whole">
@@ -120,7 +121,7 @@ const Comments = ({ artist }) => {
                                 <img className="comment-input-profile-picture" src={user.profile_picture} />
                             </div>
                             <input className="post-comment-form-input" value={commentText} onChange={(e) => setCommentText(e.target.value)} placeholder="post a comment" />
-                            <button className="post-button">Post</button>
+                            <button className={postCommentButtonCss}>Post</button>
 
                         </form>
                     </div>
