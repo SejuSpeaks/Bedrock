@@ -86,6 +86,7 @@ const PostModal = ({ artist, setIsPosted, isFollowing }) => {
     }
 
     const showImageDelete = `delete-image` + (imageFile ? "active" : "")
+    const showImageContainer = `image-preview-container` + (imageFile ? "" : "disabled")
 
     return (
         <div>
@@ -101,7 +102,7 @@ const PostModal = ({ artist, setIsPosted, isFollowing }) => {
                         </div>
                     </div>
 
-                    <div className="image-preview-container">
+                    <div className={showImageContainer}>
 
                         <div className={`outer-container-for-x-button`} onClick={() => deleteImage()}>
 
@@ -112,10 +113,6 @@ const PostModal = ({ artist, setIsPosted, isFollowing }) => {
                         </div>
 
                         <img className="image-preview" src={imageUrl} />
-
-
-
-
                     </div>
 
                     <div className="post-action-buttons-2">

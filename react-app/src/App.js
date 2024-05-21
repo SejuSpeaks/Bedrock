@@ -18,6 +18,8 @@ import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [showHeader, setShowHeader] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -26,7 +28,9 @@ function App() {
     <>
       {isLoaded && (
         <>
+
           <Navigation isLoaded={isLoaded} />
+
           <Switch>
 
             <Route exact path='/'>
@@ -46,7 +50,7 @@ function App() {
             </Route>
 
             <Route path='/artists/:artistid/community'>
-              <Community />
+              <Community lastScrollY={lastScrollY} setLastScrollY={setLastScrollY} setShowHeader={setShowHeader} showHeader={showHeader} />
             </Route>
 
             <Route path='/artists/:artistid/albums/:albumid'>
