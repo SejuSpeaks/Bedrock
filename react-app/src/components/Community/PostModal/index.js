@@ -113,10 +113,6 @@ const PostModal = ({ artist, setIsPosted, isFollowing }) => {
                         </div>
 
                         <img className="image-preview" src={imageUrl} />
-
-
-
-
                     </div>
 
                     <div className="post-action-buttons-2">
