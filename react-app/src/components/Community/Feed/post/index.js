@@ -36,7 +36,7 @@ const Post = ({ post, images }) => {
     }
 
     const postClicked = () => {
-        history.push(`/artists/${artist.id}/community/${post.id}/`)
+        return history.push(`/artists/${artist.id}/community/${post.id}/`)
     }
 
     useEffect(() => {
@@ -49,7 +49,7 @@ const Post = ({ post, images }) => {
     return (
         <div>
             {isLoaded && (
-                <div className="post-box" onClick={() => postClicked()}>
+                <div className="post-box">
                     <div className="profile-picture-container">
                         <img className="post-profile-picture" src={post.owner_profile_picture} />
                     </div>

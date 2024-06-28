@@ -139,8 +139,8 @@ const getPosts = (posts) => {
 
 
 //thunk
-export const fetchAllPosts = (community_id) => async dispatch => {
-    const response = await fetch(`/api/posts/${community_id}`)
+export const fetchAllPosts = () => async dispatch => {
+    const response = await fetch(`/api/posts/`)
 
     if (response.ok) {
         const data = await response.json();

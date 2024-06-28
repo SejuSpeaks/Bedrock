@@ -19,7 +19,6 @@ function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const [showHeader, setShowHeader] = useState(true)
-  const [lastScrollY, setLastScrollY] = useState(0)
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -50,7 +49,7 @@ function App() {
             </Route>
 
             <Route path='/artists/:artistid/community'>
-              <Community lastScrollY={lastScrollY} setLastScrollY={setLastScrollY} setShowHeader={setShowHeader} showHeader={showHeader} />
+              <Community setShowHeader={setShowHeader} showHeader={showHeader} />
             </Route>
 
             <Route path='/artists/:artistid/albums/:albumid'>
